@@ -20,12 +20,14 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent">
 
+
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:contentInsetStartWithNavigation="0dp"
                     app:navigationIcon="@drawable/ic_menu_black_24dp">
+
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -58,49 +60,71 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.appcompat.widget.Toolbar>
+<!--                <ImageView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="60dp"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    android:background="@drawable/rectangle_16"-->
+<!--                    />-->
+
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+                android:id="@+id/availableBalanceLayout"
+                android:layout_marginTop="24dp"
+                android:layout_height="wrap_content">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignBottom="@id/txtAvlBalanceAmount"
+                    android:background="@drawable/box_7"
+                    />
 
                 <TextView
                     android:id="@+id/txtAvlBalance"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:text="@string/txt_avl_balance"
                     android:textColor="@color/white"
-                    android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtUsername" />
+                    android:paddingTop="16dp"
+                    android:paddingLeft="16dp"
+                    android:layout_alignParentTop="true"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/txtAvlBalanceAmount"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginBottom="8dp"
                     android:text="@string/dummy_amount"
                     android:textColor="@color/white"
                     android:textSize="34sp"
+                    android:paddingBottom="16dp"
+                    android:paddingLeft="16dp"
+                    android:layout_below="@+id/txtAvlBalance"
                     android:typeface="serif"
-                    app:layout_constraintHorizontal_bias="0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtAvlBalance" />
-            </com.google.android.material.appbar.AppBarLayout>
+                    />
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/text1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
                 android:gravity="center"
                 android:text="@string/txt_mobile_recharge"
                 android:textSize="22sp"
                 android:typeface="serif"
-                app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/availableBalanceLayout" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="24dp"
                 android:clipToPadding="false"
                 android:padding="8dp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

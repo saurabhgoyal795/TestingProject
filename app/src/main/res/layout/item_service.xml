@@ -2,38 +2,47 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:id="@+id/layoutMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="8dp"
         android:orientation="vertical">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/itembackground"
+            android:layout_alignParentTop="true"
+            android:layout_alignBottom="@id/txtName"
+            />
 
         <ImageView
             android:id="@+id/ivLogo"
-            android:layout_width="114dp"
-            android:layout_height="114dp"
-            android:background="@drawable/bg_recharge_option"
-            android:contentDescription="@string/app_name"
-            android:padding="16dp"
-            android:src="@drawable/voucher"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="fitXY"
+            android:layout_marginTop="8dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/voucher2" />
 
         <TextView
             android:id="@+id/txtName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:gravity="center"
             android:text="@string/txt_voucher_recharge"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="16sp"
-            android:typeface="serif"
-            app:layout_constraintTop_toBottomOf="@+id/ivLogo" />
+            android:paddingBottom="8dp"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/ivLogo"
+            android:typeface="serif"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 
 </layout>

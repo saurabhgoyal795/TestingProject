@@ -323,11 +323,15 @@ public class HomeActivity extends BaseActivity implements LifecycleObserver,
             ItemServiceBinding binding = (ItemServiceBinding) holder.getBinding();
 
             if (serviceList.get(position).getService_name().equalsIgnoreCase("Voucher")) {
-                binding.ivLogo.setImageResource(R.drawable.voucher);
+                binding.ivLogo.setImageResource(R.drawable.voucher_1);
             } else if (serviceList.get(position).getService_name().equalsIgnoreCase("Topup")) {
-                binding.ivLogo.setImageResource(R.drawable.mobile_recharge);
+                binding.ivLogo.setImageResource(R.drawable.mc_charger_1);
             } else if (serviceList.get(position).getService_name().equalsIgnoreCase("Loan Payment")) {
                 binding.ivLogo.setImageResource(R.drawable.loan_payment);
+            } else if (serviceList.get(position).getService_name().equalsIgnoreCase("Electricity bill")) {
+                binding.ivLogo.setImageResource(R.drawable.electri);
+            } else if (serviceList.get(position).getService_name().equalsIgnoreCase("Water bill")) {
+                binding.ivLogo.setImageResource(R.drawable.water_bill);
             } else {
                 binding.ivLogo.setImageResource(R.drawable.voucher);
             }

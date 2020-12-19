@@ -29,12 +29,12 @@ import retrofit2.http.PartMap;
 
 public interface APIInterface {
 
-   // String BASE_URL = "https://highlightevd.com/evdlive/webservices/"; // Live
+    String BASE_URL = "https://highlightevd.com/evdlive/webservices/"; // Live
 //    String BASE_URL = "https://evdsoftware.com/demo/webservices/"; // For Test
 //    String BASE_URL = "https://evdsoftware.com/highlight/webservices/"; // For Test
 //    String BASE_URL = "https://evdsoftware.com/ccf/webservices/"; // For Test
 //    String BASE_URL = "http://10.133.241.148/~highlightevd/evdlive/webservices/"; //old VPN
-    String BASE_URL = "http://10.133.241.148/~highlighte/evdlive/webservices/"; // New VPN 12/5/2020
+//    String BASE_URL = "http://10.133.241.148/~highlighte/evdlive/webservices/"; // New VPN 12/5/2020
 //    String BASE_URL = "http://172.16.88.118/~highlighte/evdlive/webservices/"; // New VPN 18/6/2020
    //  String BASE_URL = "http://43.252.88.118/~highlighte/evdlive/webservices/"; // New VPN 27/6/2020
 
