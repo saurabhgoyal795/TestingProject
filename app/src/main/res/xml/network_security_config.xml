@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+
+  <!--  <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>-->
+
+    <!-- For internal use only. -->
+    <domain-config cleartextTrafficPermitted="true">
+
+        <!--<domain includeSubdomains="true">127.0.0.1</domain>-->
+
+    <!--    <pin-set>
+            <pin digest="SHA-256">k3XnEYQCK79AtL9GYnT/nyhsabas03V+bhRQYHQbpXU=</pin>
+            <pin digest="SHA-256">2kOi4HdYYsvTR1sTIR7RHwlf2SescTrpza9ZrWy7poQ=</pin>
+        </pin-set>-->
+
+<!--        <domain includeSubdomains="true">https://highlightevd.com/</domain>-->
+<!--        <domain includeSubdomains="true">http://highlightevd.com/</domain>-->
+        <domain includeSubdomains="true">highlightevd.com/</domain>
+<!--        <domain includeSubdomains="true">http://10.133.241.148/</domain>-->
+        <domain includeSubdomains="true">10.133.241.148/</domain>
+        <trust-anchors>
+            <certificates src="system"/>
+            <certificates src="user"/>
+        </trust-anchors>
+
+    </domain-config>
+</network-security-config>

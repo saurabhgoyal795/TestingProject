@@ -1,0 +1,25 @@
+
+`
+java:S1192;"JDefine a constant instead of duplicating this literal "printData" 3 times.(ßóèò
+V	java:S125O"<This block of commented-out lines of code should be removed.(Àµ®ãüÿÿÿÿ
+Q	java:S125L"<This block of commented-out lines of code should be removed.(äÌÍŒ
+W	java:S110"=This class has 10 parents which is greater than 5 authorized.(”‡½½şÿÿÿÿ
+S
+java:S1905<"8Remove this unnecessary cast to "ModelVoucherPurchased".(àœÔ•şÿÿÿÿ
+q
+java:S1450"VRemove the "binding" field and declare it as a local variable in the relevant methods.(Â¤•ˆùÿÿÿÿ
+m
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(¨Œşÿÿÿÿ
+^
+java:S1192#"HDefine a constant instead of duplicating this literal "service" 3 times.(§Íèù
+V	java:S125W"<This block of commented-out lines of code should be removed.(–“Åıÿÿÿÿ
+d
+java:S11924"NDefine a constant instead of duplicating this literal "top_up_amount" 3 times.(ƒÙÒú
+d
+java:S1192>"NDefine a constant instead of duplicating this literal "printDataList" 3 times.(Ÿ×æê
+œ
+java:S1186]"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(œƒƒ©ùÿÿÿÿ
+d
+java:S1192I"NDefine a constant instead of duplicating this literal "mobile_number" 3 times.(Ø‚–
+_
+java:S1192&"IDefine a constant instead of duplicating this literal "operator" 3 times.(‹úíÆ

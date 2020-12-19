@@ -1,0 +1,26 @@
+
+K
+java:S1066Ó"/Merge this if statement with the enclosing one.(Ä®›Üÿÿÿÿÿ
+\
+java:S1192È"FDefine a constant instead of duplicating this literal "token" 3 times.(˜Œ–
+a
+java:S2184E"FCast one of the operands of this multiplication operation to a "long".(˜Ôøøÿÿÿÿ
+8	java:S131‚""Add a default case to this switch.(¿›İ”
+R
+java:S1117Ã";Rename "binding" which hides the field declared at line 60.(´¿Íà
+R	java:S125ğ"<This block of commented-out lines of code should be removed.(¹Œß˜
+R	java:S125Ú"<This block of commented-out lines of code should be removed.(¯Ÿ¶ 
+R
+java:S1117¼";Rename "binding" which hides the field declared at line 60.(Üêƒ´
+V	java:S125u"<This block of commented-out lines of code should be removed.(Â™†úÿÿÿÿ
+j
+java:S1192È"TDefine a constant instead of duplicating this literal "multipart/form-data" 5 times.(˜Œ–
+W	java:S1109"=This class has 10 parents which is greater than 5 authorized.(Èï·´ÿÿÿÿÿ
+H
+java:S1068²",Remove this unused "mContext" private field.(»úÅ¾øÿÿÿÿ
+Q	java:S125>"<This block of commented-out lines of code should be removed.(ŠÇ¤
+Q	java:S125O"<This block of commented-out lines of code should be removed.(ªÔ˜
+V	java:S125`"<This block of commented-out lines of code should be removed.(¾Æ¥Íıÿÿÿÿ
+K
+java:S1066á"/Merge this if statement with the enclosing one.(Ä®›Üÿÿÿÿÿ
+W	java:S125×"<This block of commented-out lines of code should be removed.(ğùÂáşÿÿÿÿ

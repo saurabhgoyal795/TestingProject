@@ -1,0 +1,220 @@
+
+^	java:S125”"<This block of commented-out lines of code should be removed.(¼—êÀüÿÿÿÿ8Œ©Æƒå.
+V
+java:S1117Ú":Rename "bitmap" which hides the field declared at line 78.(úªĞùÿÿÿÿ
+o	java:S101ì"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¿îïşÿÿÿÿ8Œ©Æƒå.
+K
+java:S1068‚"4Remove this unused "selectedOperator" private field.(”÷Ê
+^	java:S125‘"<This block of commented-out lines of code should be removed.(Òœôüÿÿÿÿ8Œ©Æƒå.
+X	java:S125¬"<This block of commented-out lines of code should be removed.(ò¬ï8Œ©Æƒå.
+R	java:S125Ñ"<This block of commented-out lines of code should be removed.(ÉŠÊŸ
+<
+java:S1170F"!Make this final field static too.(Äê¡¡üÿÿÿÿ
+Q
+java:S1874S"6Remove this use of "ProgressDialog"; it is deprecated.(ÿ¢ÿÿÿÿÿ
+’
+java:S1319“"{The type of the "voucherArrayList" object should be an interface such as "List" rather than the implementation "ArrayList".(“Ñö˜
+>	java:S131ö""Add a default case to this switch.(Óä”>8Œ©Æƒå.
+^	java:S125"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ8Œ©Æƒå.
+j	java:S101‹"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(³©›¬8Œ©Æƒå.
+^	java:S125ª"<This block of commented-out lines of code should be removed.(Ùü±„úÿÿÿÿ8Œ©Æƒå.
+Y	java:S125¶"<This block of commented-out lines of code should be removed.(¤‚èœ8Œ©Æƒå.
+W	java:S125¥"<This block of commented-out lines of code should be removed.(¨«ãÜùÿÿÿÿ
+T
+java:S1874½"6Remove this use of "ProgressDialog"; it is deprecated.(ùá¿8Œ©Æƒå.
+Y	java:S125€"<This block of commented-out lines of code should be removed.(’¢½¨8îŒÖä.
+J
+java:S1874½",Remove this use of "show"; it is deprecated.(ùá¿8Œ©Æƒå.
+F
+java:S1874§"0Remove this use of "fromHtml"; it is deprecated.(ŠÒöH
+^	java:S125³"<This block of commented-out lines of code should be removed.(¼¨±üÿÿÿÿ8Œ©Æƒå.
+r
+java:S1450ƒ"[Remove the "selectedPlan" field and declare it as a local variable in the relevant methods.(Öˆà¸
+<
+java:S1170I"!Make this final field static too.(Ú§¡Âüÿÿÿÿ
+Y	java:S125ê"<This block of commented-out lines of code should be removed.(Õ€Ü¯8Œ©Æƒå.
+J
+java:S1128:"5Remove this unused import 'java.io.FileOutputStream'.(˜«ªg
+K
+java:S1604Ü"(Make this anonymous inner class a lambda(šáù·øÿÿÿÿ8Œ©Æƒå.
+E
+java:S1481_"*Remove this unused "level" local variable.(©™§®ÿÿÿÿÿ
+E
+java:S1481`"*Remove this unused "scale" local variable.(şëëÉşÿÿÿÿ
+7
+java:S1170E"!Make this final field static too.(¼‰•õ
+^
+java:S1854¨";Remove this useless assignment to local variable "content".(‡õê¢üÿÿÿÿ8Œ©Æƒå.
+H
+java:S5411ã"*Use the primitive boolean expression here.(À°¤´8Œ©Æƒå.
+{
+java:S1845W"eRename field "nopaper" to prevent any misunderstanding/clash with field "NOPAPER" defined on line 67.(ûÑ°…
+R	java:S125˜"<This block of commented-out lines of code should be removed.(Õ€Ü¯
+Q
+java:S1874U"6Remove this use of "ProgressDialog"; it is deprecated.(·á…Çùÿÿÿÿ
+o
+java:S3776ı"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(ÖÃÍ58ñ¨Èƒå.
+]
+java:S1144†":Remove this unused private "PrintableAdapter" constructor.(ıƒŠÁøÿÿÿÿ8Œ©Æƒå.
+F
+java:S1874¦"0Remove this use of "fromHtml"; it is deprecated.(ŠÒöH
+R	java:S125Ï"<This block of commented-out lines of code should be removed.(Ë“¼®
+s	java:S117Ö"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´¢àøÿÿÿÿ8Œ©Æƒå.
+7
+java:S1170J"!Make this final field static too.(¦¯ì
+
+java:S1488Ú"^Immediately return this expression instead of assigning it to the temporary variable "bitmap".(úªĞùÿÿÿÿ8Œ©Æƒå.
+Œ
+java:S1319Œ"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(È¨ìïşÿÿÿÿ
+R
+java:S2696´"6Make the enclosing method "static" or remove this set.(­¨ü¤øÿÿÿÿ
+J
+java:S1874Ñ",Remove this use of "show"; it is deprecated.(ùá¿8Œ©Æƒå.
+a
+java:S1192—"JDefine a constant instead of duplicating this literal "printText" 4 times.(Õ‚÷ß
+N
+java:S1874£"0Remove this use of "fromHtml"; it is deprecated.(¢™éÑ8Œ©Æƒå.
+@
+java:S3398ß""Move this method into "MyHandler".(¸¦¸˜8Œ©Æƒå.
+^	java:S125ø"<This block of commented-out lines of code should be removed.(²ë‡üÿÿÿÿ8Œ©Æƒå.
+Q	java:S125b"<This block of commented-out lines of code should be removed.(„îÑ¡
+d
+java:S1128%"IRemove this unused import 'androidx.constraintlayout.widget.Constraints'.(é³…©øÿÿÿÿ
+l	java:S116C"RRename this field "NOPAPER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹“£ºÿÿÿÿÿ
+T
+java:S1854`"9Remove this useless assignment to local variable "scale".(şëëÉşÿÿÿÿ
+l	java:S117Ò"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ª‘¦áúÿÿÿÿ
+M
+java:S5411Ğ"*Use the primitive boolean expression here.(ô¸İ¨øÿÿÿÿ8Œ©Æƒå.
+G
+java:S1068ƒ"0Remove this unused "selectedPlan" private field.(Öˆà¸
+^	java:S125º"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ8Œ©Æƒå.
+q	java:S116F"WRename this field "PRINTCONTENT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Äê¡¡üÿÿÿÿ
+O
+java:S1068î",Remove this unused "mContext" private field.(»úÅ¾øÿÿÿÿ8Œ©Æƒå.
+J
+java:S1128"4Remove this unused import 'android.graphics.Matrix'.(ÑÏ’
+r
+java:S1215"TDon't try to be smarter than the JVM, remove this call to run the garbage collector.(Ì°¬“8Œ©Æƒå.
+O
+java:S1481¨",Remove this unused "content" local variable.(‡õê¢üÿÿÿÿ8Œ©Æƒå.
+Q
+java:S1117è":Rename "dialog" which hides the field declared at line 83.(ÕØ²
+H
+java:S5411–"*Use the primitive boolean expression here.(À°¤´8Œ©Æƒå.
+7
+java:S1170H"!Make this final field static too.(‹Ğè
+K
+java:S1128;"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ
+S
+java:S1874¨"0Remove this use of "fromHtml"; it is deprecated.(‡õê¢üÿÿÿÿ8Œ©Æƒå.
+o	java:S116X"URename this field "LowBattery" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(øææÕıÿÿÿÿ
+R	java:S125¯"<This block of commented-out lines of code should be removed.(¸Èâƒ
+f
+java:S1192œ"JDefine a constant instead of duplicating this literal "bluetooth" 3 times.(’‚è úÿÿÿÿ
+Y	java:S125£"<This block of commented-out lines of code should be removed.(ß‡¾Û8Œ©Æƒå.
+<
+java:S1170C"!Make this final field static too.(¹“£ºÿÿÿÿÿ
+[
+java:S3985 "8Remove this unused private "ReceiptImageGenerate" class.(À’ÉÏûÿÿÿÿ8Œ©Æƒå.
+^	java:S125ƒ"<This block of commented-out lines of code should be removed.(Ôé“µüÿÿÿÿ8Œ©Æƒå.
+F
+java:S1128<"0Remove this unused import 'java.io.InputStream'.(¹»º
+¤
+java:S1186Ş"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(»ŠÇ¾ıÿÿÿÿ8Œ©Æƒå.
+N
+java:S1874¤"0Remove this use of "fromHtml"; it is deprecated.(¢™éÑ8Œ©Æƒå.
+r
+java:S1215¦"TDon't try to be smarter than the JVM, remove this call to run the garbage collector.(Ì°¬“8Œ©Æƒå.
+^	java:S125û"<This block of commented-out lines of code should be removed.(ÆÚ£¶ÿÿÿÿÿ8îŒÖä.
+m	java:S116I"SRename this field "OVERHEAT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ú§¡Âüÿÿÿÿ
+O
+java:S1068‚",Remove this unused "mContext" private field.(»úÅ¾øÿÿÿÿ8Œ©Æƒå.
+Y	java:S125æ"<This block of commented-out lines of code should be removed.(¤‚èœ8Œ©Æƒå.
+W	java:S125Ì"<This block of commented-out lines of code should be removed.(šÆ™úÿÿÿÿ
+^	java:S125Å"<This block of commented-out lines of code should be removed.(à¯‡åúÿÿÿÿ8Œ©Æƒå.
+l	java:S116J"WRename this field "PRINTPICTURE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦¯ì
+N
+java:S1128"3Remove this unused import 'android.os.Environment'.(É¿‹Ãûÿÿÿÿ
+F
+java:S1185¨"(Remove this method to simply inherit it.(ËĞƒ8Œ©Æƒå.
+F
+java:S1185ú"(Remove this method to simply inherit it.(Ôö§ó8îŒÖä.
+K
+java:S1604ä"(Make this anonymous inner class a lambda(×ïùÿÿÿÿ8Œ©Æƒå.
+L
+java:S2696¸"6Make the enclosing method "static" or remove this set.(Çûw
+r
+java:S1215•"TDon't try to be smarter than the JVM, remove this call to run the garbage collector.(Ì°¬“8Œ©Æƒå.
+g
+java:S1301Î"KReplace this "switch" statement by "if" statements to increase readability.(×ö³–úÿÿÿÿ
+Y	java:S125ı"<This block of commented-out lines of code should be removed.(°¶¼Á8îŒÖä.
+R	java:S125"<This block of commented-out lines of code should be removed.(Õ€Ü¯
+@
+java:S1481^"+Remove this unused "status" local variable.(”Ì¬x
+Y	java:S125¢"<This block of commented-out lines of code should be removed.(ß‡¾Û8Œ©Æƒå.
+Y	java:S125õ"<This block of commented-out lines of code should be removed.(¨º‚«8Œ©Æƒå.
+T
+java:S1854_"9Remove this useless assignment to local variable "level".(©™§®ÿÿÿÿÿ
+R	java:S125„"<This block of commented-out lines of code should be removed.(äÜä“
+^	java:S125Á"<This block of commented-out lines of code should be removed.(‰Ë¨Ãøÿÿÿÿ8Œ©Æƒå.
+h	java:S116H"SRename this field "PRINTERR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹Ğè
+B
+java:S1068P",Remove this unused "wordFont" private field.(ü©‰É
+j	java:S116D"URename this field "LOWBATTERY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğÌ¢â
+l	java:S117Ñ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ä¢±öıÿÿÿÿ
+O
+java:S1854^":Remove this useless assignment to local variable "status".(”Ì¬x
+r
+java:S1215"TDon't try to be smarter than the JVM, remove this call to run the garbage collector.(Ì°¬“8Œ©Æƒå.
+k
+java:S1215€"TDon't try to be smarter than the JVM, remove this call to run the garbage collector.(Ì°¬“
+r
+java:S1215"TDon't try to be smarter than the JVM, remove this call to run the garbage collector.(Ì°¬“8Œ©Æƒå.
+Š
+java:S1845L"oRename field "printVersion" to prevent any misunderstanding/clash with field "PRINTVERSION" defined on line 69.(óÛÔŞşÿÿÿÿ
+^	java:S125§"<This block of commented-out lines of code should be removed.(ÏÓŒşûÿÿÿÿ8Œ©Æƒå.
+l	java:S116E"WRename this field "PRINTVERSION" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼‰•õ
+7
+java:S1170D"!Make this final field static too.(ğÌ¢â
+Y	java:S125ä"<This block of commented-out lines of code should be removed.(·ã©ç8Œ©Æƒå.
+S
+java:S1143æ"5Remove this return statement from this finally block.(ûÁİ…8Œ©Æƒå.
+v
+java:S1450„"_Remove the "voucherPrintData" field and declare it as a local variable in the relevant methods.(šˆ¿â
+v
+java:S1450‚"_Remove the "selectedOperator" field and declare it as a local variable in the relevant methods.(”÷Ê
+I
+java:S1659†"2Declare "fileReceiptDuplicate" on a separate line.(Ê»…«
+7
+java:S1170G"!Make this final field static too.(áôØ˜
+T
+java:S1874Ñ"6Remove this use of "ProgressDialog"; it is deprecated.(ùá¿8Œ©Æƒå.
+Y	java:S125½"<This block of commented-out lines of code should be removed.(·ã©ç8Œ©Æƒå.
+M
+java:S5411¼"*Use the primitive boolean expression here.(ô¸İ¨øÿÿÿÿ8Œ©Æƒå.
+=	java:S131""Add a default case to this switch.(øå´¡ÿÿÿÿÿ
+Y	java:S125Ê"<This block of commented-out lines of code should be removed.(ù°í»8Œ©Æƒå.
+n
+java:S3776Ì"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Ó»×¶şÿÿÿÿ
+R	java:S125Ö"<This block of commented-out lines of code should be removed.(…¹±Œ
+W	java:S125Ü"<This block of commented-out lines of code should be removed.(£¥ì‚ÿÿÿÿÿ
+f	java:S116V"QRename this field "Result" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡Ï½Ê
+†
+java:S1845X"kRename field "LowBattery" to prevent any misunderstanding/clash with field "LOWBATTERY" defined on line 68.(øææÕıÿÿÿÿ
+9
+java:S3626æ"Remove this redundant jump.(ûÁİ…8Œ©Æƒå.
+W	java:S125¦"<This block of commented-out lines of code should be removed.(¨«ãÜùÿÿÿÿ
+Q
+java:S1117Ù":Rename "dialog" which hides the field declared at line 83.(ÕØ²
+l	java:S116G"WRename this field "CANCELPROMPT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(áôØ˜
+^	java:S125Ù"<This block of commented-out lines of code should be removed.(à¯‡åúÿÿÿÿ8Œ©Æƒå.
+9
+java:S3626™"Remove this redundant jump.(ûÁİ…8Œ©Æƒå.
+S
+java:S1143™"5Remove this return statement from this finally block.(ûÁİ…8Œ©Æƒå.
+K
+java:S1068„"4Remove this unused "voucherPrintData" private field.(šˆ¿â
+¤
+java:S1186æ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(»ŠÇ¾ıÿÿÿÿ8Œ©Æƒå.
+Y	java:S110@"=This class has 10 parents which is greater than 5 authorized.(çºİ¹8•Œóˆå.

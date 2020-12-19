@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:clipToPadding="false"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/txtRequestAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:gravity="center|start"
+                android:text="@string/text_load_request_amount"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/txtStatus"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtTranscNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="4dp"
+                android:gravity="center|start"
+                android:text="@string/text_load_transac_number"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/ivStatus"
+                app:layout_constraintStart_toStartOf="@+id/txtRequestAmount"
+                app:layout_constraintTop_toBottomOf="@+id/txtRequestAmount" />
+
+
+            <TextView
+                android:id="@+id/txtUserRemark"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="4dp"
+                android:gravity="center|start"
+                android:text="@string/text_load_fund_user_remark"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/ivStatus"
+                app:layout_constraintStart_toStartOf="@+id/txtTranscNumber"
+                app:layout_constraintTop_toBottomOf="@+id/txtTranscNumber" />
+
+
+            <TextView
+                android:id="@+id/txtAdminRemark"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="4dp"
+                android:gravity="center|start"
+                android:text="@string/text_load_fund_admin_remark"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/ivStatus"
+                app:layout_constraintStart_toStartOf="@+id/txtUserRemark"
+                app:layout_constraintTop_toBottomOf="@+id/txtUserRemark" />
+
+
+            <ImageView
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/dashes"
+                android:contentDescription="@string/app_name"
+                app:layout_constraintTop_toBottomOf="@+id/txtAdminRemark" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutBankDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:clipToPadding="false"
+                app:layout_constraintTop_toBottomOf="@+id/line">
+
+                <TextView
+                    android:id="@+id/txtAccountName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="4dp"
+                    android:gravity="center|start"
+                    android:text="@string/text_bank_account_name"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtAccountNumber"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="4dp"
+                    android:gravity="center|start"
+                    android:text="@string/text_bank_account_number"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/txtAccountName"
+                    app:layout_constraintTop_toBottomOf="@+id/txtAccountName" />
+
+
+                <TextView
+                    android:id="@+id/txtBankName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="4dp"
+                    android:gravity="center|start"
+                    android:text="@string/text_bank_name"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/txtAccountName"
+                    app:layout_constraintTop_toBottomOf="@+id/txtAccountNumber" />
+
+
+                <TextView
+                    android:id="@+id/txtBranchName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="4dp"
+                    android:gravity="center|start"
+                    android:text="@string/text_bank_branch"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/txtAccountName"
+                    app:layout_constraintTop_toBottomOf="@+id/txtBankName" />
+
+
+                <TextView
+                    android:id="@+id/txtIFSCCode"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="4dp"
+                    android:gravity="center|start"
+                    android:text="@string/text_bank_ifsc"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/txtAccountName"
+                    app:layout_constraintTop_toBottomOf="@+id/txtBranchName" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/txtStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_green"
+                android:gravity="center|start"
+                android:text="@string/voucher_status_fresh"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_10sp"
+                android:translationX="8dp"
+                android:translationY="-8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivStatus"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="@string/app_name"
+                android:visibility="invisible"
+                android:src="@drawable/ic_check_circle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+                android:id="@+id/ivEdit"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="12dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_edit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivStatus" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

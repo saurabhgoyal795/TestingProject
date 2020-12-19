@@ -1,0 +1,14 @@
+
+]	java:S125n"<This block of commented-out lines of code should be removed.(‚áÚäıÿÿÿÿ8ŸŞ¡®É.
+l	java:S117U"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ïƒË.8î‚ ®É.
+q
+java:S1192j"TDefine a constant instead of duplicating this literal "multipart/form-data" 3 times.(¢Øïï8ê¶³®É.
+^	java:S125Š"<This block of commented-out lines of code should be removed.(ã“’¹úÿÿÿÿ8×©½®É.
+{
+java:S1128"YRemove this unused import 'com.atlaaya.evdrecharge.apiPresenter.ChangePasswordPresenter'.(Äê®üÿÿÿÿ8àÇ®É.
+X	java:S125g"<This block of commented-out lines of code should be removed.(¦ü­¼8Øè¥®É.
+Q
+java:S1068)"4Remove this unused "selectedOperator" private field.(”÷Ê8ŸŞ¡®É.
+|
+java:S1450)"_Remove the "selectedOperator" field and declare it as a local variable in the relevant methods.(”÷Ê8ŸŞ¡®É.
+f	java:S117T"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âØ˜Ì

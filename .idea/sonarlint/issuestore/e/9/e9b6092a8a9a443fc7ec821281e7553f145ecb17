@@ -1,0 +1,21 @@
+
+J
+java:S1068"4Remove this unused "selectedOperator" private field.(”÷Ê
+q
+java:S1450"[Remove the "selectedPlan" field and declare it as a local variable in the relevant methods.(Öˆà¸
+J
+java:S1068"4Remove this unused "voucherPrintData" private field.(šˆ¿â
+F
+java:S1068"0Remove this unused "selectedPlan" private field.(Öˆà¸
+l
+java:S1450"VRemove the "binding" field and declare it as a local variable in the relevant methods.(ŒßíÅ
+V	java:S125C"<This block of commented-out lines of code should be removed.(–“Åıÿÿÿÿ
+I
+java:S1128".Remove this unused import 'android.view.View'.(Ø½­äşÿÿÿÿ
+?
+java:S1128")Remove this unused import 'java.io.File'.(†Ğ¥Å
+u
+java:S1450"_Remove the "voucherPrintData" field and declare it as a local variable in the relevant methods.(šˆ¿â
+u
+java:S1450"_Remove the "selectedOperator" field and declare it as a local variable in the relevant methods.(”÷Ê
+^	java:S110"=This class has 10 parents which is greater than 5 authorized.(à­¹ıÿÿÿÿ8¦Æãå.

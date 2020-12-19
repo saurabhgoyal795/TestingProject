@@ -1,0 +1,10 @@
+
+^
+java:S1192<"HDefine a constant instead of duplicating this literal "service" 3 times.(§Íèù
+R
+java:S1117‹";Rename "binding" which hides the field declared at line 43.(Üêƒ´
+W	java:S110)"=This class has 10 parents which is greater than 5 authorized.(áÙŸÆÿÿÿÿÿ
+i
+java:S1192^"TDefine a constant instead of duplicating this literal "multipart/form-data" 4 times.(˜Œ–
+R
+java:S1117’";Rename "binding" which hides the field declared at line 43.(´¿Íà

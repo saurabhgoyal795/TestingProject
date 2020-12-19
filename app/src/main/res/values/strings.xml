@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE resources [
+    <!ENTITY appName "Highlight EVD">
+    <!ENTITY currencyEthiopiaSymbol "ብር">
+    <!ENTITY currencyEthiopiaSymbol1 "Br">
+    <!ENTITY currencyEthiopiaUnit "Birr">]>
+<resources>
+    <string name="app_name">&appName;</string>
+
+    <string name="title_profile">My Profile</string>
+    <string name="title_change_password">Change Password</string>
+    <string name="title_edit_profile">Edit Profile</string>
+    <string name="title_my_balance">My Balance</string>
+    <string name="title_company_bank_accounts">Company Accounts</string>
+    <string name="title_my_bank_accounts">My Accounts</string>
+    <string name="title_add_bank_account">Add Bank Accounts</string>
+    <string name="title_loan_payment">Loan Payment Request</string>
+    <string name="title_edit_bank_account">Edit Bank Accounts</string>
+    <string name="title_load_fund_requests">My Fund Load Requests</string>
+    <string name="title_make_fund_requests">Make Fund Load Requests</string>
+    <string name="title_update_fund_requests">Update Fund Load Requests</string>
+    <string name="title_single_pin_order">Single Order</string>
+    <string name="title_bulk_pin_order">Bulk Orders</string>
+    <string name="btn_pay_now">Pay Now</string>
+    <string name="enter_bill_id">Enter Bill Number</string>
+    <string name="alert_enter_bill_id">Please enter bill number.</string>
+    <string name="currency_ethiopia_symbol">&currencyEthiopiaSymbol;</string>
+    <string name="currency_ethiopia_symbol1">&currencyEthiopiaSymbol1;</string>
+    <string name="currency_ethiopia_unit">&currencyEthiopiaUnit;</string>
+    <string name="balance">%1$s &currencyEthiopiaUnit;</string>
+    <string name="balance_"><b>%1$s</b>\n&currencyEthiopiaUnit;</string>
+    <string name="hint_bill_no">Bill number</string>
+    <string name="txt_welcome_user">Welcome <b>%1$s!</b></string>
+    <string name="txt_avl_balance">Available Balance</string>
+    <string name="txt_mobile_recharge">Mobile Recharge</string>
+    <string name="txt_retail_users">My Retail Users</string>
+    <string name="txt_voucher_recharge">Voucher</string>
+    <string name="txt_airtime_recharge">Top up</string>
+    <string name="txt_select_operator">Select operator</string>
+    <string name="txt_select_amount">Select recharge amount</string>
+    <string name="txt_voucher_amount">Select voucher amount</string>
+    <string name="txt_please_click_print">Please click on Print to sell this voucher</string>
+    <string name="txt_print_type">Select print type</string>
+    <string name="txt_print_voucher">Print Voucher</string>
+    <string name="txt_or">OR</string>
+    <string name="txt_sms">Send SMS</string>
+    <string name="txt_send_email">Send Email</string>
+    <string name="txt_sending_request">Sending Request</string>
+    <string name="txt_please_wait">Please wait…</string>
+    <string name="txt_please_wait_printing">Please wait, printing…</string>
+    <string name="txt_successful">Successful</string>
+    <string name="txt_successful_recharge">Your recharge is Successful.</string>
+    <string name="txt_recharge_information">Recharge Information</string>
+    <string name="txt_voucher_information">Voucher Information</string>
+    <string name="txt_loan_payment_information">Loan Payment Information</string>
+    <string name="txt_serial_number">Serial number    :  %1$s</string>
+    <string name="txt_recharge_amount">Recharge Amount  :  %1$s</string>
+    <string name="txt_top_up_amount">Top-up Amount</string>
+    <string name="txt_pin_no">Pin No.          :  %1$s</string>
+    <string name="txt_current_password">Current Password</string>
+    <string name="txt_new_password">New Password</string>
+    <string name="txt_confirm_new_password">Confirm new Password</string>
+    <string name="txt_lockfund">Lockfund   : %1$s</string>
+    <string name="txt_terminal_number">Terminal Number   : %1$s</string>
+    <string name="txt_name">Name</string>
+    <string name="txt_first_name">First Name</string>
+    <string name="txt_last_name">Last Name</string>
+    <string name="txt_firm_name">Firm Name</string>
+    <string name="txt_mobile">Mobile Number</string>
+    <string name="txt_email">Email</string>
+    <string name="txt_address">Address</string>
+    <string name="txt_lockfund_">Lockfund</string>
+    <string name="txt_terminal_number_">Terminal Number</string>
+    <string name="text_warning">Warning!</string>
+    <string name="text_pin_group"><![CDATA[Pin group number  :  <b>%1$s</b>]]></string>
+    <string name="text_pin_serial"><![CDATA[Pin serial number :  <b>%1$s</b>]]></string>
+    <string name="text_pin_operator"><![CDATA[Operator          :  <b>%1$s</b>]]></string>
+    <string name="text_pin_sold_date"><![CDATA[Sold date       :  <b>%1$s</b>]]></string>
+    <string name="text_pin_expiry_date"><![CDATA[Expiry date       :  <b>%1$s</b>]]></string>
+    <string name="txt_bank_account_name">Account Name</string>
+    <string name="txt_bank_account_number">Account Number</string>
+    <string name="txt_bank_name">Bank Name</string>
+    <string name="txt_bank_branch_name">Branch Name</string>
+    <string name="txt_bank_branch_swift_code">SWIFT Code</string>
+    <string name="txt_transaction_id_">Transaction ID</string>
+    <string name="txt_transaction_number">Transaction Number</string>
+    <string name="txt_remark">Remark</string>
+
+    <string name="text_bank_account_name"><![CDATA[Account name : <b>%1$s</b>]]></string>
+    <string name="text_bank_account_number"><![CDATA[Account number : <b>%1$s</b>]]></string>
+    <string name="text_bank_name"><![CDATA[Bank Name : <b>%1$s</b>]]></string>
+    <string name="text_bank_branch"><![CDATA[Bank Branch : <b>%1$s</b>]]></string>
+    <string name="text_bank_ifsc"><![CDATA[Bank IFSC : <b>%1$s</b>]]></string>
+
+    <string name="text_load_request_amount"><![CDATA[Request Amount : <b>%1$s</b>]]> &currencyEthiopiaUnit;</string>
+    <string name="text_load_transac_number"><![CDATA[Transaction ID : <b>%1$s</b>]]></string>
+    <string name="text_load_fund_user_remark"><![CDATA[User Remark : <b>%1$s</b>]]></string>
+    <string name="text_load_fund_admin_remark"><![CDATA[Admin Remark : <b>%1$s</b>]]></string>
+    <string name="text_transac_id"><![CDATA[Transaction ID       :  <b>%1$s</b>]]></string>
+    <string name="text_transac_order_id"><![CDATA[Transaction Order ID       :  <b>%1$s</b>]]></string>
+
+
+    <string name="txt_duplicate">***Duplicate***</string>
+    <string name="txt_receipt_service_name">Ethio Telecom Prepaid E-Voucher</string>
+    <string name="txt_receipt_retailer_name">Retailer Name : %1$s</string>
+    <string name="txt_receipt_amount">Amount    : %1$s &currencyEthiopiaUnit;</string>
+    <string name="txt_receipt_mobile">Mobile    : %1$s</string>
+    <string name="txt_receipt_serial_number">Serial No : %1$s</string>
+    <string name="txt_receipt_pin_number">Pin No    : %1$s</string>
+    <string name="txt_recharge_instruction">Recharge Instruction
+        \nDial *805* Pin Number #
+        \nBalance Dial :  .804#
+        \nCustomer Care : 994</string>
+    <string name="txt_receipt_date_time">Date Time: %1$s</string>
+    <string name="txt_receipt_des_voucher">This prepaid recharge Voucher is power By Highlight Trading Printed 1 time(s)\nNo Returns will be accepted.</string>
+    <string name="txt_receipt_des_top_up">This prepaid recharge Top-up is power By Highlight Trading Printed 1 time(s)\nNo Returns will be accepted.</string>
+    <string name="txt_receipt_highlight_trading">Highlight Trading</string>
+    <string name="txt_receipt_address">Address : Around Piassa Tewodros Square
+        \nIn front of Shalom cinema,
+        \nAddis Ababa. Ethiopia
+        \nTel No : 0111-264826 / 0118-275850</string>
+
+    <string name="txt_status_success">Success</string>
+    <string name="txt_status_failed">Failed</string>
+    <string name="txt_status_pending">Pending</string>
+
+    <string name="txt_transac_main_type_none">None</string>
+    <string name="txt_transac_main_type_AdminLoadTransfer">AdminLoadTransfer</string>
+    <string name="txt_transac_main_type_AdminLoadDeduct">AdminLoadDeduct</string>
+    <string name="txt_transac_main_type_TopupSale">TopupSale</string>
+    <string name="txt_transac_main_type_VoucherSale">VoucherSale</string>
+    <string name="txt_transac_main_type_LoadTransfer">LoadTransfer</string>
+
+    <string name="txt_credit_plus">+ Credit</string>
+    <string name="txt_debit_minus">- Debit</string>
+
+    <string name="txt_opening_balance">Opening Balance : %1$s</string>
+    <string name="txt_closing_balance">Closing Balance : %1$s</string>
+    <string name="txt_transaction_id">Transaction ID : %1$s</string>
+
+    <string name="txt_voucher_amount_">Voucher Amount</string>
+    <string name="txt_amount">Amount</string>
+    <string name="txt_ttl">Total</string>
+    <string name="txt_ttl_amount">Total\[&currencyEthiopiaUnit;\]</string>
+    <string name="txt_grand_ttl">Grand Total : %1$s &currencyEthiopiaUnit;</string>
+    <string name="txt_ttl_qty">Total Qty : %1$d</string>
+
+    <string name="txt_client_name">Client Name</string>
+    <string name="txt_bank_account_number_">Bank Account Number</string>
+    <string name="txt_amount_to_pay">Amount To Pay</string>
+    <string name="txt_reference_number">Reference Number</string>
+    <string name="txt_single_print">Single Print</string>
+    <string name="txt_bulk_print">Bulk Print</string>
+
+    <string name="voucher_status_fresh">Fresh</string>
+    <string name="voucher_status_hold">Hold</string>
+    <string name="voucher_status_assigned">Assigned</string>
+    <string name="voucher_status_sold">Sold</string>
+
+
+    <string name="dummy_name">Android</string>
+    <string name="dummy_user_name">Test1</string>
+    <string name="dummy_firm_name">Highlight EVD</string>
+    <string name="dummy_amount">1000 &currencyEthiopiaUnit;</string>
+    <string name="dummy_mobile_number">0987654321</string>
+    <string name="dummy_email">android@gmail.com</string>
+    <string name="dummy_address">12-A, Jaipur, Rajasthan, India 302020</string>
+
+    <string name="hint_print_text">Print text</string>
+    <string name="hint_user_id">User ID / Mobile number</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_mobile_number">Enter Mobile No.</string>
+    <string name="hint_enter_amount">Enter Amount</string>
+    <string name="hint_enter_email">Enter Email ID</string>
+    <string name="hint_enter_email_">Enter your email id</string>
+    <string name="hint_enter_name">Enter your name</string>
+    <string name="hint_enter_first_name">Enter your first name</string>
+    <string name="hint_enter_last_name">Enter your last name</string>
+    <string name="hint_enter_firm_name">Enter your firm name</string>
+    <string name="hint_enter_address">Enter your address</string>
+    <string name="hint_mobile_number_">Enter your mobile number</string>
+    <string name="hint_quantity">Quantity</string>
+    <string name="hint_enter_lock_fund">Enter your lock fund</string>
+    <string name="hint_enter_terminal_id">Enter Terminal ID</string>
+    <string name="hint_dot" translatable="false">• • • • • • • • </string>
+    <string name="hint_enter_bank_account_name">Enter your bank account name</string>
+    <string name="hint_enter_bank_account_number">Enter your bank account number</string>
+    <string name="hint_select_bank">Select bank</string>
+    <string name="hint_enter_bank_branch_name">Enter bank branch name</string>
+    <string name="hint_enter_bank_swift_code">Enter bank swift code</string>
+    <string name="hint_enter_transaction_id">Enter transaction id</string>
+    <string name="hint_enter_transaction_number">Enter transaction number</string>
+    <string name="hint_enter_remark">Enter remark</string>
+    <string name="hint_enter_client_name">Enter client name</string>
+    <string name="hint_enter_bank_account_number_">Enter bank account number</string>
+    <string name="hint_enter_amount_">Enter amount</string>
+    <string name="hint_enter_reference_number">Enter reference number</string>
+
+    <string name="btn_login">Login</string>
+    <string name="btn_proceed">Proceed</string>
+    <string name="btn_select">Select</string>
+    <string name="btn_print">Print</string>
+    <string name="btn_send">Send</string>
+    <string name="btn_exit">Exit</string>
+    <string name="btn_share">Share</string>
+    <string name="btn_update_password">Update Password</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_submit">Submit</string>
+    <string name="btn_update">Update</string>
+    <string name="btn_close">Close</string>
+    <string name="btn_allow">Allow</string>
+    <string name="btn_goto_setting">Setting</string>
+    <string name="btn_ok">OK</string>
+    <string name="btn_logout">Logout</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_add_new_account">Add New Bank Account</string>
+    <string name="btn_make_load_request">Make New Fund Load Request</string>
+    <string name="btn_update_load_request">Update Fund Load Request</string>
+
+    <!-- Alert -->
+    <string name="alert_enter_user_id">Please enter your User ID / Mobile number.</string>
+    <string name="alert_enter_password">Please enter your password.</string>
+    <string name="alert_enter_mobile_number">Please enter mobile number.</string>
+    <string name="alert_enter_valid_mobile_number">Please enter valid mobile number.</string>
+    <string name="alert_enter_email">Please enter Email ID.</string>
+    <string name="alert_enter_email_valid">Please enter valid Email ID.</string>
+    <string name="alert_enter_first_name">Please enter your first name.</string>
+    <string name="alert_enter_last_name">Please enter your last name.</string>
+    <string name="alert_enter_firm_name">Please enter your firm name.</string>
+    <string name="alert_enter_address">Please enter your address.</string>
+    <string name="alert_enter_current_password">Please enter current password.</string>
+    <string name="alert_enter_new_password">Please enter new password.</string>
+    <string name="alert_enter_top_up_amount">Please enter Top-up amount.</string>
+    <string name="alert_enter_valid_top_up_amount">Please enter valid Top-up amount.</string>
+    <string name="alert_new_confirm_same_password">New and Confirm password must be same.</string>
+    <string name="alert_password_must_have">Password must have at least one alphabet or digit or special character.</string>
+    <string name="alert_password_min_length">Minimum password length must be 6.</string>
+    <string name="alert_internet_not_connect">Internet is not connected.</string>
+    <string name="alert_enter_bank_account_name">Please enter your bank account name.</string>
+    <string name="alert_enter_bank_account_number">Please enter your bank account number.</string>
+    <string name="alert_select_bank_name">Please select your bank.</string>
+    <string name="alert_enter_bank_branch_name">Please enter bank branch name.</string>
+    <string name="alert_enter_bank_branch_swift">Please enter branch swift code.</string>
+    <string name="alert_enter_load_request_amount">Please enter load request amount greater than 0.</string>
+    <string name="alert_enter_transaction_id">Please enter your transaction id.</string>
+    <string name="alert_enter_transaction_number">Please enter your transaction number.</string>
+    <string name="alert_enter_remark">Please enter remark.</string>
+
+    <string name="msg_something_went_wrong">Oops! An error occurred. Please try again.</string>
+    <string name="msg_internet_seems_slow">Your internet connection seems bad. Thank you for waiting.</string>
+    <string name="msg_unable_connect_server">We can not connect to the server. Thank you try again later.</string>
+    <string name="msg_check_internet_connection">Network error. Thank you to check your internet connection.</string>
+    <string name="msg_default_error">Oops! An error occurred. Please try again.</string>
+    <string name="msg_no_network">Please connect to working internet.</string>
+    <string name="msg_access_storage_permission">Please allow storage permission to share receipt.</string>
+    <string name="msg_access_storage_permission_print">Please allow storage permission to print voucher.</string>
+    <string name="msg_permission_allowed">Permission allowed. Now ready to print.</string>
+    <string name="no_internet">Network impossible</string>
+    <string name="msg_want_logout">Are you sure want to Logout ?</string>
+
+    <string name="title_internet_error">Internet Error !</string>
+
+    <string name="print_test">Print Test</string>
+    <string name="printer_version">Printer Version：</string>
+    <string name="maker_search_distance">Walk Paper For Search Black Block:</string>
+    <string name="maker_walk_distance">Walk Paper After Haved Search:</string>
+    <string name="maker_walk_distance_range">(0-255)</string>
+    <string name="maker">Black Block Detection</string>
+    <string name="maker_error">maker input value not fit</string>
+    <string name="walk_paper_lines">Walk Paper Lines:</string>
+    <string name="walk_paper_test">Walk Paper</string>
+    <string name="left_margin">Left Margin:</string>
+    <string name="right_margin">Right Margin</string>
+    <string name="row_space">Row Space:</string>
+    <string name="font_size">Font Size：</string>
+    <string name="gray_level">Gray Level:</string>
+    <string name="print_content">Print Content：</string>
+    <string name="chinese_example">ZH Example</string>
+    <string name="english_example">EN Example</string>
+    <string name="fr_example">FR Example</string>
+    <string name="clear_text">Clear</string>
+    <string name="print_text">Print Text</string>
+    <string name="printing_wait">Printing, please wait……</string>
+    <string name="noPaper">No paper</string>
+    <string name="noPaperNotice">No paper, please put paper in and retry</string>
+    <string name="LowBattery">Low battery, please connect the charger!</string>
+    <string name="overTemp">over temp !</string>
+    <string name="ptintInit">Printer initialing… Please try again after a few seconds.</string>
+    <string name="outOfLeft">Beyond the left margin！</string>
+    <string name="outOfLine">Beyond the row space！</string>
+    <string name="outOfFont">Beyond the font size！</string>
+    <string name="outOfGray">Beyond the gray level！</string>
+    <string name="outOfCharSpace">Beyond The Char Space！</string>
+    <string name="empty">The content is empty！</string>
+    <string name="walk_paper_intput_value">walk paper intput value not fit</string>
+    <string name="print_picture">Print Picture</string>
+    <string name="bl_dy">Print</string>
+    <string name="dialog_comfirm">ConFirm</string>
+    <string name="operation_result">Result</string>
+    <string name="maker_not_find">Cannot Find Black Block</string>
+    <string name="operation_fail">Operation failed</string>
+    <string name="idcard_czz">Proceeding...</string>
+    <string name="idcard_ljdkq">Connecting to ID reader...</string>
+    <string name="idcard_ljdkqcg">Connect reader success</string>
+    <string name="idcard_wfljdkq">Connect reader failed</string>
+    <string name="idcard_dqsbhcs">Read failed or time out</string>
+    <string name="idcard_xm">Name:</string>
+    <string name="idcard_xb">Gender:</string>
+    <string name="idcard_mz">Nation:</string>
+    <string name="idcard_csrq">Birthday:</string>
+    <string name="idcard_dz">Address:</string>
+    <string name="idcard_sfhm">ID：</string>
+    <string name="idcard_qzjg">Issuing authority：</string>
+    <string name="idcard_yxqx">"Exp date: "</string>
+    <string name="idcard_hqsfzxx">Get ID card information</string>
+    <string name="idcard_xzgn">Select function</string>
+    <string name="idcard_xzsfsbfs">Please choose a mode for ID identification</string>
+    <string name="idcard_sxtsb">Identification by camera OCR</string>
+    <string name="idcard_dkqsb">"Identification by card reader"</string>
+    <string name="watting">Please wait while checking driver version</string>
+    <string name="lengthNotEnougth">The length is not enough！</string>
+    <string name="input_print_data">Please input print data</string>
+    <string name="D_barcode_loading">Qrcode loading</string>
+    <string name="generate_barcode_wait">Generating barcode, please wait……</string>
+    <string name="sure">sure</string>
+    <string name="not_find_picture">not find picture</string>
+    <string name="bar_code">Barcode:</string>
+    <string name="print_bar_code">Print Barcode</string>
+    <string name="D_bar_code">Qrcode:</string>
+    <string name="print_2D_barcode">Print Qrcode</string>
+
+    <string name="index_text">Print Text</string>
+    <string name="index_pic">Picture/Qrcode</string>
+    <string name="index_comm">Print Command</string>
+    <string name="input_content">input content</string>
+    <string name="title_activity_navigation">NavigationActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Ashraf khan</string>
+    <string name="nav_header_subtitle">info@ccfinfotech.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_edit_profile">Edit Profile</string>
+    <string name="action_change_password">Change Password</string>
+
+    <string name="menu_my_profile">My Profile</string>
+    <string name="menu_balance">Balance</string>
+    <string name="menu_transaction_history">Transaction History</string>
+    <string name="menu_my_statements">My Statements</string>
+    <string name="menu_my_banks">My Banks</string>
+    <string name="menu_my_vouchers">My Vouchers History</string>
+    <string name="menu_my_users">My Users</string>
+    <string name="menu_bluetooth_test">Bluetooth Test</string>
+    <string name="menu_logout">Logout</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+
+    <!--  DeviceListActivity -->
+    <string name="scanning">Scanning Device&#8230;</string>
+    <string name="select_device">Select the connected device</string>
+    <string name="none_paired">No matching devices</string>
+    <string name="none_found">No device found</string>
+    <string name="title_paired_devices">Match equipment</string>
+    <string name="title_other_devices">Other useful equipment</string>
+    <string name="button_scan">Scanning device</string>
+
+    <string name="app_title">BlueTooth Demo</string>
+
+    <!--bluetooth_main_activity-->
+    <string name="connect">Search for and connect a Bluetooth printer</string>
+    <string name="txt_content">&quot;&quot;</string>
+    <string name="choose_paper_width">Paper width:</string>
+    <string name="width1">58mm</string>
+    <string name="width2">80mm</string>
+    <string name="printhex">HEX</string>
+    <string name="btnSend">Send Data</string>
+    <string name="btn_test">Print Test</string>
+    <string name="btn_prtbmp">Print Picture</string>
+    <string name="printpicture">Graphical Print</string>
+    <string name="chosecommand">Please select instruction</string>
+    <string name="btnClose">Close</string>
+    <string name="contentdescription"></string>
+    <string name="btn_prttable">Print Form</string>
+    <string name="Smallticketprinting">Small Ticket Printing</string>
+    <string name="btn_prtcode">Print 1D/2D Codebar</string>
+    <string name="btn_scqr">Generate QR Code Print</string>
+    <string name="btn_dyca">Turn on the camera</string>
+    <string name="input">Please enter a print!</string>
+    <string name="choose_printcoding"></string>
+    <string name="big5">BIG5</string>
+    <string name="thai">Thai</string>
+    <string name="kor">Korean</string>
+    <string name="gbk12">Simplified</string>
+
+    <!--  Message -->
+    <string name="msg_state">Input Error!</string>
+    <string name="empty1">Input is empty, in the text box to enter the content to be converted &#8230;</string>
+    <string name="not_connected">Please connect a Bluetooth printer</string>
+    <string name="bt_not_enabled_leaving">Bluetooth does not start, quit the program</string>
+    <string name="title_connecting">connecting…</string>
+    <string name="title_connected_to">connected: </string>
+    <string name="title_not_connected">Is not connected</string>
+    <string name="Connecting">It is connected to a Bluetooth printer</string>
+    <string name="msg_statev1">Without a picture</string>
+    <string name="strLang">en</string>
+    <string name="camer">No pictures</string>
+    <string name="msg_error">Input errors, please check!</string>
+    <string name="print_usb">Print USB</string>
+    <string name="bluetooth_print">Print</string>
+
+</resources>

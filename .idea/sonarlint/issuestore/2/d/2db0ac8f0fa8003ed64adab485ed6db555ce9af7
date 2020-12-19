@@ -1,0 +1,31 @@
+
+4
+java:S2119'"Save and re-use this "Random".(–áÍÈ
+j
+java:S1215l"TDon't try to be smarter than the JVM, remove this call to run the garbage collector.(Ì°¬“
+j
+java:S1215F"TDon't try to be smarter than the JVM, remove this call to run the garbage collector.(Ì°¬“
+j
+java:S1215i"TDon't try to be smarter than the JVM, remove this call to run the garbage collector.(Ì°¬“
+j
+java:S1215u"TDon't try to be smarter than the JVM, remove this call to run the garbage collector.(Ì°¬“
+j
+java:S1215R"TDon't try to be smarter than the JVM, remove this call to run the garbage collector.(Ì°¬“
+N
+java:S1172"3Remove this unused method parameter "country_code".(«äÔ„ÿÿÿÿÿ
+j
+java:S1215x"TDon't try to be smarter than the JVM, remove this call to run the garbage collector.(Ì°¬“
+j
+java:S1215e"TDon't try to be smarter than the JVM, remove this call to run the garbage collector.(Ì°¬“
+\	java:S899@"BDo something with the "boolean" value returned by "createNewFile".(«ñğúÿÿÿÿ
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«äÔ„ÿÿÿÿÿ
+j
+java:S1215B"TDon't try to be smarter than the JVM, remove this call to run the garbage collector.(Ì°¬“
+f	java:S1170"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´Ö«¢
+U
+java:S1118":Add a private constructor to hide the implicit public one.(¹‹ó¿ıÿÿÿÿ
+Q	java:S125]"<This block of commented-out lines of code should be removed.(öÒÀí
+B
+java:S1068"'Remove this unused "TAG" private field.(í”Ôğøÿÿÿÿ
+V	java:S1253"<This block of commented-out lines of code should be removed.(ö±°×ÿÿÿÿÿ
+V	java:S125a"<This block of commented-out lines of code should be removed.(åŠ‚½ûÿÿÿÿ

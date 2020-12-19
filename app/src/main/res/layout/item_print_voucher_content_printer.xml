@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="400px"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:clipToPadding="false"
+        android:minWidth="244dp"
+        android:paddingStart="6px"
+        android:paddingTop="8px"
+        android:paddingEnd="6px"
+        android:paddingBottom="6px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivOperatorLogo"
+            android:layout_width="76px"
+            android:layout_height="76px"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ethio_telecom"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivCompanyLogo"
+            android:layout_width="76px"
+            android:layout_height="76px"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/logo_main"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivNewLogo"
+            android:layout_width="match_parent"
+            android:layout_height="76px"
+            android:contentDescription="@string/app_name"
+            android:padding="4px"
+            android:src="@drawable/merge1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtDuplicate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/txt_duplicate"
+            android:textColor="@color/black"
+            android:textSize="17px"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivNewLogo" />
+
+        <ImageView
+            android:id="@+id/ivDuplicate"
+            android:layout_width="match_parent"
+            android:layout_height="160px"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/duplicate"
+            android:visibility="invisible"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--        app:autoSizeTextType="uniform"-->
+        <TextView
+            android:id="@+id/txtPrintData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center|top"
+            android:text="@string/txt_receipt_service_name"
+            android:textColor="@color/black"
+            android:textSize="26px"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtDuplicate" />
+
+
+        <ImageView
+            android:id="@+id/ivSeparator"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/dashes"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dist="http://schemas.android.com/apk/distribution"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.atlaaya.evdrecharge">
+
+    <dist:module dist:instant="true" />
+
+    <uses-feature android:name="android.hardware.usb.accessory" />
+    <uses-feature
+        android:name="android.hardware.usb.host"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.TELPO_ICC " />
+
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <!--    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />-->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!--    android:networkSecurityConfig="@xml/network_security_config"-->
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:allowBackup"
+        tools:targetApi="n">
+
+        <activity
+            android:name=".activities.SplashActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.LoginActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activities.PrintTextActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+                <action android:name="android.hardware.usb.action.USB_DEVICE_DETACHED" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.ElectricityType"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+                <action android:name="android.hardware.usb.action.USB_DEVICE_DETACHED" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.HomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.RechargeOperatorActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.VoucherListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.VoucherListSingleActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.VoucherSelectedSinglePrintActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.PrintTypeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.VoucherConfirmationActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activities.SendingRequestActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.VoucherSuccessPrintActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.ProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.ChangePasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.EditProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.TopUpOptionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.TopUpSuccessActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.WalletActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.MyUsersActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.MyVouchersActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.TransactionHistoryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.MyStatementsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.BankAccountsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.AddBankAccountActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.LoanPaymentRequestActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.LoanPaymentSuccessPrintActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.AddLoadFundRequestActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".usbprinter.UsbPrinterActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:configChanges="orientation"
+            android:theme="@style/Base.Theme.AppCompat" />
+
+        <activity
+            android:name=".activities.DeviceListActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/select_device"
+            android:theme="@android:style/Theme.Dialog" />
+
+        <activity
+            android:name=".activities.BluetoothMainActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" />
+
+        <meta-data
+            android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+            android:resource="@xml/device_filter" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider_paths" />
+        </provider>
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+    </application>
+
+</manifest>

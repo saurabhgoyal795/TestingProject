@@ -1,0 +1,128 @@
+
+H
+java:S1135Ø"2Complete the task associated to this TODO comment.(êìñ
+M
+java:S1444"7Make this "public static FoundSunmiPrinter" field final(Î®‡ã
+O
+java:S1444"4Make this "public static NoSunmiPrinter" field final(Çğ“”øÿÿÿÿ
+r
+java:S3008"\Rename this field "FoundSunmiPrinter" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Î®‡ã
+q
+java:S3008"[Rename this field "LostSunmiPrinter" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.( Ü‘
+Q
+java:S1141ë"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+H
+java:S1135“"2Complete the task associated to this TODO comment.(êìñ
+R	java:S125Ñ"<This block of commented-out lines of code should be removed.(¢Ã
+Q
+java:S1141É"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+H
+java:S1135ï"2Complete the task associated to this TODO comment.(êìñ
+b
+java:S1192‰"FDefine a constant instead of duplicating this literal "SUNMI" 3 times.(²­Ñ ùÿÿÿÿ
+n
+java:S1104""XMake sunmiPrinter a static final constant or non-public and provide accessors if needed.(áûõ¨
+T
+java:S1128">Remove this unused import 'java.nio.charset.StandardCharsets'.(ï˜ŞÛ
+H
+java:S1135¸"2Complete the task associated to this TODO comment.(êìñ
+H
+java:S1135Ş"2Complete the task associated to this TODO comment.(êìñ
+H
+java:S1135„"2Complete the task associated to this TODO comment.(êìñ
+I
+java:S1135¤"2Complete the task associated to this TODO comment.(Õ£àÅ
+E
+java:S1172Æ".Remove this unused method parameter "context".(­ƒÀ¼
+H
+java:S1135º"2Complete the task associated to this TODO comment.(êìñ
+T
+java:S3398`">Move this method into the anonymous class declared at line 48.(Å½‹ª
+H
+java:S1135—"2Complete the task associated to this TODO comment.(êìñ
+G
+java:S1135y"2Complete the task associated to this TODO comment.(êìñ
+H
+java:S1135š"2Complete the task associated to this TODO comment.(êìñ
+L
+java:S1444"6Make this "public static LostSunmiPrinter" field final( Ü‘
+H
+java:S1135È"2Complete the task associated to this TODO comment.(êìñ
+Q
+java:S1141Õ"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+
+java:S1192İ"cDefine a constant instead of duplicating this literal "--------------------------------\n" 3 times.(´Éşşÿÿÿÿ
+r
+java:S3008"\Rename this field "CheckSunmiPrinter" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äè‰Ç
+H
+java:S1135È"2Complete the task associated to this TODO comment.(êìñ
+E
+java:S1128"0Remove this unused import 'android.util.Base64'.(ìÔ×[
+T
+java:S1197è"8Move the array designator from the variable to the type.(±òİùÿÿÿÿ
+C
+java:S1172p"(Remove this unused method parameter "e".(ä¬¥ÿÿÿÿÿ
+t
+java:S3008"YRename this field "NoSunmiPrinter" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Çğ“”øÿÿÿÿ
+H
+java:S1135ÿ"2Complete the task associated to this TODO comment.(êìñ
+s
+java:S1104"]Make CheckSunmiPrinter a static final constant or non-public and provide accessors if needed.(äè‰Ç
+H
+java:S1135¶"2Complete the task associated to this TODO comment.(êìñ
+I
+java:S1135º"2Complete the task associated to this TODO comment.(Õ£àÅ
+s
+java:S1104"]Make FoundSunmiPrinter a static final constant or non-public and provide accessors if needed.(Î®‡ã
+H
+java:S1135ò"2Complete the task associated to this TODO comment.(êìñ
+O
+java:S1197ç"8Move the array designator from the variable to the type.(ˆôî‡
+M
+java:S1135q"2Complete the task associated to this TODO comment.(¥ƒ®ğúÿÿÿÿ
+H
+java:S1135Ó"2Complete the task associated to this TODO comment.(êìñ
+H
+java:S1135§"2Complete the task associated to this TODO comment.(êìñ
+H
+java:S1135è"2Complete the task associated to this TODO comment.(êìñ
+H
+java:S1135ß"2Complete the task associated to this TODO comment.(êìñ
+H
+java:S1135ø"2Complete the task associated to this TODO comment.(êìñ
+H
+java:S1135œ"2Complete the task associated to this TODO comment.(êìñ
+N
+java:S1197é"8Move the array designator from the variable to the type.(şÛ
+w
+java:S3923˜"[Remove this conditional structure or edit its code blocks so that they're not all the same.(Èí–™úÿÿÿÿ
+
+java:S1192ß"sDefine a constant instead of duplicating this literal "------------------------------------------------\n" 3 times.(Ûìˆøÿÿÿÿ
+I
+java:S1135Œ"2Complete the task associated to this TODO comment.(Õ£àÅ
+M
+java:S1444"7Make this "public static CheckSunmiPrinter" field final(äè‰Ç
+Q
+java:S1141¿"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+H
+java:S1135È"2Complete the task associated to this TODO comment.(êìñ
+H
+java:S1135è"2Complete the task associated to this TODO comment.(êìñ
+H
+java:S1135ˆ"2Complete the task associated to this TODO comment.(êìñ
+H
+java:S1135²"2Complete the task associated to this TODO comment.(êìñ
+u
+java:S1104"ZMake NoSunmiPrinter a static final constant or non-public and provide accessors if needed.(Çğ“”øÿÿÿÿ
+H
+java:S1135˜"2Complete the task associated to this TODO comment.(êìñ
+H
+java:S1135ˆ"2Complete the task associated to this TODO comment.(êìñ
+H
+java:S1135¨"2Complete the task associated to this TODO comment.(êìñ
+H
+java:S1135¨"2Complete the task associated to this TODO comment.(êìñ
+Q
+java:S1141â"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+r
+java:S1104"\Make LostSunmiPrinter a static final constant or non-public and provide accessors if needed.( Ü‘

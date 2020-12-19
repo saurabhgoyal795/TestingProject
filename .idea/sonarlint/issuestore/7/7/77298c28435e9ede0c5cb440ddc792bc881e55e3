@@ -1,0 +1,10 @@
+
+V	java:S125J"<This block of commented-out lines of code should be removed.(Šºëæøÿÿÿÿ
+D
+java:S1068".Remove this unused "retryCount" private field.(¡–ô
+‰
+java:S1319"sThe type of the "requestBody" object should be an interface such as "Map" rather than the implementation "HashMap".(¥Êˆ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Çİôš
+Q
+java:S2696%"6Make the enclosing method "static" or remove this set.(Œ°Š“ûÿÿÿÿ
+Q	java:S125<"<This block of commented-out lines of code should be removed.(Â„´„

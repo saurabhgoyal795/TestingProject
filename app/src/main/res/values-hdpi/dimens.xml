@@ -1,0 +1,7 @@
+<resources>
+    <dimen name="text_size_voucher_print">17sp</dimen>
+    <dimen name="text_size_voucher_duplicate_keyword">12sp</dimen>
+    <dimen name="voucher_print_logo_width">64dp</dimen>
+    <dimen name="voucher_print_logo_height">64dp</dimen>
+
+</resources>

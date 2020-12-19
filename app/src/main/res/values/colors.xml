@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#41CAC6</color>
+    <color name="colorPrimaryDark">#41CAC6</color>
+    <color name="colorAccent">#3B4777</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="colorRed">#FF0000</color>
+    <color name="colorGreen">#3EA913</color>
+    <color name="black">#3A3737</color>
+    <color name="light_grey">#e0e0e0</color>
+    <color name="very_light_grey">#f0f0f0</color>
+    <color name="very_light_grey_2">#f6f6f6</color>
+
+    <color name="orange">#FFFF831C</color>
+    <color name="Red">#C90000</color>
+    <color name="Gray">#FF969696</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="lily_white">#EBEBEB</color>
+    <color name="color_6b6b6b">#6B6B6B</color>
+    <color name="gray_blue">#bdeadc</color>
+    <color name="f5f5f5">#f5f5f5</color>
+    <color name="green_success">#3EA913</color>
+    <color name="red_fail">#E74C3C</color>
+    <color name="refresh_progress_1">@color/colorPrimary</color>
+    <color name="refresh_progress_2">@color/colorPrimaryDark</color>
+    <color name="refresh_progress_3">@color/colorAccent</color>
+
+    <drawable name="green">#00ff00</drawable>
+    <drawable name="white">#ffffff</drawable>
+    <drawable name="color_6b6b6b">#6B6B6B</drawable>
+
+</resources>
