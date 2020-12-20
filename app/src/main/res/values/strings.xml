@@ -35,9 +35,9 @@
     <string name="txt_retail_users">My Retail Users</string>
     <string name="txt_voucher_recharge">Voucher</string>
     <string name="txt_airtime_recharge">Top up</string>
-    <string name="txt_select_operator">Select operator</string>
-    <string name="txt_select_amount">Select recharge amount</string>
-    <string name="txt_voucher_amount">Select voucher amount</string>
+    <string name="txt_select_operator">Select Operator</string>
+    <string name="txt_select_amount">Select Recharge Amount</string>
+    <string name="txt_voucher_amount">Select Voucher Amount</string>
     <string name="txt_please_click_print">Please click on Print to sell this voucher</string>
     <string name="txt_print_type">Select print type</string>
     <string name="txt_print_voucher">Print Voucher</string>

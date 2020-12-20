@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/layoutMain2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="112dp"
+            android:src="@drawable/box_10"
+            android:scaleType="fitXY"
+            android:layout_alignParentTop="true"
+            />
+
+        <ImageView
+            android:id="@+id/ivLogo2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="fitXY"
+            android:layout_margin="16dp"
+            android:src="@drawable/voucher2" />
+
+        <TextView
+            android:id="@+id/txtName2"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="@string/txt_voucher_recharge"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textAllCaps="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@id/ivLogo2"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:typeface="serif"/>
+
+    </RelativeLayout>
+
+</layout>
