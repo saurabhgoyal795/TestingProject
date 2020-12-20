@@ -36,6 +36,8 @@
                 android:layout_marginStart="16dp"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -46,6 +48,9 @@
                     android:layout_height="wrap_content"
                     android:digits="0123456789"
                     android:gravity="center"
+                    android:shadowColor="@color/white"
+                    android:textColorLink="@color/white"
+                    android:textColorHighlight="@color/white"
                     android:hint="@string/hint_quantity"
                     android:inputType="number"
                     android:maxLength="3"
