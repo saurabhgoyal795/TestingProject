@@ -27,6 +27,7 @@
                 android:layout_width="76dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="end"
+                android:visibility="gone"
                 android:layout_margin="4dp"
                 android:background="@drawable/bg_recharge_option"
                 android:contentDescription="@string/app_name"
