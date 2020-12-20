@@ -176,6 +176,7 @@ public class VoucherSelectedSinglePrintActivity extends BaseActivity implements 
         }
 
         if (selectedPlan != null) {
+            binding.txtAmount.setVisibility(View.VISIBLE);
             binding.txtAmount.setText(String.format("%s %s", selectedPlan.getAmount(), getString(R.string.currency_ethiopia_unit)));
             selectedPlan.setSelectedQty(1);
             rechargePlanList.add(selectedPlan);

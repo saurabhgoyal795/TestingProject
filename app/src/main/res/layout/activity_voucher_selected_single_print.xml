@@ -30,6 +30,7 @@
                 android:layout_margin="4dp"
                 android:background="@drawable/bg_recharge_option"
                 android:contentDescription="@string/app_name"
+                android:visibility="gone"
                 android:src="@drawable/ethio_telecom"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -45,6 +46,7 @@
             android:gravity="center"
             android:text="@string/txt_please_click_print"
             android:textSize="18sp"
+            android:textColor="#0e253a"
             android:typeface="serif"
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
@@ -91,16 +93,24 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="16dp">
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:src="@drawable/box_10"
+                    android:scaleType="fitXY"
+                    android:layout_alignParentTop="true"/>
 
                 <TextView
                     android:id="@+id/txtAmount"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginLeft="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center|start"
                     android:text="@string/dummy_amount"
-                    android:textColor="@color/black"
+                    android:visibility="gone"
+                    android:textColor="@color/white"
                     android:textSize="26sp" />
 
                 <Button
@@ -108,9 +118,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="24dp"
                     android:onClick="onClick"
                     android:text="@string/print_usb"
+                    android:visibility="gone"
+                    android:layout_marginRight="8dp"
                     android:textAllCaps="false" />
 
                 <Button
@@ -119,9 +131,11 @@
                     android:layout_height="40dp"
                     android:layout_below="@+id/btnPrint"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="24dp"
                     android:onClick="onClick"
+                    android:layout_marginRight="8dp"
                     android:text="@string/bluetooth_print"
+
                     android:textAllCaps="false" />
 
 
@@ -130,7 +144,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txtAmount"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginLeft="8dp"
                     android:gravity="center_vertical"
                     android:padding="2dp">
 
@@ -145,7 +159,7 @@
                         android:layout_margin="8dp"
                         android:gravity="center"
                         android:text="@string/txt_please_wait_printing"
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
                         android:textSize="12sp" />
                 </LinearLayout>
             </RelativeLayout>
