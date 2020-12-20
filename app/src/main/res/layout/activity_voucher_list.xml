@@ -43,7 +43,8 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="@string/txt_voucher_amount"
-            android:textSize="18sp"
+            android:textSize="24sp"
+            android:textColor="#0e253a"
             android:typeface="serif"
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
