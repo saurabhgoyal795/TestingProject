@@ -2,6 +2,7 @@ package com.atlaaya.evdrecharge.activities;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.databinding.DataBindingUtil;
 
@@ -19,28 +20,43 @@ public class BankAccountsActivity extends BaseActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_manage_bank_accounts);
 
         setSupportActionBar(binding.toolbar);
-
-        binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        binding.companyAccount.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-
-                if (tab.getPosition() == 0) {
-                    binding.viewSwitcher.setDisplayedChild(0);
-                } else {
-                    binding.viewSwitcher.setDisplayedChild(1);
-                }
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
+            public void onClick(View v) {
+                binding.companyAccount.setAlpha(1);
+                binding.myAccount.setAlpha((float) 0.5);
+                binding.viewSwitcher.setDisplayedChild(0);
             }
         });
+        binding.myAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.myAccount.setAlpha(1);
+                binding.companyAccount.setAlpha((float) 0.5);
+                binding.viewSwitcher.setDisplayedChild(1);
+            }
+        });
+//        binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+//            @Override
+//            public void onTabSelected(TabLayout.Tab tab) {
+//
+//                if (tab.getPosition() == 0) {
+//                    binding.viewSwitcher.setDisplayedChild(0);
+//                } else {
+//                    binding.viewSwitcher.setDisplayedChild(1);
+//                }
+//            }
+//
+//            @Override
+//            public void onTabUnselected(TabLayout.Tab tab) {
+//
+//            }
+//
+//            @Override
+//            public void onTabReselected(TabLayout.Tab tab) {
+//
+//            }
+//        });
 
     }
 
