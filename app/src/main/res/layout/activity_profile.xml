@@ -67,8 +67,8 @@
 
                             <com.atlaaya.evdrecharge.widgets.FaceWidget_
                                 android:id="@+id/faceWidget"
-                                android:layout_width="112dp"
-                                android:layout_height="112dp" />
+                                android:layout_width="150dp"
+                                android:layout_height="150dp" />
 
                             <com.google.android.material.floatingactionbutton.FloatingActionButton
                                 android:id="@+id/ivPhotoEdit"
@@ -78,7 +78,8 @@
                                 android:layout_marginTop="-44dp"
                                 android:src="@drawable/ic_edit"
                                 android:onClick="onClick"
-                                app:backgroundTint="@color/colorPrimary"
+                                android:tint="@color/Red"
+                                app:backgroundTint="@color/white"
                                 app:fabCustomSize="36dp" />
                         </LinearLayout>
 
@@ -87,9 +88,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginTop="6dp"
+                            android:layout_marginTop="4dp"
                             android:text="@string/dummy_name"
-                            android:textSize="18sp" />
+                            android:textSize="22sp" />
 
                         <TextView
                             android:id="@+id/txtFirmName"
@@ -98,70 +99,123 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="2dp"
                             android:text="@string/dummy_firm_name"
-                            android:textSize="16sp" />
-
+                            android:textSize="18sp" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:background="@drawable/rectangle_26"
+                            android:orientation="horizontal"
+                            android:layout_height="36dp">
+                            <ImageView
+                                android:layout_width="36dp"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/profileicon"/>
                         <TextView
                             android:id="@+id/txtUsername"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="32dp"
-                            android:drawableStart="@drawable/ic_profile"
-                            android:drawablePadding="16dp"
+                            android:layout_height="match_parent"
                             android:gravity="center_vertical"
+                            android:layout_marginLeft="8dp"
                             android:text="@string/dummy_user_name"
-                            android:textSize="14sp" />
+                            android:textSize="16sp" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:background="@drawable/rectangle_26"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="16dp"
+                            android:layout_height="36dp">
+                            <ImageView
+                                android:layout_width="36dp"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/ic_contact_phone"/>
                         <TextView
                             android:id="@+id/txtMobile"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:drawableStart="@drawable/ic_contact_phone"
-                            android:drawablePadding="16dp"
+                            android:layout_height="match_parent"
                             android:gravity="center_vertical"
+                            android:layout_marginLeft="8dp"
                             android:text="@string/dummy_mobile_number"
-                            android:textSize="14sp" />
+                            android:textSize="16sp" />
+                        </LinearLayout>
+                          <LinearLayout
+                            android:layout_width="match_parent"
+                            android:background="@drawable/rectangle_26"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="16dp"
+                            android:layout_height="36dp">
+                            <ImageView
+                                android:layout_width="36dp"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/ic_email"/>
 
                         <TextView
                             android:id="@+id/txtEmail"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:drawableStart="@drawable/ic_email"
-                            android:drawablePadding="16dp"
+                            android:layout_height="match_parent"
                             android:gravity="center_vertical"
+                            android:layout_marginLeft="8dp"
                             android:text="@string/dummy_email"
-                            android:textSize="14sp" />
-
+                            android:textSize="16sp" />
+                          </LinearLayout>
+                         <LinearLayout
+                            android:layout_width="match_parent"
+                            android:background="@drawable/rectangle_26"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="16dp"
+                            android:layout_height="36dp">
+                            <ImageView
+                                android:layout_width="36dp"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/ic_location"/>
                         <TextView
                             android:id="@+id/txtAddress"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:drawableStart="@drawable/ic_location"
-                            android:drawablePadding="16dp"
+                            android:layout_height="match_parent"
                             android:gravity="center_vertical"
+                            android:layout_marginLeft="8dp"
                             android:text="@string/dummy_address"
                             android:textSize="14sp" />
-
+                         </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:background="@drawable/rectangle_26"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="16dp"
+                            android:layout_height="36dp">
+                            <ImageView
+                                android:layout_width="36dp"
+                                android:layout_height="match_parent"
+                                android:tint="@color/black"
+                                android:src="@drawable/lock1"/>
                         <TextView
                             android:id="@+id/txtLockFund"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:drawablePadding="16dp"
+                            android:layout_height="match_parent"
                             android:gravity="center_vertical"
+                            android:layout_marginLeft="8dp"
                             android:text="@string/txt_lockfund"
                             android:textSize="14sp" />
-
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:background="@drawable/rectangle_26"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="16dp"
+                            android:layout_height="36dp">
+                            <ImageView
+                                android:layout_width="36dp"
+                                android:layout_height="match_parent"
+                                android:tint="@color/black"
+                                android:src="@drawable/icon_awesome_ticket_alt"/>
                         <TextView
                             android:id="@+id/txtTerminalNumber"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:drawablePadding="16dp"
+                            android:layout_height="match_parent"
                             android:gravity="center_vertical"
+                            android:layout_marginLeft="8dp"
                             android:text="@string/txt_terminal_number"
                             android:textSize="14sp" />
+                    </LinearLayout>
 
 
                     </LinearLayout>

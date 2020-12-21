@@ -30,6 +30,7 @@
                 android:background="@drawable/bg_recharge_option"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/ethio_telecom"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
