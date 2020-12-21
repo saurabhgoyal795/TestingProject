@@ -33,48 +33,45 @@
                 app:titleTextColor="@color/white" />
         </com.google.android.material.appbar.AppBarLayout>
 
-
-        <androidx.cardview.widget.CardView
+        <RelativeLayout
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
             android:id="@+id/cardSelectedPlan"
+            android:layout_marginTop="24dp"
+            android:layout_height="wrap_content">
+        <View
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:cardCornerRadius="4dp"
-            app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+            android:layout_alignParentTop="true"
+            android:layout_alignBottom="@id/txtAvlBalanceAmount"
+            android:background="@drawable/box_7"
+            />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <TextView
+                android:id="@+id/txtAvlBalance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/white"
-                android:clipToPadding="false"
-                android:padding="12dp">
+                android:text="@string/txt_avl_balance"
+                android:textColor="@color/white"
+                android:paddingTop="16dp"
+                android:paddingLeft="16dp"
+                android:layout_alignParentTop="true"
+                android:textSize="14sp" />
 
-                <TextView
-                    android:id="@+id/txtAvlBalance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/txt_avl_balance"
-                    android:textSize="14sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/txtAvlBalanceAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/dummy_amount"
+                android:textColor="@color/white"
+                android:textSize="34sp"
+                android:paddingBottom="16dp"
+                android:paddingLeft="16dp"
+                android:layout_below="@+id/txtAvlBalance"
+                android:typeface="serif"
+                />
+        </RelativeLayout>
 
-
-                <TextView
-                    android:id="@+id/txtAvlBalanceAmount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center|start"
-                    android:text="@string/dummy_amount"
-                    android:textColor="@color/black"
-                    android:textSize="32sp"
-                    android:typeface="serif"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtAvlBalance" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/txtMyLoadRequest"
