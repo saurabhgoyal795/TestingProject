@@ -50,7 +50,7 @@
                             android:layout_centerInParent="true"
                             android:layout_alignParentRight="true"
                             android:contentDescription="@string/app_name"
-                            android:src="@drawable/logo_main"
+                            android:src="@drawable/log_img"
                             />
                     </RelativeLayout>
 

@@ -3,53 +3,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="none">
+    <group android:checkableBehavior="none"
+        android:id="@+id/first">
         <item
             android:id="@+id/nav_my_profile"
             android:icon="@drawable/ic_profile"
             android:title="@string/menu_my_profile" />
-        <item
+    </group>
+    <group android:checkableBehavior="none"
+        android:id="@+id/second">
+    <item
             android:id="@+id/nav_balance"
             android:icon="@drawable/ic_balance_wallet"
             android:title="@string/menu_balance" />
+    </group>
+    <group android:checkableBehavior="none"
+        android:id="@+id/third">
         <item
             android:id="@+id/nav_transaction_history"
             android:icon="@drawable/ic_history"
             android:title="@string/menu_transaction_history" />
+    </group>
+    <group android:checkableBehavior="none"
+        android:id="@+id/fourth">
         <item
             android:id="@+id/nav_my_statements"
             android:icon="@drawable/ic_voucher"
             android:title="@string/menu_my_statements" />
+    </group>
+    <group android:checkableBehavior="none"
+        android:id="@+id/fifth">
         <item
             android:id="@+id/nav_my_banks"
             android:icon="@drawable/ic_bank_account"
             android:title="@string/menu_my_banks" />
+    </group>
+    <group android:checkableBehavior="none"
+        android:id="@+id/sixth">
         <item
             android:id="@+id/nav_my_vouchers"
             android:icon="@drawable/ic_voucher"
             android:title="@string/menu_my_vouchers" />
+    </group>
+    <group android:checkableBehavior="none"
+        android:id="@+id/eight">
         <item
             android:id="@+id/nav_my_users"
             android:icon="@drawable/ic_users"
             android:title="@string/menu_my_users" />
+    </group>
+    <group android:checkableBehavior="none"
+        android:id="@+id/seventh">
         <item
             android:id="@+id/nav_bluetooth_test"
             android:icon="@drawable/ic_bluetooth"
             android:visible="false"
             android:title="@string/menu_bluetooth_test" />
+    </group>
+    <group android:checkableBehavior="none"
+        android:id="@+id/nine">
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_signout"
             android:title="@string/menu_logout" />
     </group>
-
-    <!--  <item android:title="Communicate">
-          <menu>
-              <item
-                  android:id="@+id/nav_share"
-                  android:icon="@drawable/ic_menu_share"
-                  android:title="@string/menu_share" />
-          </menu>
-      </item>-->
 
 </menu>

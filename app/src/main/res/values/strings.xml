@@ -4,7 +4,7 @@
     <!ENTITY currencyEthiopiaSymbol1 "Br">
     <!ENTITY currencyEthiopiaUnit "Birr">]>
 <resources>
-    <string name="app_name">&appName;</string>
+    <string name="app_name">Alami Telecom</string>
 
     <string name="title_profile">My Profile</string>
     <string name="title_change_password">Change Password</string>
