@@ -1,52 +1,0 @@
-
-j
-java:S1192"ODefine a constant instead of duplicating this literal "</strong><br> " 3 times.(§“•¹ùÿÿÿÿ
-x
-java:S1192"bDefine a constant instead of duplicating this literal "E-voucher serial number :<br>\n  " 3 times.(ÑøĞ
-_
-java:S1192"IDefine a constant instead of duplicating this literal "Agent : " 3 times.(ñëë×
-l
-java:S1192"VDefine a constant instead of duplicating this literal " E-Voucher Pin :<br/>" 3 times.(˜ø‘ƒ
-d
-java:S1192"IDefine a constant instead of duplicating this literal "<strong>" 3 times.(§“•¹ùÿÿÿÿ
-Q
-java:S1444"6Make this "public static KEY_TYPE_AIRTIME" field final(êĞŞÄúÿÿÿÿ
-|
-java:S1192"fDefine a constant instead of duplicating this literal "--------------------------------<br/>" 4 times.(Éø¡î
-\
-java:S1192"FDefine a constant instead of duplicating this literal "<br> " 6 times.(›ïƒ
-w
-java:S1104"\Make KEY_TYPE_AIRTIME a static final constant or non-public and provide accessors if needed.(êĞŞÄúÿÿÿÿ
-v
-java:S3008"[Rename this field "KEY_TYPE_AIRTIME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êĞŞÄúÿÿÿÿ
-r
-java:S1104"\Make KEY_TYPE_VOUCHER a static final constant or non-public and provide accessors if needed.(‘×â
-q
-java:S3008"[Rename this field "KEY_TYPE_VOUCHER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘×â
-P
-java:S1118":Add a private constructor to hide the implicit public one.(³ıƒ
-“
-java:S1192"~Define a constant instead of duplicating this literal "To Recharge your mobile :<br>\n  Dial *805*e-voucher pin#<br>" 3 times.(Ú—ãf
-F
-java:S1444
-"0Make this "public static IS_POS_APK" field final(ÉâÛ±
-p
-java:S1104"UMake App_TOKEN a static final constant or non-public and provide accessors if needed.(­Üµ‘úÿÿÿÿ
-k
-java:S3008
-"URename this field "IS_POS_APK" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÉâÛ±
-c
-java:S1192"MDefine a constant instead of duplicating this literal "Txn Ref No: " 3 times.(›ïƒ
-o
-java:S3008"TRename this field "App_TOKEN" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­Üµ‘úÿÿÿÿ
-x
-java:S1192"bDefine a constant instead of duplicating this literal "<br> Powered By Highlight Trading" 3 times.(ñëë×
-J
-java:S1444"/Make this "public static App_TOKEN" field final(­Üµ‘úÿÿÿÿ
-b
-java:S1192"GDefine a constant instead of duplicating this literal "Date: " 3 times.(¡ñ¾Œùÿÿÿÿ
-L
-java:S1444"6Make this "public static KEY_TYPE_VOUCHER" field final(‘×â
-l
-java:S1104
-"VMake IS_POS_APK a static final constant or non-public and provide accessors if needed.(ÉâÛ±
