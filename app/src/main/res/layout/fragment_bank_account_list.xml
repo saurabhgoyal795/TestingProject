@@ -6,6 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#D3D3D3"
         android:clipToPadding="false">
 
         <androidx.recyclerview.widget.RecyclerView
