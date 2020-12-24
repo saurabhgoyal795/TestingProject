@@ -35,6 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipChildren="false"
+            android:background="@drawable/profileback"
             android:layout_below="@+id/appBarLayout"
             android:orientation="vertical"
             android:clipToPadding="false">
@@ -107,8 +108,7 @@
                      android:layout_height="match_parent"
                      android:orientation="vertical"
                      android:layout_marginTop="24dp"
-                     android:padding="16dp"
-                     android:background="@drawable/loginshape">
+                     android:padding="16dp">
 
                             <LinearLayout
                             android:layout_width="match_parent"
