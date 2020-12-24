@@ -11,6 +11,7 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:paddingBottom="16dp"
+        android:background="#D3D3D3"
         tools:context=".activities.WalletActivity">
 
         <com.google.android.material.appbar.AppBarLayout
