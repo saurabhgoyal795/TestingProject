@@ -195,7 +195,7 @@
     <string name="hint_enter_amount_">Enter amount</string>
     <string name="hint_enter_reference_number">Enter reference number</string>
 
-    <string name="btn_login">Login</string>
+    <string name="btn_login">Continue</string>
     <string name="btn_proceed">Proceed</string>
     <string name="btn_select">Select</string>
     <string name="btn_print">Print</string>

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="32dp"
-    android:background="@drawable/loginbackground"
+    android:background="@drawable/loginback"
     android:clipToPadding="false"
     tools:context=".activities.LoginActivity">
 
@@ -28,6 +28,7 @@
         android:textStyle="bold|italic"
         android:layout_marginTop="48dp"
         android:textSize="16sp"
+        android:paddingLeft="16dp"
         android:textColor="@color/white"/>
 
     <LinearLayout
@@ -54,6 +55,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputUserIdLayout"
         android:id="@+id/passwordText"
         android:text="PASSWORD"
+        android:paddingLeft="16dp"
         android:textStyle="bold|italic"
         android:layout_marginTop="16dp"
         android:textSize="16sp"
@@ -81,10 +83,11 @@
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="48dp"
         android:text="@string/btn_login"
         android:onClick="onClick"
+        android:background="@drawable/rectangle_3"
         app:layout_constraintTop_toBottomOf="@+id/textInputPasswordLayout" />
 
 
