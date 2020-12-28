@@ -173,7 +173,7 @@ public class OperatorsActivity extends BaseActivity implements OperatorsListener
 
             binding.txtName2.setText(operatorList.get(position).getTitle());
 
-            binding.txtName2.setOnClickListener(v -> {
+            binding.layoutMain2.setOnClickListener(v -> {
                 ModelUserInfo userInfo = SessionManager.getUserDetail(mContext);
                 if (userInfo != null) {
                     Intent intent;
