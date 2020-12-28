@@ -19,6 +19,7 @@ import com.atlaaya.evdrecharge.R;
 import com.atlaaya.evdrecharge.apiPresenter.OperatorsPresenter;
 import com.atlaaya.evdrecharge.constant.AppConstants;
 import com.atlaaya.evdrecharge.databinding.ActivityRechargeCarrierBinding;
+import com.atlaaya.evdrecharge.databinding.ItemService2Binding;
 import com.atlaaya.evdrecharge.databinding.ItemServiceBinding;
 import com.atlaaya.evdrecharge.enums.EnumPrintAllowed;
 import com.atlaaya.evdrecharge.listener.OperatorsListener;
@@ -76,7 +77,7 @@ public class OperatorsActivity extends BaseActivity implements OperatorsListener
             binding.toolbar.setTitle(getString(R.string.txt_voucher_recharge));
         }
 
-        binding.recyclerView2.setLayoutManager(new GridLayoutManager(this, 2));
+        binding.recyclerView2.setLayoutManager(new GridLayoutManager(this, 1));
 
     }
 
@@ -160,19 +161,19 @@ public class OperatorsActivity extends BaseActivity implements OperatorsListener
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
-                    R.layout.item_service, parent, false);
+                    R.layout.item_service2, parent, false);
             return new ViewHolder(binding);
         }
 
         @Override
         public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
-            ItemServiceBinding binding = (ItemServiceBinding) holder.getBinding();
+            ItemService2Binding binding = (ItemService2Binding) holder.getBinding();
 
-            binding.ivLogo.setImageResource(R.drawable.ethio_telecom);
+            binding.ivLogo2.setImageResource(R.drawable.ethio_telecom);
 
-            binding.txtName.setText(operatorList.get(position).getTitle());
+            binding.txtName2.setText(operatorList.get(position).getTitle());
 
-            binding.layoutMain.setOnClickListener(v -> {
+            binding.txtName2.setOnClickListener(v -> {
                 ModelUserInfo userInfo = SessionManager.getUserDetail(mContext);
                 if (userInfo != null) {
                     Intent intent;

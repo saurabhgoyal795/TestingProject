@@ -137,7 +137,6 @@ public class ServiceListActivity extends BaseActivity implements ServiceListener
             ItemServiceBinding binding = (ItemServiceBinding) holder.getBinding();
 
             if (serviceList.get(position).getService_name().equalsIgnoreCase("Voucher")) {
-                binding.ivLogo.setImageResource(R.drawable.voucher);
                 binding.layoutMain.setVisibility(View.VISIBLE);
             } else {
                 binding.layoutMain.setVisibility(View.GONE);

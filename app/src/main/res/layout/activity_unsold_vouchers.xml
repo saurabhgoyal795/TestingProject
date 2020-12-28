@@ -6,6 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#D3D3D3"
         android:clipToPadding="false">
 
         <com.google.android.material.appbar.AppBarLayout
@@ -18,7 +19,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
-                android:background="@color/colorPrimary"
+                android:background="@drawable/rectangle_16"
                 app:contentInsetEnd="0dp"
                 app:contentInsetStart="0dp"
                 app:contentInsetStartWithNavigation="0dp"

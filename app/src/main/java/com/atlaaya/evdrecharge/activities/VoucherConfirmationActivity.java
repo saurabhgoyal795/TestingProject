@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,27 +22,35 @@ import com.atlaaya.evdrecharge.apiPresenter.PurchaseVoucherPresenter;
 import com.atlaaya.evdrecharge.constant.AppConstants;
 import com.atlaaya.evdrecharge.databinding.ActivityVoucherConfirmationBinding;
 import com.atlaaya.evdrecharge.databinding.ItemRechargeAmountConfirmBinding;
+import com.atlaaya.evdrecharge.firebase.references.DocumentRefrence;
 import com.atlaaya.evdrecharge.listener.PurchaseVoucherBulkListener;
 import com.atlaaya.evdrecharge.listener.PurchaseVoucherListener;
 import com.atlaaya.evdrecharge.model.ModelOperator;
 import com.atlaaya.evdrecharge.model.ModelService;
 import com.atlaaya.evdrecharge.model.ModelUserInfo;
+import com.atlaaya.evdrecharge.model.ModelVoucher;
 import com.atlaaya.evdrecharge.model.ModelVoucherPlan;
+import com.atlaaya.evdrecharge.model.ModelVoucherPurchased;
 import com.atlaaya.evdrecharge.model.ResponseTempVoucherPurchase;
 import com.atlaaya.evdrecharge.model.ResponseVoucherOrderHistory;
 import com.atlaaya.evdrecharge.model.ResponseVoucherPurchase;
 import com.atlaaya.evdrecharge.model.ResponseVoucherPurchaseBulk;
 import com.atlaaya.evdrecharge.model.ResponseVoucherPurchaseBulkOrder;
 import com.atlaaya.evdrecharge.storage.SessionManager;
+import com.atlaaya.evdrecharge.utils.ChangeDateFormat;
 import com.atlaaya.evdrecharge.utils.CheckInternetConnection;
 import com.atlaaya.evdrecharge.utils.DialogClasses;
 import com.atlaaya.evdrecharge.utils.MyCustomToast;
 import com.atlaaya.evdrecharge.utils.PriceFormat;
 import com.atlaaya.evdrecharge.utils.Utility;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.WriteBatch;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import okhttp3.MediaType;
@@ -216,7 +225,9 @@ public class VoucherConfirmationActivity extends BaseActivity implements View.On
     }
 
     private void callVoucherPurchaseBulk() {
-        if (CheckInternetConnection.isInternetConnection(this)) {
+        callVoucherPurchaseBulkOffline();
+
+   /*     if (CheckInternetConnection.isInternetConnection(this)) {
             ModelUserInfo userInfo = SessionManager.getUserDetail(this);
             if (userInfo != null) {
                 HashMap<String, RequestBody> map = new HashMap<>();
@@ -249,7 +260,7 @@ public class VoucherConfirmationActivity extends BaseActivity implements View.On
             }
         } else {
             DialogClasses.showDialogInternetAlert(this);
-        }
+        }*/
     }
 
     private void callVoucherPurchaseBulkOrderDetail(String orderId) {
@@ -269,6 +280,245 @@ public class VoucherConfirmationActivity extends BaseActivity implements View.On
         }
     }
 
+    private void callVoucherPurchaseBulkOffline() {
+
+        showProgressDialog();
+
+        ModelUserInfo userInfo = SessionManager.getUserDetail(this);
+
+    /*    DatabaseReference db = Database.voucherNonPrints(databaseReference(), "" + userInfo.getId());
+        db.addValueEventListener(new MapTypedValueEventListener<ModelVoucher>(ModelVoucher.class) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                dismissProgressDialog();
+            }
+
+            @Override
+            public void onDataChange(Map data) {
+                db.removeEventListener(this);
+                ArrayList<ModelVoucher> vouchers = null;
+                if (data != null) {
+                    vouchers = new ArrayList<>(data.values());
+                }
+
+                ArrayList<ModelVoucher> finalList = new ArrayList<>();
+                if (vouchers != null && !vouchers.isEmpty()) {
+                    for (ModelVoucher voucher : vouchers) {
+                        if (voucher.getIs_print() == 0) {
+                            finalList.add(voucher);
+                        }
+                    }
+                }
+
+                if (finalList.size() == 0) {
+                    dismissProgressDialog();
+                    MyCustomToast.showToast(getApplicationContext(), "No vouchers available for sell. You need to purchase vouchers.");
+                } else {
+                    ArrayList<ModelVoucherPlan> voucherSelectedList = new ArrayList<>();
+                    for (ModelVoucherPlan voucherPlan : rechargePlanList) {
+                        if (voucherPlan.getSelectedQty() > 0) {
+                            voucherSelectedList.add(voucherPlan);
+                        }
+                    }
+                    boolean isNoStock = false;
+
+                    ArrayList<ModelVoucher> finalPurchasedVoucherList = new ArrayList<>();
+                    for (ModelVoucherPlan voucherSelected : voucherSelectedList) {
+                        ArrayList<ModelVoucher> selectedToSellVoucherList = new ArrayList<>();
+                        for (ModelVoucher voucher : finalList) {
+                            if (voucher.getVoucher_amount() == voucherSelected.getAmount()) {
+                                selectedToSellVoucherList.add(voucher);
+                            }
+                        }
+                        if (selectedToSellVoucherList.size() >= voucherSelected.getSelectedQty()) {
+                            finalPurchasedVoucherList.addAll(selectedToSellVoucherList.subList(0, voucherSelected.getSelectedQty()));
+//                                    finalPurchasedVoucherList.addAll(selectedToSellVoucherList.subList(0,
+//                                            voucherSelected.getSelectedQty()==1?voucherSelected.getSelectedQty():voucherSelected.getSelectedQty()-1));
+                        } else {
+                            MyCustomToast.showToast(getApplicationContext(),
+                                    "No stock available of voucher amount " + voucherSelected.getAmount()
+                                            + ". You need to purchase vouchers.");
+                            isNoStock = true;
+                            dismissProgressDialog();
+                            break;
+                        }
+                    }
+                    if (isNoStock)
+                        return;
+
+                    if (finalPurchasedVoucherList.isEmpty()) {
+                        dismissProgressDialog();
+                        MyCustomToast.showToast(getApplicationContext(), "No vouchers available for sell. You need to purchase vouchers.");
+                    } else {
+
+                        ArrayList<ModelVoucherPurchased> voucherPurchasedList = new ArrayList<>();
+
+                        Map<String, Object> map = new HashMap<>();
+
+                        long currentTimeMillis = System.currentTimeMillis();
+                        String offlineSoldDate = ChangeDateFormat.getDateTimeFromMillisecond("yyyy-MM-dd HH:mm:ss", currentTimeMillis);
+                        String offlineOrder_id = "of_evd_"+userInfo.getId()+"_"+currentTimeMillis;
+
+                        for (ModelVoucher voucher : finalPurchasedVoucherList) {
+                            voucher.setIs_print(1);
+                            voucher.setOffline_sold_date(offlineSoldDate);
+                            voucher.setOffline_order_id(offlineOrder_id);
+
+                            ModelVoucherPurchased modelVoucherPurchased = new ModelVoucherPurchased();
+                            modelVoucherPurchased.setPrintable_text(AppConstants.getPinPrintableData(voucher, userInfo));
+                            modelVoucherPurchased.setNon_printable_text(AppConstants.getPinNonPrintableData(voucher, userInfo));
+                            modelVoucherPurchased.setSaleid(voucher.getOrder_id());
+                            modelVoucherPurchased.setVchr_odr_id(voucher.getOffline_order_id());
+
+                            voucherPurchasedList.add(modelVoucherPurchased);
+
+                            map.put("/" + voucher.getVoucher_id() + "/", voucher);
+                        }
+
+                        MyCustomToast.showToast(getApplicationContext(),
+                                "Success");
+
+                        dismissProgressDialog();
+                        Intent intent = new Intent(getApplicationContext(), SendingRequestActivity.class);
+                        intent.putExtra("service", selectedService);
+                        intent.putExtra("operator", selectedOperator);
+
+                        VoucherSuccessPrintActivity.setPrintVoucherContentArrayList(voucherPurchasedList);
+
+                        if (clickBtn.equals("Email")) {
+                            intent.putExtra("email", email);
+                        } else if (clickBtn.equals("SMS")) {
+                            intent.putExtra("mobile", mobile);
+                        }
+                        startActivityForResult(intent, 200);
+
+                        Database.voucherNonPrints(databaseReference(), "" + userInfo.getId())
+                                .updateChildren(map);
+                    }
+                }
+            }
+        });*/
+
+
+        DocumentRefrence.vouchersNonPrinted(firebaseFirestore(),  userInfo.getId())
+                .get()
+                .addOnCompleteListener(task -> {
+                    ArrayList<ModelVoucher> finalList = new ArrayList<>();
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            ModelVoucher voucher = document.toObject(ModelVoucher.class);
+                            finalList.add(voucher);
+                        }
+
+                        if (finalList.size() == 0) {
+                            dismissProgressDialog();
+                            MyCustomToast.showToast(getApplicationContext(), "No vouchers available for sell. You need to purchase vouchers.");
+                        } else {
+                            ArrayList<ModelVoucherPlan> voucherSelectedList = new ArrayList<>();
+                            for (ModelVoucherPlan voucherPlan : rechargePlanList) {
+                                if (voucherPlan.getSelectedQty() > 0) {
+                                    voucherSelectedList.add(voucherPlan);
+                                }
+                            }
+                            boolean isNoStock = false;
+
+                            ArrayList<ModelVoucher> finalPurchasedVoucherList = new ArrayList<>();
+                            for (ModelVoucherPlan voucherSelected : voucherSelectedList) {
+                                ArrayList<ModelVoucher> selectedToSellVoucherList = new ArrayList<>();
+                                for (ModelVoucher voucher : finalList) {
+                                    if (voucher.getVoucher_amount() == voucherSelected.getAmount()) {
+                                        selectedToSellVoucherList.add(voucher);
+                                    }
+                                }
+                                if (selectedToSellVoucherList.size() >= voucherSelected.getSelectedQty()) {
+                                    finalPurchasedVoucherList.addAll(selectedToSellVoucherList.subList(0, voucherSelected.getSelectedQty()));
+                                } else {
+                                    MyCustomToast.showToast(getApplicationContext(),
+                                            "No stock available of voucher amount " + voucherSelected.getAmount()
+                                                    + ". You need to purchase vouchers.");
+                                    isNoStock = true;
+                                    dismissProgressDialog();
+                                    break;
+                                }
+                            }
+                            if (isNoStock)
+                                return;
+
+                            if (finalPurchasedVoucherList.isEmpty()) {
+                                dismissProgressDialog();
+                                MyCustomToast.showToast(getApplicationContext(), "No vouchers available for sell. You need to purchase vouchers.");
+                            } else {
+
+                                ArrayList<ModelVoucherPurchased> voucherPurchasedList = new ArrayList<>();
+
+//                                Map<String, Object> map = new HashMap<>();
+
+                                long currentTimeMillis = System.currentTimeMillis();
+                                String offlineSoldDate = ChangeDateFormat.getDateTimeFromMillisecond("yyyy-MM-dd HH:mm:ss", currentTimeMillis);
+                                String offlineOrder_id = "of_evd_"+userInfo.getId()+"_"+currentTimeMillis;
+
+                                // Get a new write batch
+                                WriteBatch batch = firebaseFirestore().batch();
+
+                                for (ModelVoucher voucher : finalPurchasedVoucherList) {
+                                    voucher.setIs_print(1);
+                                    voucher.setOffline_sold_date(offlineSoldDate);
+                                    voucher.setOffline_order_id(offlineOrder_id);
+
+                                    ModelVoucherPurchased modelVoucherPurchased = new ModelVoucherPurchased();
+                                    modelVoucherPurchased.setPrintable_text(AppConstants.getPinPrintableData(voucher, userInfo));
+                                    modelVoucherPurchased.setNon_printable_text(AppConstants.getPinNonPrintableData(voucher, userInfo));
+                                    modelVoucherPurchased.setSaleid(voucher.getOrder_id());
+                                    modelVoucherPurchased.setVchr_odr_id(voucher.getOffline_order_id());
+                                    modelVoucherPurchased.setVoucher(voucher);
+
+                                    voucherPurchasedList.add(modelVoucherPurchased);
+
+//                                    map.put("/" + voucher.getVoucher_id() + "/", voucher);
+
+                                    DocumentReference sfRef = DocumentRefrence.updateVouchers(firebaseFirestore(), userInfo.getId())
+                                            .document(""+voucher.getVoucher_id());
+//                batch.update(sfRef, ""+voucher.getVoucher_id(), voucher);
+                                    Map<String, Object> map = new HashMap<>();
+                                    map.put("is_print", voucher.getIs_print());
+                                    map.put("offline_sold_date", voucher.getOffline_sold_date());
+                                    map.put("offline_order_id", voucher.getOffline_order_id());
+                                    batch.update(sfRef, map);
+
+                                }
+
+                                // Commit the batch
+                                batch.commit().addOnCompleteListener(task1 -> {
+                                    // ...
+                                });
+
+                                MyCustomToast.showToast(getApplicationContext(),
+                                        "Success");
+
+                                dismissProgressDialog();
+                                Intent intent = new Intent(getApplicationContext(), SendingRequestActivity.class);
+                                intent.putExtra("service", selectedService);
+                                intent.putExtra("operator", selectedOperator);
+
+                                VoucherSuccessPrintActivity.setPrintVoucherContentArrayList(voucherPurchasedList);
+
+                                if (clickBtn.equals("Email")) {
+                                    intent.putExtra("email", email);
+                                } else if (clickBtn.equals("SMS")) {
+                                    intent.putExtra("mobile", mobile);
+                                }
+                                startActivityForResult(intent, 200);
+                            }
+                        }
+                    } else {
+                        Log.d("vouchers", "Error getting documents: ", task.getException());
+                        dismissProgressDialog();
+                    }
+                })
+                .addOnFailureListener(e -> dismissProgressDialog())
+                .addOnCanceledListener(this::dismissProgressDialog);
+
+    }
 
     @Override
     public void onSuccessTempVoucher(ResponseTempVoucherPurchase body) {
@@ -315,7 +565,6 @@ public class VoucherConfirmationActivity extends BaseActivity implements View.On
     @Override
     public void onSuccessVoucherBulkOrderPrintDetail(ResponseVoucherPurchaseBulkOrder body) {
         if (body.isRESPONSE()) {
-
             runOnUiThread(() -> {
                 Intent intent = new Intent(getApplicationContext(), SendingRequestActivity.class);
                 intent.putExtra("service", selectedService);
@@ -361,7 +610,7 @@ public class VoucherConfirmationActivity extends BaseActivity implements View.On
         public void onBindViewHolder(@NonNull final RechargeAmountAdapter.ViewHolder holder, int position) {
             ItemRechargeAmountConfirmBinding binding = (ItemRechargeAmountConfirmBinding) holder.getBinding();
 
-            binding.txtQty.setText(String.format("x %s", String.valueOf(rechargePlanList.get(holder.getAdapterPosition()).getSelectedQty())));
+            binding.txtQty.setText(String.format("x %s", rechargePlanList.get(holder.getAdapterPosition()).getSelectedQty()));
             binding.txtAmount.setText(String.format("%s %s", PriceFormat.decimalTwoDigit1(rechargePlanList.get(position).getAmount()), getString(R.string.currency_ethiopia_unit)));
 
             int ttlQuantity = rechargePlanList.get(holder.getAdapterPosition()).getSelectedQty();
@@ -391,4 +640,5 @@ public class VoucherConfirmationActivity extends BaseActivity implements View.On
     }
 
 }
+
 
