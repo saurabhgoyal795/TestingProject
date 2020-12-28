@@ -81,6 +81,10 @@ public class ModelOperator implements Parcelable {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getTitle() {
         if (!Strings.isNullOrEmpty(title)) {
             title = StringUtils.capitalizeFirstChar(title.trim());
@@ -88,12 +92,24 @@ public class ModelOperator implements Parcelable {
         return title == null ? "" : title;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public int getService_id() {
         return service_id;
     }
 
+    public void setService_id(int service_id) {
+        this.service_id = service_id;
+    }
+
     public String getOperator_code() {
         return operator_code;
+    }
+
+    public void setOperator_code(String operator_code) {
+        this.operator_code = operator_code;
     }
 
     public int getMin_transaction_amt() {
@@ -169,3 +185,4 @@ public class ModelOperator implements Parcelable {
         dest.writeString(created);
     }
 }
+

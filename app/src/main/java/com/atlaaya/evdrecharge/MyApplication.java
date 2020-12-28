@@ -4,11 +4,17 @@ import androidx.multidex.MultiDexApplication;
 
 import com.atlaaya.evdrecharge.api.APIInterface;
 import com.atlaaya.evdrecharge.api.RestService;
+import com.atlaaya.evdrecharge.firebase.references.DocumentRefrence;
+import com.atlaaya.evdrecharge.model.ModelUserInfo;
+import com.atlaaya.evdrecharge.storage.SessionManager;
 import com.atlaaya.evdrecharge.utils.SunmiPrintHelper;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.security.ProviderInstaller;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
+import com.google.firebase.firestore.ListenerRegistration;
 
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
@@ -21,6 +27,9 @@ public class MyApplication extends MultiDexApplication {
     private static MyApplication mInstance;
     private APIInterface service;
 
+    private FirebaseFirestore firebaseFirestore;
+    private ListenerRegistration listenerRegistration;
+
     public static synchronized MyApplication getInstance() {
         return mInstance;
     }
@@ -30,14 +39,42 @@ public class MyApplication extends MultiDexApplication {
         super.onCreate();
         mInstance = this;
         installTls12();
-        init();
+
         service = RestService.createRetrofitService(APIInterface.class, APIInterface.BASE_URL);
+
+//        final FirebaseDatabase instance = FirebaseDatabase.getInstance();
+//        instance.setPersistenceEnabled(true);
+//        final DatabaseReference databaseReference = instance.getReference();
+//        databaseReference.keepSynced(true);
+
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        FirebaseFirestoreSettings.Builder builder = new FirebaseFirestoreSettings.Builder();
+        builder.setCacheSizeBytes(FirebaseFirestoreSettings.CACHE_SIZE_UNLIMITED);
+        builder.setPersistenceEnabled(true);
+//        builder.setSslEnabled(false);
+        firebaseFirestore.setFirestoreSettings(builder.build());
+
+//        FirebaseApp firebaseApp =  firebaseFirestore.getApp();
+//        firebaseApp.setDataCollectionDefaultEnabled(true);
+//        firebaseApp.setAutomaticResourceManagementEnabled(true);
+
+        enableVoucherSync();
+
     }
-    private void init(){
-        SunmiPrintHelper.getInstance().initSunmiPrinterService(this);
-    }
+
     public APIInterface getAPIInterface() {
         return service;
+    }
+
+    public void enableVoucherSync() {
+        if (listenerRegistration != null) {
+            listenerRegistration.remove();
+        }
+        ModelUserInfo userInfo = SessionManager.getUserDetail(this);
+        if (userInfo != null) {
+            listenerRegistration = DocumentRefrence.vouchers(firebaseFirestore, userInfo.getId()).addSnapshotListener((queryDocumentSnapshots, e) -> {
+            });
+        }
     }
 
     private void installTls12() {

@@ -46,7 +46,9 @@ import com.atlaaya.evdrecharge.utils.MyCustomToast;
 import com.atlaaya.evdrecharge.utils.PriceFormat;
 import com.atlaaya.evdrecharge.utils.Utility;
 import com.google.android.material.navigation.NavigationView;
-
+import com.atlaaya.evdrecharge.activities.offline.UnsoldVouchersActivity;
+import com.atlaaya.evdrecharge.activities.offline.ServiceListActivity;
+import com.atlaaya.evdrecharge.activities.offline.SoldVouchersActivity;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -134,6 +136,23 @@ public class HomeActivity extends BaseActivity implements LifecycleObserver,
                 return true;
             case R.id.nav_balance:
                 startActivity(new Intent(getApplicationContext(), WalletActivity.class));
+                binding.drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            case R.id.nav_purchase_vouchers:
+                startActivity(new Intent(getApplicationContext(), ServiceListActivity.class));
+                binding.drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            case R.id.nav_vouchers_stock:
+                startActivity(new Intent(getApplicationContext(), ServiceListActivity.class)
+                        .putExtra("viewStockOnly", true));
+                binding.drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            case R.id.nav_unsold_vouchers:
+                startActivity(new Intent(getApplicationContext(),UnsoldVouchersActivity.class));
+                binding.drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            case R.id.nav_sold_vouchers:
+                startActivity(new Intent(getApplicationContext(), SoldVouchersActivity.class));
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_transaction_history:

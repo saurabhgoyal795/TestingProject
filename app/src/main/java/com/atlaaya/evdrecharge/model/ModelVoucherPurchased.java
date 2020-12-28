@@ -23,7 +23,7 @@ public class ModelVoucherPurchased implements Parcelable {
     @SerializedName("voucher")
     private ModelVoucher voucher;
 
-    public ModelVoucherPurchased() {
+    public ModelVoucherPurchased(){
 
     }
 
@@ -65,20 +65,40 @@ public class ModelVoucherPurchased implements Parcelable {
         return printable_text;
     }
 
+    public void setPrintable_text(String printable_text) {
+        this.printable_text = printable_text;
+    }
+
     public String getNon_printable_text() {
         return non_printable_text;
+    }
+
+    public void setNon_printable_text(String non_printable_text) {
+        this.non_printable_text = non_printable_text;
     }
 
     public String getSaleid() {
         return saleid;
     }
 
+    public void setSaleid(String saleid) {
+        this.saleid = saleid;
+    }
+
     public String getVchr_odr_id() {
         return vchr_odr_id;
     }
 
+    public void setVchr_odr_id(String vchr_odr_id) {
+        this.vchr_odr_id = vchr_odr_id;
+    }
+
     public ModelVoucher getVoucher() {
         return voucher;
+    }
+
+    public void setVoucher(ModelVoucher voucher) {
+        this.voucher = voucher;
     }
 
 }

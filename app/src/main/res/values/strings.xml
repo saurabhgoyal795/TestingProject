@@ -352,6 +352,10 @@
     <string name="menu_my_users">My Users</string>
     <string name="menu_bluetooth_test">Bluetooth Test</string>
     <string name="menu_logout">Logout</string>
+    <string name="menu_purchase_vouchers">Purchase Vouchers</string>
+    <string name="menu_unsold_vouchers">Unsold Vouchers</string>
+    <string name="menu_sold_vouchers">Sold Vouchers</string>
+    <string name="menu_voucher_stock">Vouchers Stock</string>
 
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
@@ -412,5 +416,34 @@
     <string name="msg_error">Input errors, please check!</string>
     <string name="print_usb">Print USB</string>
     <string name="bluetooth_print">Print</string>
+    <string name="title_purchase_voucher">Purchase Voucher</string>
+    <string name="title_unsold_vouchers">Unsold Vouchers</string>
+    <string name="title_sold_vouchers">Sold Vouchers</string>
+    <string name="txt_select_service">Select Service</string>
+    <string name="text_pin_purchase_date"><![CDATA[Purchase date       :  <b>%1$s</b>]]></string>
+
+    <string name="txt_sold">Sold</string>
+
+    <string name="txt_transaction_ref_no">Txn Ref No. : %1$s</string>
+    <string name="txt_ttl_qty_assign">Total Assign : %1$d</string>
+    <string name="txt_stock">Stock : %1$s</string>
+
+    <string name="txt_download_pin">Download Pin</string>
+
+
+    <string name="dummy_count">1</string>
+
+    <string name="btn_reprint">Reprint</string>
+    <string name="btn_buy_now">Buy Now</string>
+
+    <string name="alert_enter_password_correct">Please enter correct password.</string>
+
+
+    <string name="welcome_back">Welcome back,  %1$s</string>
+    <string name="enter_password_to_continue">Enter password to continue</string>
+
+    <string name="menu_purchased_voucher_history">Purchased Vouchers History</string>
+
+
 
 </resources>

@@ -138,4 +138,80 @@ public class PurchaseVoucherBulkPresenter extends BasePresenter<PurchaseVoucherB
                 });
     }
 
+    public void voucherBulkOrderFirebase(final Context context, final HashMap<String, RequestBody> requestBody) {
+
+        getView().enableLoadingBar(context, true, context.getString(R.string.txt_please_wait));
+
+        MyApplication.getInstance().getAPIInterface().android_voucher_order_firebase(requestBody)
+                .enqueue(new Callback<ResponseVoucherPurchaseBulk>() {
+                    @Override
+                    public void onResponse(@NonNull Call<ResponseVoucherPurchaseBulk> call, @NonNull Response<ResponseVoucherPurchaseBulk> response) {
+                        getView().enableLoadingBar(context, false, "");
+
+                        if (response.code() == 402) {
+                            getView().onSuccessVoucherBulkOrder(null);
+                        } else if (!handleError(response)
+                                && response.isSuccessful() && response.code() == 200) {
+                            getView().onSuccessVoucherBulkOrder(response.body());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(@NonNull Call<ResponseVoucherPurchaseBulk> call, @NonNull Throwable t) {
+                        try {
+                            getView().enableLoadingBar(context, false, "");
+                            if (t instanceof TimeoutException || t instanceof SocketTimeoutException) {
+                                getView().onErrorToast(context.getString(R.string.msg_unable_connect_server));
+                            } else {
+                                if (t instanceof NetworkErrorException || t instanceof SocketException) {
+                                    getView().onErrorToast(context.getString(R.string.msg_check_internet_connection));
+                                } else {
+                                    getView().onErrorToast(context.getString(R.string.msg_something_went_wrong));
+                                }
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+
+    public void voucherBulkOrderDetailFirebase(final Context context, final HashMap<String, RequestBody> requestBody) {
+
+        getView().enableLoadingBar(context, true, context.getString(R.string.txt_please_wait));
+
+        MyApplication.getInstance().getAPIInterface().android_print_order_firebase(requestBody)
+                .enqueue(new Callback<ResponseVoucherPurchaseBulkOrder>() {
+                    @Override
+                    public void onResponse(@NonNull Call<ResponseVoucherPurchaseBulkOrder> call, @NonNull Response<ResponseVoucherPurchaseBulkOrder> response) {
+                        getView().enableLoadingBar(context, false, "");
+
+                        if (response.code() == 402) {
+                            getView().onSuccessVoucherBulkOrderPrintDetail(null);
+                        } else if (!handleError(response)
+                                && response.isSuccessful() && response.code() == 200) {
+                            getView().onSuccessVoucherBulkOrderPrintDetail(response.body());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(@NonNull Call<ResponseVoucherPurchaseBulkOrder> call, @NonNull Throwable t) {
+                        try {
+                            getView().enableLoadingBar(context, false, "");
+                            if (t instanceof TimeoutException || t instanceof SocketTimeoutException) {
+                                getView().onErrorToast(context.getString(R.string.msg_unable_connect_server));
+                            } else {
+                                if (t instanceof NetworkErrorException || t instanceof SocketException) {
+                                    getView().onErrorToast(context.getString(R.string.msg_check_internet_connection));
+                                } else {
+                                    getView().onErrorToast(context.getString(R.string.msg_something_went_wrong));
+                                }
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+
 }

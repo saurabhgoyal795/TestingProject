@@ -29,7 +29,7 @@ import retrofit2.http.PartMap;
 
 public interface APIInterface {
 
-    String BASE_URL = "https://highlightevd.com/evdlive/webservices/"; // Live
+    String BASE_URL = "https://demo77.mallxs.com/evdlive/webservices/"; // Live
 //    String BASE_URL = "https://evdsoftware.com/demo/webservices/"; // For Test
 //    String BASE_URL = "https://evdsoftware.com/highlight/webservices/"; // For Test
 //    String BASE_URL = "https://evdsoftware.com/ccf/webservices/"; // For Test
@@ -75,6 +75,7 @@ public interface APIInterface {
     @POST("submitbill")
     @Multipart
     Call<ResponseDefault> submitElectricityRecharge(@PartMap() Map<String, RequestBody> partMap);
+
     @POST("android_voucher_amounts")
     @Multipart
     Call<ResponseVoucherPlan> android_voucher_amounts(@PartMap() Map<String, RequestBody> partMap);
@@ -94,6 +95,14 @@ public interface APIInterface {
     @POST("android_print_order")
     @Multipart
     Call<ResponseVoucherPurchaseBulkOrder> android_print_order(@PartMap() Map<String, RequestBody> partMap);
+
+    @POST("android_voucher_order_firebase")
+    @Multipart
+    Call<ResponseVoucherPurchaseBulk> android_voucher_order_firebase(@PartMap() Map<String, RequestBody> partMap);
+
+    @POST("android_print_order_firebase")
+    @Multipart
+    Call<ResponseVoucherPurchaseBulkOrder> android_print_order_firebase(@PartMap() Map<String, RequestBody> partMap);
 
     @POST("android_print_vouchers")
     @Multipart

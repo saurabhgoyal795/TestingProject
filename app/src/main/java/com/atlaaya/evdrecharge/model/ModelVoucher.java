@@ -37,6 +37,21 @@ public class ModelVoucher implements Parcelable {
     @SerializedName("voucher_id")
     private long voucher_id;
 
+    @SerializedName("created")
+    private String created;
+    @SerializedName("modified")
+    private String modified;
+    @SerializedName("sale_id")
+    private String sale_id;
+    @SerializedName("upload_date")
+    private String upload_date;
+    @SerializedName("voucher_order_id")
+    private String voucher_order_id;
+
+    @SerializedName("offline_sold_date")
+    private String offline_sold_date;
+    @SerializedName("offline_order_id")
+    private String offline_order_id;
 
     public ModelVoucher(){
 
@@ -57,6 +72,13 @@ public class ModelVoucher implements Parcelable {
         voucher_amount = in.readFloat();
         voucher_mrp = in.readFloat();
         voucher_id = in.readLong();
+        created = in.readString();
+        modified = in.readString();
+        sale_id = in.readString();
+        upload_date = in.readString();
+        voucher_order_id = in.readString();
+        offline_sold_date = in.readString();
+        offline_order_id = in.readString();
     }
 
     @Override
@@ -75,6 +97,13 @@ public class ModelVoucher implements Parcelable {
         dest.writeFloat(voucher_amount);
         dest.writeFloat(voucher_mrp);
         dest.writeLong(voucher_id);
+        dest.writeString(created);
+        dest.writeString(modified);
+        dest.writeString(sale_id);
+        dest.writeString(upload_date);
+        dest.writeString(voucher_order_id);
+        dest.writeString(offline_sold_date);
+        dest.writeString(offline_order_id);
     }
 
     @Override
@@ -214,4 +243,61 @@ public class ModelVoucher implements Parcelable {
     public void setVoucher_id(long voucher_id) {
         this.voucher_id = voucher_id;
     }
+
+    public String getCreated() {
+        return created;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
+
+    public String getModified() {
+        return modified;
+    }
+
+    public void setModified(String modified) {
+        this.modified = modified;
+    }
+
+    public String getSale_id() {
+        return sale_id;
+    }
+
+    public void setSale_id(String sale_id) {
+        this.sale_id = sale_id;
+    }
+
+    public String getUpload_date() {
+        return upload_date;
+    }
+
+    public void setUpload_date(String upload_date) {
+        this.upload_date = upload_date;
+    }
+
+    public String getVoucher_order_id() {
+        return voucher_order_id;
+    }
+
+    public void setVoucher_order_id(String voucher_order_id) {
+        this.voucher_order_id = voucher_order_id;
+    }
+
+    public String getOffline_sold_date() {
+        return offline_sold_date;
+    }
+
+    public void setOffline_sold_date(String offline_sold_date) {
+        this.offline_sold_date = offline_sold_date;
+    }
+
+    public String getOffline_order_id() {
+        return offline_order_id;
+    }
+
+    public void setOffline_order_id(String offline_order_id) {
+        this.offline_order_id = offline_order_id;
+    }
 }
+

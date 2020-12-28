@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:clipToPadding="false"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/txtAmount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center|start"
+            android:text="@string/dummy_amount"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/txtQty"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtQty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/dummy_count"
+            android:textColor="@color/black"
+            android:layout_marginStart="4dp"
+            android:textSize="14sp"
+            app:layout_constraintHorizontal_weight="0.6"
+            app:layout_constraintEnd_toStartOf="@+id/txtDownloadPin"
+            app:layout_constraintStart_toEndOf="@+id/txtAmount"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtDownloadPin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/dummy_count"
+            android:textColor="@color/black"
+            android:layout_marginStart="4dp"
+            android:textSize="14sp"
+            app:layout_constraintHorizontal_weight="0.7"
+            app:layout_constraintEnd_toStartOf="@+id/txtTtlAmount"
+            app:layout_constraintStart_toEndOf="@+id/txtQty"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtTtlAmount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:gravity="center|end"
+            android:text="@string/dummy_amount"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintHorizontal_weight="0.9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtDownloadPin"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="12dp"
+            android:alpha="0.33"
+            android:background="@color/black"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/btnSelect" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

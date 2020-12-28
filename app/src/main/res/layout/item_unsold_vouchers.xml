@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:clipToPadding="false"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/txtPinGroup"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="4dp"
+                android:gravity="center|start"
+                android:text="@string/text_pin_group"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/txtAmount"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtPinSerial"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="center|start"
+                android:text="@string/text_pin_serial"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/txtPinGroup"
+                app:layout_constraintEnd_toEndOf="@+id/txtPinGroup"
+                app:layout_constraintTop_toBottomOf="@+id/txtPinGroup" />
+
+            <TextView
+                android:id="@+id/txtTransactionId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="center|start"
+                android:text="@string/txt_transaction_id"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/txtPinGroup"
+                app:layout_constraintEnd_toEndOf="@+id/txtPinGroup"
+                app:layout_constraintTop_toBottomOf="@+id/txtPinSerial" />
+
+            <TextView
+                android:id="@+id/txtTransactionRefNo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="center|start"
+                android:text="@string/txt_transaction_ref_no"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/txtPinGroup"
+                app:layout_constraintEnd_toEndOf="@+id/txtPinGroup"
+                app:layout_constraintTop_toBottomOf="@+id/txtTransactionId" />
+
+            <TextView
+                android:id="@+id/txtDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="center|start"
+                android:text="@string/text_pin_purchase_date"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/txtPinGroup"
+                app:layout_constraintEnd_toEndOf="@+id/txtPinGroup"
+                app:layout_constraintTop_toBottomOf="@+id/txtTransactionRefNo" />
+
+            <TextView
+                android:id="@+id/txtAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="4dp"
+                android:gravity="center|start"
+                android:text="@string/dummy_amount"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btnPrint"
+                android:layout_width="66dp"
+                android:layout_height="32dp"
+                android:onClick="onClick"
+                android:text="@string/btn_reprint"
+                android:textSize="12sp"
+                android:translationX="6dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/txtSoldStatus"/>
+
+            <TextView
+                android:id="@+id/txtSoldStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_red_1"
+                android:gravity="center|start"
+                android:text="@string/txt_sold"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_10sp"
+                android:visibility="gone"
+                android:translationX="8dp"
+                android:translationY="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

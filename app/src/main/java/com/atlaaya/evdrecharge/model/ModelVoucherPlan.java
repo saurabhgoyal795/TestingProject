@@ -44,6 +44,13 @@ public class ModelVoucherPlan implements Parcelable {
     @SerializedName("quantity")
     private int selectedQty;
 
+    @SerializedName("assigned_quantity")
+    private int assignedQuantity;
+
+    public  ModelVoucherPlan(){
+
+    }
+
     protected ModelVoucherPlan(Parcel in) {
         id = in.readInt();
         operator_id = in.readInt();
@@ -59,6 +66,7 @@ public class ModelVoucherPlan implements Parcelable {
         type = in.readInt();
         operator = in.readParcelable(ModelOperator.class.getClassLoader());
         selectedQty = in.readInt();
+        assignedQuantity = in.readInt();
     }
 
     @Override
@@ -77,6 +85,7 @@ public class ModelVoucherPlan implements Parcelable {
         dest.writeInt(type);
         dest.writeParcelable(operator, flags);
         dest.writeInt(selectedQty);
+        dest.writeInt(assignedQuantity);
     }
 
     @Override
@@ -100,24 +109,48 @@ public class ModelVoucherPlan implements Parcelable {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getOperator_id() {
         return operator_id;
+    }
+
+    public void setOperator_id(int operator_id) {
+        this.operator_id = operator_id;
     }
 
     public double getAmount() {
         return amount;
     }
 
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
     public boolean isStatus() {
         return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public String getModified() {
         return modified;
     }
 
+    public void setModified(String modified) {
+        this.modified = modified;
+    }
+
     public String getCreated() {
         return created;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
     }
 
     public String getPin_group_no() {
@@ -155,5 +188,9 @@ public class ModelVoucherPlan implements Parcelable {
 
     public void setSelectedQty(int selectedQty) {
         this.selectedQty = selectedQty;
+    }
+
+    public int getAssignedQuantity() {
+        return assignedQuantity;
     }
 }

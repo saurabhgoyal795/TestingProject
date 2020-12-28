@@ -18,6 +18,34 @@
             android:title="@string/menu_balance" />
     </group>
     <group android:checkableBehavior="none"
+        android:id="@+id/eleventh">
+    <item
+        android:id="@+id/nav_purchase_vouchers"
+        android:icon="@drawable/ic_voucher"
+        android:title="@string/menu_purchase_vouchers" />
+    </group>
+    <group android:checkableBehavior="none"
+        android:id="@+id/twelth">
+    <item
+        android:id="@+id/nav_unsold_vouchers"
+        android:icon="@drawable/ic_voucher"
+        android:title="@string/menu_unsold_vouchers" />
+    </group>
+    <group android:checkableBehavior="none"
+        android:id="@+id/thirteen">
+    <item
+        android:id="@+id/nav_sold_vouchers"
+        android:icon="@drawable/ic_voucher"
+        android:title="@string/menu_sold_vouchers" />
+    </group>
+    <group android:checkableBehavior="none"
+        android:id="@+id/fourteen">
+    <item
+        android:id="@+id/nav_vouchers_stock"
+        android:icon="@drawable/ic_voucher"
+        android:title="@string/menu_voucher_stock" />
+    </group>
+    <group android:checkableBehavior="none"
         android:id="@+id/third">
         <item
             android:id="@+id/nav_transaction_history"

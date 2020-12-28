@@ -19,6 +19,9 @@ import androidx.core.content.ContextCompat;
 import com.atlaaya.evdrecharge.R;
 import com.atlaaya.evdrecharge.storage.SessionManager;
 import com.atlaaya.evdrecharge.utils.MyCustomToast;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
  * Base Activity for all app Activities
@@ -29,6 +32,24 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     //    public ProgressDialog progressDialog;
     private Dialog avlProgressDialog;
+
+
+    private DatabaseReference databaseReference;
+    private FirebaseFirestore firebaseFirestore;
+
+    public DatabaseReference databaseReference() {
+        if (databaseReference == null) {
+            databaseReference = FirebaseDatabase.getInstance().getReference();
+        }
+        return databaseReference;
+    }
+
+    public FirebaseFirestore firebaseFirestore() {
+        if (firebaseFirestore == null) {
+            firebaseFirestore = FirebaseFirestore.getInstance();
+        }
+        return firebaseFirestore;
+    }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
