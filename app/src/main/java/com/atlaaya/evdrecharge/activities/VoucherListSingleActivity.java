@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,19 +21,26 @@ import com.atlaaya.evdrecharge.apiPresenter.VoucherPlansPresenter;
 import com.atlaaya.evdrecharge.constant.AppConstants;
 import com.atlaaya.evdrecharge.databinding.ActivityVoucherListBinding;
 import com.atlaaya.evdrecharge.databinding.ItemRechargeAmountBinding;
+import com.atlaaya.evdrecharge.firebase.references.DocumentRefrence;
 import com.atlaaya.evdrecharge.listener.VoucherPlanListener;
 import com.atlaaya.evdrecharge.model.ModelOperator;
 import com.atlaaya.evdrecharge.model.ModelService;
 import com.atlaaya.evdrecharge.model.ModelUserInfo;
+import com.atlaaya.evdrecharge.model.ModelVoucher;
 import com.atlaaya.evdrecharge.model.ModelVoucherPlan;
 import com.atlaaya.evdrecharge.model.ResponseVoucherPlan;
+import com.atlaaya.evdrecharge.sqlite.DBHelper;
 import com.atlaaya.evdrecharge.storage.SessionManager;
 import com.atlaaya.evdrecharge.utils.CheckInternetConnection;
 import com.atlaaya.evdrecharge.utils.DialogClasses;
 import com.atlaaya.evdrecharge.utils.MyCustomToast;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.ListenerRegistration;
+import com.google.firebase.firestore.MetadataChanges;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -46,17 +54,22 @@ public class VoucherListSingleActivity extends BaseActivity implements
     private ModelOperator selectedOperator;
 
     private ArrayList<ModelVoucherPlan> rechargePlanList;
+    private DBHelper dbHelper;
+    private List<ModelVoucher> voucherUnSoldList;
 
     private VoucherPlansPresenter voucherPlansPresenter;
+    private ListenerRegistration listenerRegistration;
+    private ModelUserInfo userInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_voucher_list);
-
+        dbHelper = DBHelper.getInstance(this);
         voucherPlansPresenter = new VoucherPlansPresenter();
         voucherPlansPresenter.setView(this);
-
+        userInfo = SessionManager.getUserDetail(this);
+        voucherUnSoldList = new ArrayList<>();
         rechargePlanList = new ArrayList<>();
 
         if (getIntent().hasExtra("service")) {
@@ -80,6 +93,8 @@ public class VoucherListSingleActivity extends BaseActivity implements
 
     }
 
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -91,24 +106,57 @@ public class VoucherListSingleActivity extends BaseActivity implements
     @Override
     protected void onStart() {
         super.onStart();
-        callVoucherPlanListAPI();
+//        callVoucherPlanListAPI();
+        loadVouchersFirestore();
+    }
+    private int getStockUnsoldVoucherQtyAmount(double amount) {
+        int qty = 0;
+        for (ModelVoucher voucher : voucherUnSoldList) {
+            if (voucher.getVoucher_amount() == amount) {
+                qty++;
+            }
+        }
+        return qty;
+    }
+
+    @Override
+    protected void onPause() {
+        if (listenerRegistration != null)
+            listenerRegistration.remove();
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (listenerRegistration != null)
+            listenerRegistration.remove();
+        super.onDestroy();
     }
 
     private void setPlanData() {
+        rechargePlanList.clear();
+        rechargePlanList.addAll(dbHelper.getAllVoucherAmountsOperator(selectedOperator.getId()));
         binding.recyclerView.setAdapter(new RechargeAmountAdapter(this));
     }
 
     @Override
     public void onSuccess(ResponseVoucherPlan body) {
-        rechargePlanList.clear();
+//        rechargePlanList.clear();
+//        if (body.isRESPONSE()) {
+//            rechargePlanList.addAll(body.getVoucherPlanList());
+//        } else {
+//            MyCustomToast.showErrorAlert(this, body.getRESPONSE_MSG());
+//        }
+
         if (body.isRESPONSE()) {
-            rechargePlanList.addAll(body.getVoucherPlanList());
+            dbHelper.insertOrUpdateVoucherAmountsOperator(body.getVoucherPlanList(), selectedOperator.getId());
         } else {
             MyCustomToast.showErrorAlert(this, body.getRESPONSE_MSG());
         }
 
         setPlanData();
     }
+
 
     @Override
     public Context getContext() {
@@ -136,8 +184,28 @@ public class VoucherListSingleActivity extends BaseActivity implements
                 voucherPlansPresenter.voucherAmounts(this, map);
             }
         } else {
-            DialogClasses.showDialogInternetAlert(this);
+            setPlanData();
+//            DialogClasses.showDialogInternetAlert(this);
         }
+    }
+
+    private void loadVouchersFirestore() {
+        showProgressDialog();
+        listenerRegistration = DocumentRefrence.vouchersNonPrinted(firebaseFirestore(), userInfo.getId())
+                .addSnapshotListener(MetadataChanges.INCLUDE, (querySnapshot, e) -> {
+                    if (e != null) {
+                        Log.w("vouchers", "Listen error", e);
+                        dismissProgressDialog();
+                        return;
+                    }
+                    voucherUnSoldList.clear();
+                    for (DocumentSnapshot document : querySnapshot.getDocuments()) {
+                        ModelVoucher voucher = document.toObject(ModelVoucher.class);
+                        voucherUnSoldList.add(voucher);
+                    }
+                    dismissProgressDialog();
+                    callVoucherPlanListAPI();
+                });
     }
 
     public class RechargeAmountAdapter extends RecyclerView.Adapter<RechargeAmountAdapter.ViewHolder> {
@@ -162,6 +230,9 @@ public class VoucherListSingleActivity extends BaseActivity implements
 
             binding.txtAmount.setText(String.format("%s %s", rechargePlanList.get(position).getAmount(), getString(R.string.currency_ethiopia_unit)));
 
+            binding.txtStock.setText(getString(R.string.txt_stock, "---"));
+            int qty = getStockUnsoldVoucherQtyAmount(rechargePlanList.get(position).getAmount());
+            binding.txtStock.setText(getString(R.string.txt_stock, String.valueOf(qty)));
             int ttlQuantity = rechargePlanList.get(holder.getAdapterPosition()).getSelectedQty();
             if (ttlQuantity > 0) {
                 binding.etQuantity.setText(String.valueOf(ttlQuantity));

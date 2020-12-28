@@ -109,6 +109,15 @@ public class HomeActivity extends BaseActivity implements LifecycleObserver,
         filterConfigPresenter.setView(this);
 
         setSupportActionBar(binding.contentHome.toolbar);
+        binding.contentHome.layoutMain2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent;
+                intent = new Intent(HomeActivity.this, OperatorsActivity.class);
+                intent.putExtra("service", serviceList.get(0));
+                startActivity(intent);
+            }
+        });
 
 
         // Passing each menu ID as a set of Ids because each

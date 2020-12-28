@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".activities.HomeActivity">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
@@ -62,7 +62,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+                android:layout_below="@+id/appBarLayout"
                 android:id="@+id/availableBalanceLayout"
                 android:layout_marginTop="24dp"
                 android:layout_height="wrap_content">
@@ -107,23 +107,72 @@
                 android:text="@string/txt_mobile_recharge"
                 android:textSize="22sp"
                 android:typeface="serif"
+                android:layout_below="@+id/availableBalanceLayout"
                 android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@+id/availableBalanceLayout" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:clipToPadding="false"
                 android:padding="8dp"
+                android:layout_below="@+id/text1"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:layout_constraintTop_toBottomOf="@+id/text1"
-                app:layout_constraintBottom_toBottomOf="parent"
                 tools:listitem="@layout/item_service" />
 
+            <RelativeLayout
+                android:id="@+id/layoutMain2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_below="@+id/recyclerView"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="112dp"
+                    android:src="@drawable/box_10"
+                    android:scaleType="fitXY"
+                    android:layout_alignParentTop="true"
+                    />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageView
+                    android:id="@+id/ivLogo2"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:scaleType="fitXY"
+                    android:layout_margin="16dp"
+                    android:src="@drawable/voucher2" />
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+                <TextView
+                    android:id="@+id/txtName2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:text="@string/txt_voucher_recharge"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textAllCaps="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@id/ivLogo2"
+                    android:gravity="center_vertical"
+                    android:layout_centerHorizontal="true"
+                    android:typeface="serif"/>
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="112dp"
+                    android:scaleType="fitXY"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/arrowgroup" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
 </layout>
