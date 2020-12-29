@@ -21,7 +21,7 @@
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/log_img"
+            android:src="@drawable/merge3"
             android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -34,7 +34,7 @@
             android:layout_height="76dp"
             android:contentDescription="@string/app_name"
             android:padding="4dp"
-            android:src="@drawable/log_img"
+            android:src="@drawable/merge3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

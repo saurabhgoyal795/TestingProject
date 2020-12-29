@@ -252,7 +252,13 @@ public class VoucherListSingleActivity extends BaseActivity implements
             binding.txtTtlAmount.setVisibility(View.GONE);
             binding.TextInputLayout.setVisibility(View.GONE);
             binding.btnSelect.setVisibility(View.VISIBLE);
-
+            if (offline) {
+                if (qty == 0) {
+                    binding.btnSelect.setVisibility(View.GONE);
+                } else {
+                    binding.btnSelect.setVisibility(View.VISIBLE);
+                }
+            }
             binding.btnSelect.setOnClickListener(v -> {
                 Intent intent = new Intent(mContext, VoucherSelectedSinglePrintActivity.class);
                 intent.putExtra("service", selectedService);
