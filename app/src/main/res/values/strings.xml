@@ -34,6 +34,7 @@
     <string name="txt_mobile_recharge">Mobile Recharge</string>
     <string name="txt_retail_users">My Retail Users</string>
     <string name="txt_voucher_recharge">Voucher</string>
+    <string name="txt_purchase_offline">Print Offline Pin</string>
     <string name="txt_airtime_recharge">Top up</string>
     <string name="txt_select_operator">Select Operator</string>
     <string name="txt_select_amount">Select Recharge Amount</string>
@@ -100,7 +101,7 @@
 
 
     <string name="txt_duplicate">***Duplicate***</string>
-    <string name="txt_receipt_service_name">Ethio Telecom Prepaid E-Voucher</string>
+    <string name="txt_receipt_service_name">Alami Telecom</string>
     <string name="txt_receipt_retailer_name">Retailer Name : %1$s</string>
     <string name="txt_receipt_amount">Amount    : %1$s &currencyEthiopiaUnit;</string>
     <string name="txt_receipt_mobile">Mobile    : %1$s</string>

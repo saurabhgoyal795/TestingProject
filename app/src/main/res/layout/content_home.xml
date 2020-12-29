@@ -137,19 +137,11 @@
                     android:layout_alignParentTop="true"
                     />
 
-                <ImageView
-                    android:id="@+id/ivLogo2"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:scaleType="fitXY"
-                    android:layout_margin="16dp"
-                    android:src="@drawable/voucher2" />
-
                 <TextView
                     android:id="@+id/txtName2"
                     android:layout_width="wrap_content"
                     android:layout_height="80dp"
-                    android:text="@string/txt_voucher_recharge"
+                    android:text="@string/txt_purchase_offline"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textAllCaps="true"
@@ -157,7 +149,6 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
                     android:textStyle="bold"
-                    android:layout_toRightOf="@id/ivLogo2"
                     android:gravity="center_vertical"
                     android:layout_centerHorizontal="true"
                     android:typeface="serif"/>

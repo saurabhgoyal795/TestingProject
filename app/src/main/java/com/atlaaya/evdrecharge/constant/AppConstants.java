@@ -27,7 +27,7 @@ public class AppConstants {
                 "Txn Ref No: " + voucher.getTxn_ref_num() + "<br> " +
                 "Date: " + date + "<br> " +
                 "To Recharge your mobile :<br>\n  Dial *805*e-voucher pin#<br>" +
-                "Agent : " + userInfo.getFullName() + "<br> Powered By Highlight Trading" +
+                "Agent : " + userInfo.getFullName() + "<br> Powered By Alami Telecom" +
                 "</p>";
 
 
@@ -48,7 +48,7 @@ public class AppConstants {
                 "Txn Ref No: " + voucher.getTxn_ref_num() + "<br> " +
                 "Date: " + date + "<br> " +
                 "To Recharge your mobile :<br>\n  Dial *805*e-voucher pin#<br>" +
-                "Agent : " + userInfo.getFullName() + "<br> Powered By Highlight Trading" +
+                "Agent : " + userInfo.getFullName() + "<br> Powered By Alami Telecom" +
                 "</p>";
 
     }
@@ -67,7 +67,7 @@ public class AppConstants {
                 "Txn Ref No: " + voucher.getTxn_ref_num() + "<br> " +
                 "Date: " + date + "<br> " +
                 "To Recharge your mobile :<br>\n  Dial *805*e-voucher pin#<br>" +
-                "Agent : " + userInfo.getFullName() + "<br> Powered By Highlight Trading" +
+                "Agent : " + userInfo.getFullName() + "<br> Powered By Alami Telecom" +
                 "</p>";
 
     }

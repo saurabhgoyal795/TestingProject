@@ -21,20 +21,12 @@
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/ethio_telecom"
+            android:src="@drawable/log_img"
             android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/ivCompanyLogo"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:contentDescription="@string/app_name"
-            android:src="@drawable/logo_main"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+
 
         <ImageView
             android:id="@+id/ivNewLogo"
@@ -42,7 +34,7 @@
             android:layout_height="76dp"
             android:contentDescription="@string/app_name"
             android:padding="4dp"
-            android:src="@drawable/merge1"
+            android:src="@drawable/log_img"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

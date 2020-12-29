@@ -394,7 +394,7 @@ public class VoucherSuccessPrintActivity extends BaseActivity {
                         options.inTargetDensity = 160;
                         options.inDensity = 160;
                         if (bitmap == null) {
-                            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.merge2, options);
+                            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.log_img, options);
 
                         }
 
@@ -414,7 +414,7 @@ public class VoucherSuccessPrintActivity extends BaseActivity {
                                 "To Recharge your mobile :\n" +
                                 "Dial *805*e-voucher pin#\n" +
                                 "Agent : "+userInfo.getFullName()+"\n" +
-                                "Powered By Highlight Trading \n", 24, false, false);
+                                "Powered By Alami Telecom \n", 24, false, false);
                         SunmiPrintHelper.getInstance().printText("--------------------------------\n", 20, false, false);
                         SunmiPrintHelper.getInstance().feedPaper();
                     }
@@ -927,7 +927,7 @@ public class VoucherSuccessPrintActivity extends BaseActivity {
 
                 mUsbThermalPrinter.setGray(printGray);
 
-                Bitmap mBitmapLogo = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.merge1),
+                Bitmap mBitmapLogo = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.log_img),
                         386, 80, true);
 
                 mUsbThermalPrinter.setAlgin(UsbThermalPrinter.ALGIN_MIDDLE);
@@ -970,7 +970,7 @@ public class VoucherSuccessPrintActivity extends BaseActivity {
                             "To Recharge your mobile :\n" +
                             "Dial *805*e-voucher pin#\n" +
                             "Agent : "+userInfo.getFullName()+"\n" +
-                            "Powered By Highlight Trading");
+                            "Powered By Alami Telecom");
 
                     mUsbThermalPrinter.setTextSize(20);
                     mUsbThermalPrinter.setBold(true);
