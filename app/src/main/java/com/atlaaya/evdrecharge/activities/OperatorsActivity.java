@@ -169,7 +169,7 @@ public class OperatorsActivity extends BaseActivity implements OperatorsListener
         public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
             ItemService2Binding binding = (ItemService2Binding) holder.getBinding();
 
-            binding.ivLogo2.setImageResource(R.drawable.ethio_telecom);
+            binding.ivLogo2.setImageResource(R.drawable.voucher_4);
 
             binding.txtName2.setText(operatorList.get(position).getTitle());
 

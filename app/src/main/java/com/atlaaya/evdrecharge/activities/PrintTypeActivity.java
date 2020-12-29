@@ -58,6 +58,7 @@ public class PrintTypeActivity extends BaseActivity implements View.OnClickListe
     private boolean isValidBillNumber = false;
     ProgressDialog pDialog;
     private String printText;
+    boolean offline = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +74,9 @@ public class PrintTypeActivity extends BaseActivity implements View.OnClickListe
         }
         if (getIntent().hasExtra("operator")) {
             selectedOperator = getIntent().getParcelableExtra("operator");
+        }
+        if (getIntent().hasExtra("offline")) {
+            offline = false;
         }
         setSupportActionBar(binding.toolbar);
 
@@ -100,11 +104,17 @@ public class PrintTypeActivity extends BaseActivity implements View.OnClickListe
             Intent intent = new Intent(this, VoucherListSingleActivity.class);
             intent.putExtra("service", selectedService);
             intent.putExtra("operator", selectedOperator);
+            if (offline == false) {
+                intent.putExtra("offline", "false");
+            }
             startActivityForResult(intent, 200);
         } else if (v.getId() == R.id.cardViewBulkPrint) {
             Intent intent = new Intent(this, VoucherListActivity.class);
             intent.putExtra("service", selectedService);
             intent.putExtra("operator", selectedOperator);
+            if (offline == false) {
+                intent.putExtra("offline", "false");
+            }
             startActivityForResult(intent, 200);
         }
         if (v.getId() == R.id.btnSubmit) {

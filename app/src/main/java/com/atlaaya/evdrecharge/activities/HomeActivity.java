@@ -377,6 +377,7 @@ public class HomeActivity extends BaseActivity implements LifecycleObserver,
                 }
 //                intent.putExtra("type", AppConstants.KEY_TYPE_VOUCHER);
                 intent.putExtra("service", serviceList.get(position));
+
                 startActivity(intent);
             });
         }

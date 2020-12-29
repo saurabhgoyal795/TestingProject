@@ -170,6 +170,7 @@ public class RechargeOperatorActivity extends BaseActivity implements OperatorsL
                     }
                     intent.putExtra("operator", operatorList.get(position));
                     intent.putExtra("service", selectedService);
+                    intent.putExtra("offline", "false");
                     startActivityForResult(intent, 200);
                 }else{
                     MyCustomToast.showToast(mContext, "Something wrong. Please login again");

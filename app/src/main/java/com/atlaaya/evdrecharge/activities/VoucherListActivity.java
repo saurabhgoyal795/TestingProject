@@ -74,6 +74,7 @@ public class VoucherListActivity extends BaseActivity implements View.OnClickLis
 
     private DBHelper dbHelper;
     private ListenerRegistration listenerRegistration;
+    boolean offline = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +91,9 @@ public class VoucherListActivity extends BaseActivity implements View.OnClickLis
 
         if (getIntent().hasExtra("service")) {
             selectedService = getIntent().getParcelableExtra("service");
+        }
+        if (getIntent().hasExtra("offline")) {
+            offline = false;
         }
         if (getIntent().hasExtra("operator")) {
             selectedOperator = getIntent().getParcelableExtra("operator");
@@ -337,11 +341,15 @@ public class VoucherListActivity extends BaseActivity implements View.OnClickLis
         @Override
         public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
             ItemRechargeAmountBinding binding = (ItemRechargeAmountBinding) holder.getBinding();
-
-            binding.txtAmount.setText(String.format("%s %s", rechargePlanList.get(position).getAmount(), getString(R.string.currency_ethiopia_unit)));
-            binding.txtStock.setText(getString(R.string.txt_stock, "---"));
             int qty = getStockUnsoldVoucherQtyAmount(rechargePlanList.get(position).getAmount());
-            binding.txtStock.setText(getString(R.string.txt_stock, String.valueOf(qty)));
+            if (offline) {
+                binding.txtStock.setText(getString(R.string.txt_stock, "---"));
+                binding.txtStock.setText(getString(R.string.txt_stock, String.valueOf(qty)));
+            } else {
+                binding.txtStock.setVisibility(View.GONE);
+            }
+            binding.txtAmount.setText(String.format("%s %s", rechargePlanList.get(position).getAmount(), getString(R.string.currency_ethiopia_unit)));
+
 //            loadUnsoldVouchers(rechargePlanList.get(position).getAmount(), binding.txtStock);
 
             int ttlQuantity = rechargePlanList.get(holder.getAdapterPosition()).getSelectedQty();
