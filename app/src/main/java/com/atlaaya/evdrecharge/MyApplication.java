@@ -40,8 +40,7 @@ public class MyApplication extends MultiDexApplication {
         super.onCreate();
         mInstance = this;
         installTls12();
-
-        service = RestService.createRetrofitService(APIInterface.class, MyApplication.BASE_URL);
+        service = RestService.createRetrofitService(APIInterface.class, SessionManager.getUrl(getApplicationContext()));
 
 //        final FirebaseDatabase instance = FirebaseDatabase.getInstance();
 //        instance.setPersistenceEnabled(true);

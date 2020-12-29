@@ -3,6 +3,7 @@ package com.atlaaya.evdrecharge.storage;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.atlaaya.evdrecharge.MyApplication;
 import com.atlaaya.evdrecharge.model.ModelBalance;
 import com.atlaaya.evdrecharge.model.ModelFilterConfig;
 import com.atlaaya.evdrecharge.model.ModelUserInfo;
@@ -18,6 +19,7 @@ public class SessionManager {
     private Context mContext;
     public static String KEY_EMAIL  = "email";
     public static String KEY_PASSWORD = "password";
+    public static String KEY_URL  = "url";
 
     public SessionManager(Context context) {
         this.mContext = context;
@@ -35,6 +37,16 @@ public class SessionManager {
                 .putString(KEY_EMAIL, email)
                 .putString(KEY_PASSWORD, password)
                 .apply();
+    }
+    public static void saveUrl(Context context, String url) {
+        getSharedPref(context).edit()
+                .putString(KEY_URL, url)
+                .apply();
+    }
+
+    public static String getUrl(Context context) {
+        String json = getSharedPref(context).getString(KEY_URL, MyApplication.BASE_URL);
+        return json;
     }
 
 

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:paddingLeft="32dp"
+    android:paddingRight="32dp"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/selectservice"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        android:text="Select Service"/>
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/selectservice"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp" />
+        <Button
+            android:id="@+id/button_scan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinner"
+            android:layout_marginStart="@dimen/text_size_20sp"
+            android:layout_marginEnd="@dimen/text_size_20sp"
+            android:textAllCaps="false"
+            android:layout_marginBottom="16dp"
+            android:text="SUBMIT" />
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -4,8 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,7 +24,8 @@ import com.atlaaya.evdrecharge.api.APIInterface;
 import com.atlaaya.evdrecharge.api.RestService;
 import com.atlaaya.evdrecharge.storage.SessionManager;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    String[] vpntype = { "M2M sim", "Internet"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +40,66 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent;
                 if (SessionManager.getUserDetail(SplashActivity.this) == null) {
-                    MyApplication.BASE_URL = "https://highlightevd.com/evdlive/webservices/";
-                    APIInterface service = RestService.createRetrofitService(APIInterface.class, MyApplication.BASE_URL);
-                    MyApplication.getInstance().setAPIInterface(service);
+                    showDialog();
+                } else {
+                    Intent intent;
+                    intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+
+            }
+        }, 2000);
+    }
+
+    public void showDialog() {
+        LayoutInflater inflater = (LayoutInflater)
+                getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.popup_layout, null);
+        LinearLayout layout = new LinearLayout(this);
+        Spinner spin = popupView.findViewById(R.id.spinner);
+        spin.setOnItemSelectedListener(this);
+
+        //Creating the ArrayAdapter instance having the country list
+        ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,vpntype);
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //Setting the ArrayAdapter data on the Spinner
+        spin.setAdapter(aa);
+
+        // create the popup window
+        int width = LinearLayout.LayoutParams.MATCH_PARENT;
+        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        boolean focusable = true; // lets taps outside the popup also dismiss it
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+        // show the popup window
+        // which view you pass in doesn't matter, it is only used for the window tolken
+        popupWindow.showAtLocation(layout, Gravity.CENTER, 0, 0);
+
+        // dismiss the popup window when touched
+        popupView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Intent intent;
+                popupWindow.dismiss();
+                if (SessionManager.getUserDetail(SplashActivity.this) == null) {
+                    intent = new Intent(getApplicationContext(), LoginActivity.class);
+                } else {
+                    intent = new Intent(getApplicationContext(), HomeActivity.class);
+                }
+                Log.d("SplashTag", MyApplication.BASE_URL+"SplashTag2");
+                startActivity(intent);
+                finish();
+                return true;
+            }
+        });
+        popupView.findViewById(R.id.button_scan).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent;
+                popupWindow.dismiss();
+                if (SessionManager.getUserDetail(SplashActivity.this) == null) {
                     intent = new Intent(getApplicationContext(), LoginActivity.class);
                 } else {
                     intent = new Intent(getApplicationContext(), HomeActivity.class);
@@ -43,6 +108,25 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        }, 2000);
+        });
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        if (position == 0 ) {
+            MyApplication.BASE_URL = "https://highlightevd.com/evdlive/webservices/";
+            APIInterface service = RestService.createRetrofitService(APIInterface.class, MyApplication.BASE_URL);
+            MyApplication.getInstance().setAPIInterface(service);
+        } else {
+            MyApplication.BASE_URL = "https://demo77.mallxs.com/evdlive/webservices/";
+            APIInterface service = RestService.createRetrofitService(APIInterface.class, MyApplication.BASE_URL);
+            MyApplication.getInstance().setAPIInterface(service);
+        }
+        SessionManager.saveUrl(getApplicationContext(), MyApplication.BASE_URL);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
