@@ -19,6 +19,7 @@ import androidx.databinding.DataBindingUtil;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
+import com.atlaaya.evdrecharge.MyApplication;
 import com.atlaaya.evdrecharge.R;
 import com.atlaaya.evdrecharge.api.APIInterface;
 import com.atlaaya.evdrecharge.apiPresenter.CalculateElectricityPresenter;
@@ -163,7 +164,7 @@ public class PrintTypeActivity extends BaseActivity implements View.OnClickListe
                 map.put("bill_id", RequestBody.create(MediaType.parse("multipart/form-data"), "" + binding.textInputBillId.getEditText().getText().toString().trim()));
                 map.put("check_response", RequestBody.create(MediaType.parse("multipart/form-data"), "" + 1));
                 map.put("user_id", RequestBody.create(MediaType.parse("multipart/form-data"), "" + userInfo.getId()));
-                new JSONtask().execute(APIInterface.BASE_URL +"submitbill");
+                new JSONtask().execute(MyApplication.BASE_URL +"submitbill");
                 //presenter.submitElectricity(this, map);
             }
 

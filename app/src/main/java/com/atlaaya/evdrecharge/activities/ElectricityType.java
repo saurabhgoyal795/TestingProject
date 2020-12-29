@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.atlaaya.evdrecharge.MyApplication;
 import com.atlaaya.evdrecharge.R;
 import com.atlaaya.evdrecharge.api.APIInterface;
 import com.atlaaya.evdrecharge.apiPresenter.CalculateElectricityPresenter;
@@ -154,7 +155,7 @@ public class ElectricityType extends BaseActivity implements View.OnClickListene
                 map.put("bill_id", RequestBody.create(MediaType.parse("multipart/form-data"), "" + binding.textInputBillId.getEditText().getText().toString().trim()));
                 map.put("check_response", RequestBody.create(MediaType.parse("multipart/form-data"), "" + 1));
                 map.put("user_id", RequestBody.create(MediaType.parse("multipart/form-data"), "" + userInfo.getId()));
-                new JSONtask().execute(APIInterface.BASE_URL +"submitbill");
+                new JSONtask().execute(MyApplication.BASE_URL +"submitbill");
                 //presenter.submitElectricity(this, map);
             }
 

@@ -33,6 +33,7 @@ public class MyApplication extends MultiDexApplication {
     public static synchronized MyApplication getInstance() {
         return mInstance;
     }
+    public static String BASE_URL = "https://demo77.mallxs.com/evdlive/webservices/"; // Live
 
     @Override
     public void onCreate() {
@@ -40,7 +41,7 @@ public class MyApplication extends MultiDexApplication {
         mInstance = this;
         installTls12();
 
-        service = RestService.createRetrofitService(APIInterface.class, APIInterface.BASE_URL);
+        service = RestService.createRetrofitService(APIInterface.class, MyApplication.BASE_URL);
 
 //        final FirebaseDatabase instance = FirebaseDatabase.getInstance();
 //        instance.setPersistenceEnabled(true);
@@ -64,6 +65,10 @@ public class MyApplication extends MultiDexApplication {
 
     public APIInterface getAPIInterface() {
         return service;
+    }
+
+    public void setAPIInterface(APIInterface service) {
+        this.service = service;
     }
 
     public void enableVoucherSync() {

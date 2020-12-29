@@ -29,7 +29,7 @@ import retrofit2.http.PartMap;
 
 public interface APIInterface {
 
-    String BASE_URL = "https://demo77.mallxs.com/evdlive/webservices/"; // Live
+//    String BASE_URL = "https://demo77.mallxs.com/evdlive/webservices/"; // Live
 //    String BASE_URL = "https://evdsoftware.com/demo/webservices/"; // For Test
 //    String BASE_URL = "https://evdsoftware.com/highlight/webservices/"; // For Test
 //    String BASE_URL = "https://evdsoftware.com/ccf/webservices/"; // For Test
