@@ -701,7 +701,7 @@ public class BluetoothMainActivity extends AppCompatActivity implements OnClickL
     if ((lang.compareTo("en")) == 0) {
 
 //            Bitmap mBitmap = BitmapFactory.decodeFile(picturePath);
-        Bitmap mBitmapLogo = BitmapFactory.decodeResource(getResources(), R.drawable.merge1);
+        Bitmap mBitmapLogo = BitmapFactory.decodeResource(getResources(), R.drawable.merge3);
         Bitmap mBitmapSeprator = BitmapFactory.decodeResource(getResources(), R.drawable.dashes_img);
         int nMode = 0;
         int nPaperWidth = 384;
@@ -787,7 +787,7 @@ public class BluetoothMainActivity extends AppCompatActivity implements OnClickL
             SendDataByte("To Recharge your mobile :\n".getBytes());
             SendDataByte("Dial *805*e-voucher pin#\n".getBytes());
             SendDataByte(("Agent : "+userInfo.getFullName()+"\n").getBytes());
-            SendDataByte("Powered By Highlight Trading\n".getBytes());
+            SendDataByte("Powered By Alami Telecomg\n".getBytes());
 
             if (dataSeprator != null) {
                 SendDataByte(dataSeprator);

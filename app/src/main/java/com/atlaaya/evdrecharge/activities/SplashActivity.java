@@ -26,6 +26,7 @@ import com.atlaaya.evdrecharge.storage.SessionManager;
 
 public class SplashActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     String[] vpntype = { "M2M sim", "Internet"};
+    String[] printerType = { "Pos Machine","Mobile" };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,12 +61,17 @@ public class SplashActivity extends AppCompatActivity implements AdapterView.OnI
         LinearLayout layout = new LinearLayout(this);
         Spinner spin = popupView.findViewById(R.id.spinner);
         spin.setOnItemSelectedListener(this);
+        Spinner spin1 = popupView.findViewById(R.id.spinnerprinter);
+        spin1.setOnItemSelectedListener(this);
 
         //Creating the ArrayAdapter instance having the country list
         ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,vpntype);
+        ArrayAdapter aa1 = new ArrayAdapter(this,android.R.layout.simple_spinner_item,printerType);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        aa1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Setting the ArrayAdapter data on the Spinner
         spin.setAdapter(aa);
+        spin1.setAdapter(aa1);
 
         // create the popup window
         int width = LinearLayout.LayoutParams.MATCH_PARENT;
@@ -113,16 +119,24 @@ public class SplashActivity extends AppCompatActivity implements AdapterView.OnI
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if (position == 0 ) {
-            MyApplication.BASE_URL = "https://highlightevd.com/evdlive/webservices/";
-            APIInterface service = RestService.createRetrofitService(APIInterface.class, MyApplication.BASE_URL);
-            MyApplication.getInstance().setAPIInterface(service);
-        } else {
-            MyApplication.BASE_URL = "https://demo77.mallxs.com/evdlive/webservices/";
-            APIInterface service = RestService.createRetrofitService(APIInterface.class, MyApplication.BASE_URL);
-            MyApplication.getInstance().setAPIInterface(service);
+        if(parent.getId()== R.id.spinner) {
+            if (position == 0) {
+                MyApplication.BASE_URL = "https://196.189.116.116/demo/Webservices/";
+                APIInterface service = RestService.createRetrofitService(APIInterface.class, MyApplication.BASE_URL);
+                MyApplication.getInstance().setAPIInterface(service);
+            } else {
+                MyApplication.BASE_URL = "https://196.189.116.116/demo/Webservices/";
+                APIInterface service = RestService.createRetrofitService(APIInterface.class, MyApplication.BASE_URL);
+                MyApplication.getInstance().setAPIInterface(service);
+            }
+            SessionManager.saveUrl(getApplicationContext(), MyApplication.BASE_URL);
+        }else{
+            if(position==0){
+                SessionManager.savePrinter(getApplicationContext(), "pos");
+            }else{
+                SessionManager.savePrinter(getApplicationContext(), "mobile");
+            }
         }
-        SessionManager.saveUrl(getApplicationContext(), MyApplication.BASE_URL);
     }
 
     @Override

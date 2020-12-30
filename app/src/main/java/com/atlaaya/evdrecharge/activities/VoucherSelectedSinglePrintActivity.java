@@ -549,7 +549,7 @@ public class VoucherSelectedSinglePrintActivity extends BaseActivity implements 
         } else {
 
             VoucherSuccessPrintActivity.setPrintVoucherContentArrayList(voucherPurchasedArrayList);
-            Intent i = new Intent(getApplicationContext(), VoucherSuccessPrintActivity.class);
+            Intent i = new Intent(getApplicationContext(), BluetoothMainActivity.class);
 //            i.putExtra("path", picturePath);
             i.putExtra("path", "");
             startActivity(i);

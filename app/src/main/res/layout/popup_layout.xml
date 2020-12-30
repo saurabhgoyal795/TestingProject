@@ -25,11 +25,30 @@
             android:layout_below="@+id/selectservice"
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/selectprinter"
+            android:gravity="center"
+            android:layout_below="@+id/spinner"
+            android:layout_marginTop="16dp"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            android:text="Select Printer"/>
+
+        <Spinner
+            android:id="@+id/spinnerprinter"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/selectprinter"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp" />
         <Button
             android:id="@+id/button_scan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/spinner"
+            android:layout_below="@+id/spinnerprinter"
             android:layout_marginStart="@dimen/text_size_20sp"
             android:layout_marginEnd="@dimen/text_size_20sp"
             android:textAllCaps="false"

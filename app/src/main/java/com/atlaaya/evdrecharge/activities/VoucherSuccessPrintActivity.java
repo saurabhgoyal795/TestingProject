@@ -134,7 +134,7 @@ public class VoucherSuccessPrintActivity extends BaseActivity {
     private File fileReceipt, fileReceiptDuplicate;
     private String shareReceiptAction = "";
     private boolean printDuplicate = false;
-
+    private String printType = "";
     private ModelUserInfo userInfo;
 
     public static ArrayList<ModelVoucherPurchased> getPrintVoucherContentArrayList() {
@@ -160,7 +160,7 @@ public class VoucherSuccessPrintActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_voucher_success);
-
+        printType =  SessionManager.getPrinter(this);
         userInfo = SessionManager.getUserDetail(this);
 
         if (getIntent().hasExtra("plan")) {
@@ -198,71 +198,77 @@ public class VoucherSuccessPrintActivity extends BaseActivity {
             binding.text2.setVisibility(View.INVISIBLE);
             binding.toolbar.setTitle(getString(R.string.txt_voucher_information));
         }
+        if(printType.equals("mobile")) {
+            setReceiptInfoMobile();
+        }else if(printType.equals("pos")){
+            setReceiptInfo();
+        }
 
-        setReceiptInfo();
+        if(printType.equals("mobile")) {
+            if (AppConstants.IS_POS_APK) {
+                printby = "usb";
 
-//        if (AppConstants.IS_POS_APK) {
-//            printby = "usb";
-//
-//            handler = new MyHandler();
-//
-//            IntentFilter pIntentFilter = new IntentFilter();
-//            pIntentFilter.addAction(Intent.ACTION_BATTERY_CHANGED);
-//            pIntentFilter.addAction("android.intent.action.BATTERY_CAPACITY_EVENT");
-//            registerReceiver(printReceive, pIntentFilter);
-//
-//            dialog = new ProgressDialog(this);
-//            dialog.setTitle(R.string.idcard_czz);
-//            dialog.setMessage(getText(R.string.watting));
-//            dialog.setCancelable(false);
-//            dialog.show();
-//
-//            runOnUiThread(() -> new Thread(() -> {
-//                try {
-//                    mUsbThermalPrinter.start(0);
-//                    mUsbThermalPrinter.reset();
-//                    printVersion = mUsbThermalPrinter.getVersion();
-//                    int st = mUsbThermalPrinter.checkStatus();
-//                    Log.e("yw", "status" + " " + st);
-//                } catch (TelpoException e) {
-//                    Log.e("yw", "status  111" + " " + e.toString());
-//                    e.printStackTrace();
-//                } finally {
-//                    if (printVersion != null) {
-//                        Message message = new Message();
-//                        message.what = PRINTVERSION;
-//                        message.obj = "1";
-//                        handler.sendMessage(message);
-//                    } else {
-//                        Message message = new Message();
-//                        message.what = PRINTVERSION;
-//                        message.obj = "0";
-//                        handler.sendMessage(message);
-//                    }
-//                }
-//            }).start());
-//        } else {
-//            printby = "";
-//        }
+                handler = new MyHandler();
+
+                IntentFilter pIntentFilter = new IntentFilter();
+                pIntentFilter.addAction(Intent.ACTION_BATTERY_CHANGED);
+                pIntentFilter.addAction("android.intent.action.BATTERY_CAPACITY_EVENT");
+                registerReceiver(printReceive, pIntentFilter);
+
+                dialog = new ProgressDialog(this);
+                dialog.setTitle(R.string.idcard_czz);
+                dialog.setMessage(getText(R.string.watting));
+                dialog.setCancelable(false);
+                dialog.show();
+
+                runOnUiThread(() -> new Thread(() -> {
+                    try {
+                        mUsbThermalPrinter.start(0);
+                        mUsbThermalPrinter.reset();
+                        printVersion = mUsbThermalPrinter.getVersion();
+                        int st = mUsbThermalPrinter.checkStatus();
+                        Log.e("yw", "status" + " " + st);
+                    } catch (TelpoException e) {
+                        Log.e("yw", "status  111" + " " + e.toString());
+                        e.printStackTrace();
+                    } finally {
+                        if (printVersion != null) {
+                            Message message = new Message();
+                            message.what = PRINTVERSION;
+                            message.obj = "1";
+                            handler.sendMessage(message);
+                        } else {
+                            Message message = new Message();
+                            message.what = PRINTVERSION;
+                            message.obj = "0";
+                            handler.sendMessage(message);
+                        }
+                    }
+                }).start());
+            } else {
+                printby = "";
+            }
+        }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_print_voucher, menu);
-//
-//        MenuItem action_share = menu.findItem(R.id.action_share);
-//        action_share.setVisible(false);
-//
-//        MenuItem action_print = menu.findItem(R.id.action_print);
-//        MenuItem bluetooth_action_print = menu.findItem(R.id.bluetooth_action_print);
-//        if (AppConstants.IS_POS_APK) {
-//            action_print.setVisible(true);
-//            bluetooth_action_print.setVisible(false);
-//        } else {
-//            action_print.setVisible(false);
-//            bluetooth_action_print.setVisible(true);
-//        }
+        if(printType.equals("mobile")) {
+            getMenuInflater().inflate(R.menu.menu_print_voucher, menu);
 
+            MenuItem action_share = menu.findItem(R.id.action_share);
+            action_share.setVisible(false);
+
+            MenuItem action_print = menu.findItem(R.id.action_print);
+            MenuItem bluetooth_action_print = menu.findItem(R.id.bluetooth_action_print);
+            if (AppConstants.IS_POS_APK) {
+                action_print.setVisible(true);
+                bluetooth_action_print.setVisible(false);
+            } else {
+                action_print.setVisible(false);
+                bluetooth_action_print.setVisible(true);
+            }
+        }
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -433,6 +439,19 @@ public class VoucherSuccessPrintActivity extends BaseActivity {
             });
         }
     }
+
+    private void setReceiptInfoMobile() {
+        if (voucherPurchasedArrayList != null) {
+            runOnUiThread(() -> {
+                System.gc();
+
+                binding.recyclerView.setAdapter(new NonPrintableAdapter(getApplicationContext()));
+
+                System.gc();
+            });
+        }
+    }
+
 
     private void getReceipt() {
         if (Build.VERSION.SDK_INT >= 23 && !checkReadWritePermission()) {
@@ -669,20 +688,28 @@ public class VoucherSuccessPrintActivity extends BaseActivity {
             } else {
                 binding.txtDuplicate.setVisibility(View.GONE);
             }*/
+            if(printType.equals("mobile")) {
+                if (isPrintable) {
+                    holder.txtPrintData.setText(Html.fromHtml(data.getPrintable_text()));
+                } else {
+                    holder.txtPrintData.setText(Html.fromHtml(data.getNon_printable_text()));
+                }
+            }
 
+           else {
 
-            if (isPrintable) {
+                if (isPrintable) {
 //                holder.txtPrintData.setText(Html.fromHtml(data.getPrintable_text()));
-                holder.txtPrintData.setText(Html.fromHtml(AppConstants.getPinPrintableData(data.getVoucher(), userInfo)));
-            } else {
+                    holder.txtPrintData.setText(Html.fromHtml(AppConstants.getPinPrintableData(data.getVoucher(), userInfo)));
+                } else {
 //                holder.txtPrintData.setText(Html.fromHtml(data.getNon_printable_text()));
-                holder.txtPrintData.setText(Html.fromHtml(AppConstants.getPinNonPrintableData(data.getVoucher(), userInfo)));
-                String content = String.valueOf(Html.fromHtml(AppConstants.getPinNonPrintableText(data.getVoucher(), userInfo)));
+                    holder.txtPrintData.setText(Html.fromHtml(AppConstants.getPinNonPrintableData(data.getVoucher(), userInfo)));
+                    String content = String.valueOf(Html.fromHtml(AppConstants.getPinNonPrintableText(data.getVoucher(), userInfo)));
 
 
-                if (!BluetoothUtil.isBlueToothPrinter) {
-                   // SunmiPrintHelper.getInstance().setAlign(1);
-                  //  mUsbThermalPrinter.printLogo(mBitmapLogo, true);
+                    if (!BluetoothUtil.isBlueToothPrinter) {
+                        // SunmiPrintHelper.getInstance().setAlign(1);
+                        //  mUsbThermalPrinter.printLogo(mBitmapLogo, true);
 
 //                    if(printDuplicate){
 //                        mUsbThermalPrinter.setTextSize(23);
@@ -714,6 +741,7 @@ public class VoucherSuccessPrintActivity extends BaseActivity {
 //                            "Powered By Highlight Trading \n", 24, false, false);
 //                    SunmiPrintHelper.getInstance().printText("--------------------------------\n", 20, false, false);
 //                    SunmiPrintHelper.getInstance().feedPaper();
+                    }
                 }
             }
             if (isDuplicate) {
@@ -797,13 +825,20 @@ public class VoucherSuccessPrintActivity extends BaseActivity {
             System.gc();
 
             ModelVoucherPurchased  data = voucherPurchasedArrayList.get(position);
-
-            if (isPrintable) {
+            if(printType.equals("mobile")) {
+                if (isPrintable) {
+                    holder.txtPrintData.setText(Html.fromHtml(data.getPrintable_text()));
+                } else {
+                    holder.txtPrintData.setText(Html.fromHtml(data.getNon_printable_text()));
+                }
+            }else {
+                if (isPrintable) {
 //                holder.txtPrintData.setText(Html.fromHtml(data.getPrintable_text()));
-                holder.txtPrintData.setText(Html.fromHtml(AppConstants.getPinPrintableData(data.getVoucher(), userInfo)));
-            } else {
+                    holder.txtPrintData.setText(Html.fromHtml(AppConstants.getPinPrintableData(data.getVoucher(), userInfo)));
+                } else {
 //                holder.txtPrintData.setText(Html.fromHtml(data.getNon_printable_text()));
-                holder.txtPrintData.setText(Html.fromHtml(AppConstants.getPinNonPrintableData(data.getVoucher(), userInfo)));
+                    holder.txtPrintData.setText(Html.fromHtml(AppConstants.getPinNonPrintableData(data.getVoucher(), userInfo)));
+                }
             }
             if (isDuplicate) {
                 holder.txtDuplicate.setVisibility(View.VISIBLE);

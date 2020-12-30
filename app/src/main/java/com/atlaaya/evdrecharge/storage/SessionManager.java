@@ -20,6 +20,7 @@ public class SessionManager {
     public static String KEY_EMAIL  = "email";
     public static String KEY_PASSWORD = "password";
     public static String KEY_URL  = "url";
+    public static String KEY_PRINTER  = "printer";
 
     public SessionManager(Context context) {
         this.mContext = context;
@@ -43,6 +44,18 @@ public class SessionManager {
                 .putString(KEY_URL, url)
                 .apply();
     }
+
+    public static void savePrinter(Context context, String url) {
+        getSharedPref(context).edit()
+                .putString(KEY_PRINTER, url)
+                .apply();
+    }
+
+    public static String getPrinter(Context context) {
+        String json = getSharedPref(context).getString(KEY_PRINTER, null);
+        return json;
+    }
+
 
     public static String getUrl(Context context) {
         String json = getSharedPref(context).getString(KEY_URL, MyApplication.BASE_URL);

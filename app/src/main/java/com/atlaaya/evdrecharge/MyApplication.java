@@ -33,7 +33,7 @@ public class MyApplication extends MultiDexApplication {
     public static synchronized MyApplication getInstance() {
         return mInstance;
     }
-    public static String BASE_URL = "https://demo77.mallxs.com/evdlive/webservices/"; // Live
+    public static String BASE_URL = "https://196.189.116.116/demo/Webservices/"; // Live
 
     @Override
     public void onCreate() {
