@@ -54,11 +54,12 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/textInputUserIdLayout"
         android:id="@+id/passwordText"
-        android:text="PASSWORD"
+        android:text="@string/hint_password"
         android:paddingLeft="16dp"
         android:textStyle="bold|italic"
         android:layout_marginTop="16dp"
         android:textSize="16sp"
+        android:textAllCaps="true"
         android:textColor="@color/white"/>
     <LinearLayout
         android:id="@+id/textInputPasswordLayout"

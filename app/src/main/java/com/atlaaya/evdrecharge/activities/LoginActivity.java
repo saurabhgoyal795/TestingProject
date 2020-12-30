@@ -18,8 +18,12 @@ import com.atlaaya.evdrecharge.model.ResponseLogin;
 import com.atlaaya.evdrecharge.storage.SessionManager;
 import com.atlaaya.evdrecharge.utils.CheckInternetConnection;
 import com.atlaaya.evdrecharge.utils.DialogClasses;
+import com.atlaaya.evdrecharge.utils.LanguageUtil;
 import com.atlaaya.evdrecharge.utils.MyCustomToast;
 import com.atlaaya.evdrecharge.utils.Utility;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Objects;
@@ -50,6 +54,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         binding.btnLogin.setOnClickListener(this);
 
         Utility.getDeviceDensityString(this);
+        LanguageUtil.setTextViewTextByLanguage(getContext(),binding.passwordText, "hint_password");
+
 
     }
 

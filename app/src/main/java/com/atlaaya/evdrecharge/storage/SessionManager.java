@@ -20,6 +20,7 @@ public class SessionManager {
     public static String KEY_EMAIL  = "email";
     public static String KEY_PASSWORD = "password";
     public static String KEY_URL  = "url";
+    public static String KEY_LANGUAGE_DATA = "{}";
     public static String KEY_PRINTER  = "printer";
 
     public SessionManager(Context context) {
@@ -43,6 +44,17 @@ public class SessionManager {
         getSharedPref(context).edit()
                 .putString(KEY_URL, url)
                 .apply();
+    }
+
+    public static void saveLanguageData(Context context, String data) {
+        getSharedPref(context).edit()
+                .putString(KEY_LANGUAGE_DATA, data)
+                .apply();
+    }
+
+    public static String getLanguageData(Context context) {
+        String json = getSharedPref(context).getString(KEY_LANGUAGE_DATA, "{}");
+        return json;
     }
 
     public static void savePrinter(Context context, String url) {

@@ -1,5 +1,6 @@
 package com.atlaaya.evdrecharge.api;
 
+import com.atlaaya.evdrecharge.model.LanguageServices;
 import com.atlaaya.evdrecharge.model.ResponseBalance;
 import com.atlaaya.evdrecharge.model.ResponseBank;
 import com.atlaaya.evdrecharge.model.ResponseBankAccount;
@@ -155,6 +156,11 @@ public interface APIInterface {
     @POST("android_filters_config")
     @Multipart
     Call<ResponseFilterConfig> filterConfig(@PartMap() Map<String, RequestBody> partMap);
+
+    @POST("getlanguage")
+    @Multipart
+    Call<LanguageServices> getLanguageStrings(@PartMap() Map<String, RequestBody> partMap);
+
 
 
 }

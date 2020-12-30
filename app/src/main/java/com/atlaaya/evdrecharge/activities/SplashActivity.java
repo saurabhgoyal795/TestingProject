@@ -1,5 +1,6 @@
 package com.atlaaya.evdrecharge.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,11 +23,25 @@ import com.atlaaya.evdrecharge.MyApplication;
 import com.atlaaya.evdrecharge.R;
 import com.atlaaya.evdrecharge.api.APIInterface;
 import com.atlaaya.evdrecharge.api.RestService;
+import com.atlaaya.evdrecharge.apiPresenter.LanguagePresenter;
+import com.atlaaya.evdrecharge.apiPresenter.ServicesPresenter;
+import com.atlaaya.evdrecharge.constant.AppConstants;
+import com.atlaaya.evdrecharge.listener.LanguageListener;
+import com.atlaaya.evdrecharge.model.LanguageServices;
+import com.atlaaya.evdrecharge.model.ResponseServices;
 import com.atlaaya.evdrecharge.storage.SessionManager;
+import com.atlaaya.evdrecharge.utils.CheckInternetConnection;
+import com.atlaaya.evdrecharge.utils.DialogClasses;
 
-public class SplashActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+import java.util.HashMap;
+
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+
+public class SplashActivity extends BaseActivity implements AdapterView.OnItemSelectedListener, LanguageListener {
     String[] vpntype = { "M2M sim", "Internet"};
     String[] printerType = { "Pos Machine","Mobile" };
+    private LanguagePresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +53,8 @@ public class SplashActivity extends AppCompatActivity implements AdapterView.OnI
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
 
+        presenter = new LanguagePresenter();
+        presenter.setView(this);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -52,6 +69,17 @@ public class SplashActivity extends AppCompatActivity implements AdapterView.OnI
 
             }
         }, 2000);
+    }
+
+
+    private void callServiceAPI() {
+        if (CheckInternetConnection.isInternetConnection(this)) {
+            HashMap<String, RequestBody> map = new HashMap<>();
+            map.put("token", RequestBody.create(MediaType.parse("multipart/form-data"), AppConstants.App_TOKEN));
+            presenter.servicesList(this, map);
+        } else {
+            DialogClasses.showDialogInternetAlert(this);
+        }
     }
 
     public void showDialog() {
@@ -142,5 +170,22 @@ public class SplashActivity extends AppCompatActivity implements AdapterView.OnI
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        callServiceAPI();
+    }
+
+    @Override
+    public void onSuccess(LanguageServices body) {
+        SessionManager.saveLanguageData(getApplicationContext(), body.getRESPONSE().toString());
+        Log.d("lannguagesuccess", ""+body.getRESPONSE());
+    }
+
+    @Override
+    public Context getContext() {
+        return null;
     }
 }
