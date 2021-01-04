@@ -180,7 +180,7 @@ public class SplashActivity extends BaseActivity implements AdapterView.OnItemSe
 
     @Override
     public void onSuccess(LanguageServices body) {
-        SessionManager.saveLanguageData(getApplicationContext(), body.getRESPONSE().toString());
+        SessionManager.saveLanguageData(getApplicationContext(), body.getRESPONSE());
         Log.d("lannguagesuccess", ""+body.getRESPONSE());
     }
 

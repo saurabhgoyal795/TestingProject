@@ -55,6 +55,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
         Utility.getDeviceDensityString(this);
         LanguageUtil.setTextViewTextByLanguage(getContext(),binding.passwordText, "hint_password");
+//        LanguageUtil.setTextViewTextByLanguage(getContext(),binding.usernameText, "title_profile");
 
 
     }

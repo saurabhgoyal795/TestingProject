@@ -13,9 +13,9 @@ import java.util.List;
 public class LanguageServices {
 
     @SerializedName("RESPONSE")
-    private JSONObject RESPONSE;
+    private String RESPONSE;
 
-    public JSONObject getRESPONSE() {
+    public String getRESPONSE() {
         return RESPONSE;
     }
 
