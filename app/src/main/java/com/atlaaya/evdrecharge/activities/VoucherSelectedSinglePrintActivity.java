@@ -39,18 +39,25 @@ import com.atlaaya.evdrecharge.MyApplication;
 import com.atlaaya.evdrecharge.R;
 import com.atlaaya.evdrecharge.constant.AppConstants;
 import com.atlaaya.evdrecharge.databinding.ActivityVoucherSelectedSinglePrintBinding;
+import com.atlaaya.evdrecharge.firebase.references.DocumentRefrence;
 import com.atlaaya.evdrecharge.model.ModelOperator;
 import com.atlaaya.evdrecharge.model.ModelService;
 import com.atlaaya.evdrecharge.model.ModelUserInfo;
+import com.atlaaya.evdrecharge.model.ModelVoucher;
 import com.atlaaya.evdrecharge.model.ModelVoucherPlan;
 import com.atlaaya.evdrecharge.model.ModelVoucherPurchased;
 import com.atlaaya.evdrecharge.model.ResponseVoucherPurchaseBulk;
 import com.atlaaya.evdrecharge.model.ResponseVoucherPurchaseBulkOrder;
 import com.atlaaya.evdrecharge.storage.SessionManager;
+import com.atlaaya.evdrecharge.utils.ChangeDateFormat;
 import com.atlaaya.evdrecharge.utils.CheckInternetConnection;
 import com.atlaaya.evdrecharge.utils.DialogClasses;
 import com.atlaaya.evdrecharge.utils.MyCustomToast;
 import com.atlaaya.evdrecharge.utils.Utility;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.ListenerRegistration;
+import com.google.firebase.firestore.WriteBatch;
 import com.telpo.tps550.api.TelpoException;
 import com.telpo.tps550.api.printer.UsbThermalPrinter;
 
@@ -60,6 +67,7 @@ import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeoutException;
 
 import okhttp3.MediaType;
@@ -92,12 +100,15 @@ public class VoucherSelectedSinglePrintActivity extends BaseActivity implements 
 //    private File fileReceipt;
 //    private String picturePath;
 //    private String shareReceiptAction = "";
+    private List<ModelVoucher> voucherUnSoldList;
     private MyHandler handler;
     private ProgressDialog progressDialog, dialog;
     private UsbThermalPrinter mUsbThermalPrinter = new UsbThermalPrinter(this);
     private String Result;
     private Boolean nopaper = false;
+    private Boolean mobileStatus = false;
     private boolean LowBattery = false;
+    private ListenerRegistration listenerRegistration;
     private final BroadcastReceiver printReceive = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -146,7 +157,7 @@ public class VoucherSelectedSinglePrintActivity extends BaseActivity implements 
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_voucher_selected_single_print);
         userInfo = SessionManager.getUserDetail(this);
-
+        voucherUnSoldList = new ArrayList<>();
         if (getIntent().hasExtra("plan")) {
             selectedPlan = getIntent().getParcelableExtra("plan");
         }
@@ -158,6 +169,9 @@ public class VoucherSelectedSinglePrintActivity extends BaseActivity implements 
         }
         if (getIntent().hasExtra("operator")) {
             selectedOperator = getIntent().getParcelableExtra("operator");
+        }
+        if (getIntent().hasExtra("mobileStatus")) {
+            mobileStatus = getIntent().getBooleanExtra("mobileStatus",false);
         }
         setSupportActionBar(binding.toolbar);
 
@@ -272,6 +286,8 @@ public class VoucherSelectedSinglePrintActivity extends BaseActivity implements 
             progressDialog.dismiss();
             progressDialog = null;
         }
+        if (listenerRegistration != null)
+            listenerRegistration.remove();
         try {
             unregisterReceiver(printReceive);
             if (mUsbThermalPrinter != null)
@@ -281,92 +297,222 @@ public class VoucherSelectedSinglePrintActivity extends BaseActivity implements 
         }
         super.onDestroy();
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        loadVouchersFirestore();
+    }
+
+
+    @Override
+    protected void onPause() {
+        if (listenerRegistration != null)
+            listenerRegistration.remove();
+        super.onPause();
+    }
+
+
+    private void loadVouchersFirestore() {
+        showProgressDialog();
+        listenerRegistration = DocumentRefrence.vouchersNonPrinted(firebaseFirestore(), userInfo.getId())
+                .whereEqualTo("voucher_amount", selectedPlan.getAmount())
+                .addSnapshotListener(this, (querySnapshot, e) -> {
+                    if (e != null) {
+                        Log.w("vouchers", "Listen error", e);
+                        dismissProgressDialog();
+                        return;
+                    }
+                    voucherUnSoldList.clear();
+                    for (DocumentSnapshot document : querySnapshot.getDocuments()) {
+                        ModelVoucher voucher = document.toObject(ModelVoucher.class);
+                        voucherUnSoldList.add(voucher);
+                    }
+                    dismissProgressDialog();
+                  //  binding.txtStock.setText(getString(R.string.txt_stock, String.valueOf(voucherUnSoldList.size())));
+                });
+    }
+
+
 
     private void callVoucherPurchaseBulk() {
+        if(mobileStatus){
+            callVoucherPurchaseBulkOffline();
+        }else {
+            if (Build.VERSION.SDK_INT >= 23 && !checkReadWritePermission()) {
+                requestReadWritePermission();
+                return;
+            }
+
+            if (CheckInternetConnection.isInternetConnection(this)) {
+                ModelUserInfo userInfo = SessionManager.getUserDetail(this);
+                if (userInfo != null) {
+                    HashMap<String, RequestBody> map = new HashMap<>();
+                    map.put("token", RequestBody.create(MediaType.parse("multipart/form-data"), AppConstants.App_TOKEN));
+                    map.put("username", RequestBody.create(MediaType.parse("multipart/form-data"), userInfo.getUsername()));
+                    map.put("password", RequestBody.create(MediaType.parse("multipart/form-data"), SessionManager.getString(this, SessionManager.KEY_PASSWORD)));
+                    map.put("service_id", RequestBody.create(MediaType.parse("multipart/form-data"), "" + selectedService.getId()));
+                    map.put("operator_id", RequestBody.create(MediaType.parse("multipart/form-data"), "" + selectedOperator.getId()));
+
+                    List<Integer> voucher_amount_ids = new ArrayList<>();
+                    List<Integer> quantitys = new ArrayList<>();
+                    for (ModelVoucherPlan voucherPlan : rechargePlanList) {
+                        if (voucherPlan.getSelectedQty() > 0) {
+                            voucher_amount_ids.add(voucherPlan.getId());
+                            quantitys.add(voucherPlan.getSelectedQty());
+                        }
+                    }
+                    for (int i = 0; i < voucher_amount_ids.size(); i++) {
+                        map.put("voucher_amount_id[" + i + "]", RequestBody.create(MediaType.parse("multipart/form-data"), "" + voucher_amount_ids.get(i)));
+                        map.put("quantity[" + i + "]", RequestBody.create(MediaType.parse("multipart/form-data"), "" + quantitys.get(i)));
+                    }
+
+                    isPrintClicked = true;
+
+                    binding.btnPrint.setEnabled(false);
+                    binding.btnPrintBluetooth.setEnabled(false);
+                    binding.layoutPleaseWait.setVisibility(View.VISIBLE);
+
+                    MyApplication.getInstance().getAPIInterface().android_voucher_order(map)
+                            .enqueue(new Callback<ResponseVoucherPurchaseBulk>() {
+                                @Override
+                                public void onResponse(@NonNull Call<ResponseVoucherPurchaseBulk> call, @NonNull Response<ResponseVoucherPurchaseBulk> response) {
+
+                                    ResponseVoucherPurchaseBulk body = response.body();
+                                    if (response.isSuccessful() && response.code() == 200 && body != null) {
+                                        if (body.isRESPONSE()) {
+                                            callVoucherPurchaseBulkOrderDetail(body.getVoucherPurchased().getVchr_odr_id());
+                                        } else {
+                                            binding.btnPrint.setEnabled(true);
+                                            binding.btnPrintBluetooth.setEnabled(true);
+                                            binding.layoutPleaseWait.setVisibility(View.GONE);
+                                            onErrorToast(body.getRESPONSE_MSG());
+                                        }
+                                    } else {
+                                        binding.btnPrint.setEnabled(true);
+                                        binding.btnPrintBluetooth.setEnabled(true);
+                                        binding.layoutPleaseWait.setVisibility(View.GONE);
+                                        onErrorToast(getString(R.string.msg_something_went_wrong));
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(@NonNull Call<ResponseVoucherPurchaseBulk> call, @NonNull Throwable t) {
+                                    try {
+                                        binding.btnPrint.setEnabled(true);
+                                        binding.btnPrintBluetooth.setEnabled(true);
+                                        binding.layoutPleaseWait.setVisibility(View.GONE);
+
+                                        if (t instanceof TimeoutException || t instanceof SocketTimeoutException) {
+                                            onErrorToast(getString(R.string.msg_unable_connect_server));
+                                        } else {
+                                            if (t instanceof NetworkErrorException || t instanceof SocketException) {
+                                                onErrorToast(getString(R.string.msg_check_internet_connection));
+                                            } else {
+                                                onErrorToast(getString(R.string.msg_something_went_wrong));
+                                            }
+                                        }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                }
+            } else {
+                DialogClasses.showDialogInternetAlert(this);
+            }
+        }
+    }
+
+
+    private void callVoucherPurchaseBulkOffline() {
 
         if (Build.VERSION.SDK_INT >= 23 && !checkReadWritePermission()) {
             requestReadWritePermission();
             return;
         }
 
-        if (CheckInternetConnection.isInternetConnection(this)) {
-            ModelUserInfo userInfo = SessionManager.getUserDetail(this);
-            if (userInfo != null) {
-                HashMap<String, RequestBody> map = new HashMap<>();
-                map.put("token", RequestBody.create(MediaType.parse("multipart/form-data"), AppConstants.App_TOKEN));
-                map.put("username", RequestBody.create(MediaType.parse("multipart/form-data"), userInfo.getUsername()));
-                map.put("password", RequestBody.create(MediaType.parse("multipart/form-data"), SessionManager.getString(this, SessionManager.KEY_PASSWORD)));
-                map.put("service_id", RequestBody.create(MediaType.parse("multipart/form-data"), "" + selectedService.getId()));
-                map.put("operator_id", RequestBody.create(MediaType.parse("multipart/form-data"), "" + selectedOperator.getId()));
+        showProgressDialog();
+        binding.btnPrint.setEnabled(false);
+        binding.btnPrintBluetooth.setEnabled(false);
+        binding.layoutPleaseWait.setVisibility(View.VISIBLE);
 
-                List<Integer> voucher_amount_ids = new ArrayList<>();
-                List<Integer> quantitys = new ArrayList<>();
-                for (ModelVoucherPlan voucherPlan : rechargePlanList) {
-                    if (voucherPlan.getSelectedQty() > 0) {
-                        voucher_amount_ids.add(voucherPlan.getId());
-                        quantitys.add(voucherPlan.getSelectedQty());
-                    }
-                }
-                for (int i = 0; i < voucher_amount_ids.size(); i++) {
-                    map.put("voucher_amount_id[" + i + "]", RequestBody.create(MediaType.parse("multipart/form-data"), "" + voucher_amount_ids.get(i)));
-                    map.put("quantity[" + i + "]", RequestBody.create(MediaType.parse("multipart/form-data"), "" + quantitys.get(i)));
-                }
+        if (voucherUnSoldList.size() == 0) {
+            dismissProgressDialog();
+            binding.btnPrint.setEnabled(true);
+            binding.btnPrintBluetooth.setEnabled(true);
+            binding.layoutPleaseWait.setVisibility(View.GONE);
 
-                isPrintClicked = true;
-
-                binding.btnPrint.setEnabled(false);
-                binding.btnPrintBluetooth.setEnabled(false);
-                binding.layoutPleaseWait.setVisibility(View.VISIBLE);
-
-                MyApplication.getInstance().getAPIInterface().android_voucher_order(map)
-                        .enqueue(new Callback<ResponseVoucherPurchaseBulk>() {
-                            @Override
-                            public void onResponse(@NonNull Call<ResponseVoucherPurchaseBulk> call, @NonNull Response<ResponseVoucherPurchaseBulk> response) {
-
-                                ResponseVoucherPurchaseBulk body = response.body();
-                                if (response.isSuccessful() && response.code() == 200 && body != null) {
-                                    if (body.isRESPONSE()) {
-                                        callVoucherPurchaseBulkOrderDetail(body.getVoucherPurchased().getVchr_odr_id());
-                                    } else {
-                                        binding.btnPrint.setEnabled(true);
-                                        binding.btnPrintBluetooth.setEnabled(true);
-                                        binding.layoutPleaseWait.setVisibility(View.GONE);
-                                        onErrorToast(body.getRESPONSE_MSG());
-                                    }
-                                } else {
-                                    binding.btnPrint.setEnabled(true);
-                                    binding.btnPrintBluetooth.setEnabled(true);
-                                    binding.layoutPleaseWait.setVisibility(View.GONE);
-                                    onErrorToast(getString(R.string.msg_something_went_wrong));
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(@NonNull Call<ResponseVoucherPurchaseBulk> call, @NonNull Throwable t) {
-                                try {
-                                    binding.btnPrint.setEnabled(true);
-                                    binding.btnPrintBluetooth.setEnabled(true);
-                                    binding.layoutPleaseWait.setVisibility(View.GONE);
-
-                                    if (t instanceof TimeoutException || t instanceof SocketTimeoutException) {
-                                        onErrorToast(getString(R.string.msg_unable_connect_server));
-                                    } else {
-                                        if (t instanceof NetworkErrorException || t instanceof SocketException) {
-                                            onErrorToast(getString(R.string.msg_check_internet_connection));
-                                        } else {
-                                            onErrorToast(getString(R.string.msg_something_went_wrong));
-                                        }
-                                    }
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        });
-            }
+            MyCustomToast.showToast(getApplicationContext(),
+                    "No stock available of voucher amount " + selectedPlan.getAmount()
+                            + ". You need to purchase vouchers.");
+//                    MyCustomToast.showToast(getApplicationContext(), "No vouchers available for sell. You need to purchase vouchers.");
         } else {
-            DialogClasses.showDialogInternetAlert(this);
+
+            ArrayList<ModelVoucher> finalPurchasedVoucherList = new ArrayList<>();
+            finalPurchasedVoucherList.add(voucherUnSoldList.get(0));
+
+            ArrayList<ModelVoucherPurchased> voucherPurchasedList = new ArrayList<>();
+
+//            Map<String, Object> map = new HashMap<>();
+
+            long currentTimeMillis = System.currentTimeMillis();
+            String offlineSoldDate = ChangeDateFormat.getDateTimeFromMillisecond("yyyy-MM-dd HH:mm:ss", currentTimeMillis);
+            String offlineOrder_id = "of_evd_" + userInfo.getId() + "_" + currentTimeMillis;
+
+
+            // Get a new write batch
+            WriteBatch batch = firebaseFirestore().batch();
+
+            for (ModelVoucher voucher : finalPurchasedVoucherList) {
+                voucher.setIs_print(1);
+                voucher.setOffline_sold_date(offlineSoldDate);
+                voucher.setOffline_order_id(offlineOrder_id);
+
+                ModelVoucherPurchased modelVoucherPurchased = new ModelVoucherPurchased();
+                modelVoucherPurchased.setPrintable_text(AppConstants.getPinPrintableData(voucher, userInfo));
+                modelVoucherPurchased.setNon_printable_text(AppConstants.getPinNonPrintableData(voucher, userInfo));
+                modelVoucherPurchased.setSaleid(voucher.getOrder_id());
+                modelVoucherPurchased.setVchr_odr_id(voucher.getOffline_order_id());
+                modelVoucherPurchased.setVoucher(voucher);
+
+                voucherPurchasedList.add(modelVoucherPurchased);
+
+//                map.put("/" + voucher.getVoucher_id() + "/", voucher);
+
+                DocumentReference sfRef = DocumentRefrence.updateVouchers(firebaseFirestore(), userInfo.getId())
+                        .document(""+voucher.getVoucher_id());
+//                batch.update(sfRef, ""+voucher.getVoucher_id(), voucher);
+                Map<String, Object> map = new HashMap<>();
+                map.put("is_print", voucher.getIs_print());
+                map.put("offline_sold_date", voucher.getOffline_sold_date());
+                map.put("offline_order_id", voucher.getOffline_order_id());
+                batch.update(sfRef, map);
+
+            }
+
+            binding.btnPrint.setEnabled(true);
+            binding.btnPrintBluetooth.setEnabled(true);
+            binding.layoutPleaseWait.setVisibility(View.GONE);
+
+            // Commit the batch
+            batch.commit().addOnCompleteListener(task1 -> {
+                // ...
+            });
+
+            //            Database.voucherNonPrints(databaseReference(), "" + userInfo.getId())
+//                    .updateChildren(map);
+
+            dismissProgressDialog();
+
+            voucherPurchasedArrayList.clear();
+            voucherPurchasedArrayList.addAll(voucherPurchasedList);
+
+            printReceiptPicture();
+//            setReceiptInfo(voucherPurchasedList);
         }
     }
+
+
 
     private void callVoucherPurchaseBulkOrderDetail(String orderId) {
         if (CheckInternetConnection.isInternetConnection(this)) {

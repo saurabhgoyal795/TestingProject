@@ -400,7 +400,7 @@ public class VoucherSuccessPrintActivity extends BaseActivity {
                         options.inTargetDensity = 160;
                         options.inDensity = 160;
                         if (bitmap == null) {
-                            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.merge3, options);
+                            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.merge4, options);
 
                         }
 
@@ -962,7 +962,7 @@ public class VoucherSuccessPrintActivity extends BaseActivity {
 
                 mUsbThermalPrinter.setGray(printGray);
 
-                Bitmap mBitmapLogo = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.merge3),
+                Bitmap mBitmapLogo = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.merge4),
                         386, 80, true);
 
                 mUsbThermalPrinter.setAlgin(UsbThermalPrinter.ALGIN_MIDDLE);

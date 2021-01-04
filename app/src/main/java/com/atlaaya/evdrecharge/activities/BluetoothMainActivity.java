@@ -701,7 +701,7 @@ public class BluetoothMainActivity extends AppCompatActivity implements OnClickL
     if ((lang.compareTo("en")) == 0) {
 
 //            Bitmap mBitmap = BitmapFactory.decodeFile(picturePath);
-        Bitmap mBitmapLogo = BitmapFactory.decodeResource(getResources(), R.drawable.merge3);
+        Bitmap mBitmapLogo = BitmapFactory.decodeResource(getResources(), R.drawable.merge4);
         Bitmap mBitmapSeprator = BitmapFactory.decodeResource(getResources(), R.drawable.dashes_img);
         int nMode = 0;
         int nPaperWidth = 384;

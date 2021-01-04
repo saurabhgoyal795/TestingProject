@@ -274,7 +274,9 @@ public class FragmentBulkVoucherOrder extends BaseFragment implements PurchaseVo
 
                 binding.txtTtlAmount.setText(getString(R.string.txt_grand_ttl, PriceFormat.decimalTwoDigit1(voucherOrderInfo.getTotalOrderAmount())));
                 binding.txtTtlQuantity.setText(getString(R.string.txt_ttl_qty, voucherOrderInfo.getTotalOrderQuantity()));
-
+                  if(voucherOrderInfo.is_offline()==1){
+                      binding.btnPrint.setVisibility(View.INVISIBLE);
+                  }
                 binding.btnPrint.setOnClickListener(v -> callVoucherPurchaseBulkOrderDetail(voucherOrderInfo.getId()));
             } else {
 //                showLoadingView((LoadingViewHolder) viewHolder, position);

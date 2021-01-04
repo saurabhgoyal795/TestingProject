@@ -143,6 +143,7 @@ public class VoucherListActivity extends BaseActivity implements View.OnClickLis
                     intent = new Intent(this, VoucherConfirmationActivity.class);
                 }
                 intent.putExtra("service", selectedService);
+                intent.putExtra("mobileStatus", offline);
                 intent.putExtra("operator", selectedOperator);
                 intent.putParcelableArrayListExtra("planList", selectedVoucherPlans);
                 startActivityForResult(intent, 200);

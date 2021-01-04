@@ -30,6 +30,10 @@ public class ModelVoucherOrder implements Parcelable {
     private String created;
     @SerializedName("modified")
     private String modified;
+    @SerializedName("total_assigned_quantity")
+    private String total_assigned_quantity;
+    @SerializedName("is_offline")
+    private int is_offline;
 
     @SerializedName("voucher_order_details")
     private List<ModelVoucherPlan> voucherPlanList;
@@ -46,6 +50,7 @@ public class ModelVoucherOrder implements Parcelable {
         status = in.readInt();
         created = in.readString();
         modified = in.readString();
+        is_offline = in.readInt();
         voucherPlanList = in.createTypedArrayList(ModelVoucherPlan.CREATOR);
     }
 
@@ -61,6 +66,8 @@ public class ModelVoucherOrder implements Parcelable {
         dest.writeInt(status);
         dest.writeString(created);
         dest.writeString(modified);
+        dest.writeString(total_assigned_quantity);
+        dest.writeInt(is_offline);
         dest.writeTypedList(voucherPlanList);
     }
 
@@ -119,6 +126,12 @@ public class ModelVoucherOrder implements Parcelable {
 
     public String getModified() {
         return modified;
+    }
+    public String total_assigned_quantity() {
+        return total_assigned_quantity;
+    }
+    public int is_offline() {
+        return is_offline;
     }
 
     public List<ModelVoucherPlan> getVoucherPlanList() {

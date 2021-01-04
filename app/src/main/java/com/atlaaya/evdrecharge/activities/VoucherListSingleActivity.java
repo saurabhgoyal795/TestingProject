@@ -263,6 +263,7 @@ public class VoucherListSingleActivity extends BaseActivity implements
                 Intent intent = new Intent(mContext, VoucherSelectedSinglePrintActivity.class);
                 intent.putExtra("service", selectedService);
                 intent.putExtra("operator", selectedOperator);
+                intent.putExtra("mobileStatus", offline);
                 intent.putExtra("plan", rechargePlanList.get(holder.getAdapterPosition()));
                 startActivityForResult(intent, 200);
 

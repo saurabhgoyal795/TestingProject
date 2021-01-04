@@ -67,6 +67,7 @@ public class VoucherConfirmationActivity extends BaseActivity implements View.On
     private String clickBtn = "";
     private String mobile = "";
     private String email = "";
+    private boolean mobileStatus = false;
 
     private PurchaseVoucherPresenter presenter;
     private PurchaseVoucherBulkPresenter voucherBulkPresenter;
@@ -84,6 +85,9 @@ public class VoucherConfirmationActivity extends BaseActivity implements View.On
 
         if (getIntent().hasExtra("plan")) {
             selectedPlan = getIntent().getParcelableExtra("plan");
+        }
+        if (getIntent().hasExtra("mobileStatus")) {
+            mobileStatus = getIntent().getBooleanExtra("mobileStatus",false);
         }
         if (getIntent().hasExtra("planList")) {
             rechargePlanList = getIntent().getParcelableArrayListExtra("planList");
@@ -225,42 +229,44 @@ public class VoucherConfirmationActivity extends BaseActivity implements View.On
     }
 
     private void callVoucherPurchaseBulk() {
-        callVoucherPurchaseBulkOffline();
+        if(mobileStatus) {
+            callVoucherPurchaseBulkOffline();
+        }else {
+            if (CheckInternetConnection.isInternetConnection(this)) {
+                ModelUserInfo userInfo = SessionManager.getUserDetail(this);
+                if (userInfo != null) {
+                    HashMap<String, RequestBody> map = new HashMap<>();
+                    map.put("token", RequestBody.create(MediaType.parse("multipart/form-data"), AppConstants.App_TOKEN));
+                    map.put("username", RequestBody.create(MediaType.parse("multipart/form-data"), userInfo.getUsername()));
+                    map.put("password", RequestBody.create(MediaType.parse("multipart/form-data"), SessionManager.getString(this, SessionManager.KEY_PASSWORD)));
+                    map.put("service_id", RequestBody.create(MediaType.parse("multipart/form-data"), "" + selectedService.getId()));
+                    map.put("operator_id", RequestBody.create(MediaType.parse("multipart/form-data"), "" + selectedOperator.getId()));
 
-   /*     if (CheckInternetConnection.isInternetConnection(this)) {
-            ModelUserInfo userInfo = SessionManager.getUserDetail(this);
-            if (userInfo != null) {
-                HashMap<String, RequestBody> map = new HashMap<>();
-                map.put("token", RequestBody.create(MediaType.parse("multipart/form-data"), AppConstants.App_TOKEN));
-                map.put("username", RequestBody.create(MediaType.parse("multipart/form-data"), userInfo.getUsername()));
-                map.put("password", RequestBody.create(MediaType.parse("multipart/form-data"), SessionManager.getString(this, SessionManager.KEY_PASSWORD)));
-                map.put("service_id", RequestBody.create(MediaType.parse("multipart/form-data"), "" + selectedService.getId()));
-                map.put("operator_id", RequestBody.create(MediaType.parse("multipart/form-data"), "" + selectedOperator.getId()));
-
-                if (clickBtn.equals("Email")) {
-                    map.put("email", RequestBody.create(MediaType.parse("multipart/form-data"), email));
-                } else if (clickBtn.equals("SMS")) {
-                    map.put("mobile", RequestBody.create(MediaType.parse("multipart/form-data"), mobile));
-                }
-
-                List<Integer> voucher_amount_ids = new ArrayList<>();
-                List<Integer> quantitys = new ArrayList<>();
-                for (ModelVoucherPlan voucherPlan : rechargePlanList) {
-                    if (voucherPlan.getSelectedQty() > 0) {
-                        voucher_amount_ids.add(voucherPlan.getId());
-                        quantitys.add(voucherPlan.getSelectedQty());
+                    if (clickBtn.equals("Email")) {
+                        map.put("email", RequestBody.create(MediaType.parse("multipart/form-data"), email));
+                    } else if (clickBtn.equals("SMS")) {
+                        map.put("mobile", RequestBody.create(MediaType.parse("multipart/form-data"), mobile));
                     }
-                }
-                for (int i = 0; i < voucher_amount_ids.size(); i++) {
-                    map.put("voucher_amount_id[" + i + "]", RequestBody.create(MediaType.parse("multipart/form-data"), "" + voucher_amount_ids.get(i)));
-                    map.put("quantity[" + i + "]", RequestBody.create(MediaType.parse("multipart/form-data"), "" + quantitys.get(i)));
-                }
 
-                voucherBulkPresenter.voucherBulkOrder(this, map);
+                    List<Integer> voucher_amount_ids = new ArrayList<>();
+                    List<Integer> quantitys = new ArrayList<>();
+                    for (ModelVoucherPlan voucherPlan : rechargePlanList) {
+                        if (voucherPlan.getSelectedQty() > 0) {
+                            voucher_amount_ids.add(voucherPlan.getId());
+                            quantitys.add(voucherPlan.getSelectedQty());
+                        }
+                    }
+                    for (int i = 0; i < voucher_amount_ids.size(); i++) {
+                        map.put("voucher_amount_id[" + i + "]", RequestBody.create(MediaType.parse("multipart/form-data"), "" + voucher_amount_ids.get(i)));
+                        map.put("quantity[" + i + "]", RequestBody.create(MediaType.parse("multipart/form-data"), "" + quantitys.get(i)));
+                    }
+
+                    voucherBulkPresenter.voucherBulkOrder(this, map);
+                }
+            } else {
+                DialogClasses.showDialogInternetAlert(this);
             }
-        } else {
-            DialogClasses.showDialogInternetAlert(this);
-        }*/
+        }
     }
 
     private void callVoucherPurchaseBulkOrderDetail(String orderId) {
