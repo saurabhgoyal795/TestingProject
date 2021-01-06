@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -134,6 +135,7 @@ public class HomeActivity extends BaseActivity implements LifecycleObserver,
         binding.navView.setNavigationItemSelectedListener(this);
 
         binding.contentHome.recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        invalidateOptionsMenu();
 
     }
 
@@ -142,15 +144,18 @@ public class HomeActivity extends BaseActivity implements LifecycleObserver,
         switch (menuItem.getItemId()) {
             case R.id.nav_my_profile:
                 startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                LanguageUtil.setItemViewTextByLanguage(getContext(),menuItem, "menu_my_profile");
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_balance:
                 startActivity(new Intent(getApplicationContext(), WalletActivity.class));
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
+                LanguageUtil.setItemViewTextByLanguage(getContext(),menuItem, "menu_balance");
                 return true;
             case R.id.nav_purchase_vouchers:
                 startActivity(new Intent(getApplicationContext(), ServiceListActivity.class));
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
+                LanguageUtil.setItemViewTextByLanguage(getContext(),menuItem, "menu_balance");
                 return true;
             case R.id.nav_vouchers_stock:
                 startActivity(new Intent(getApplicationContext(), ServiceListActivity.class)
@@ -199,6 +204,40 @@ public class HomeActivity extends BaseActivity implements LifecycleObserver,
                 return true;
         }
         return false;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu = binding.navView.getMenu();
+        MenuItem menuItem = menu.findItem(R.id.nav_my_profile);
+        LanguageUtil.setItemViewTextByLanguage(getContext(),menuItem, "menu_my_profile");
+        menuItem = menu.findItem(R.id.nav_balance);
+        LanguageUtil.setItemViewTextByLanguage(getContext(),menuItem, "menu_balance");
+        menuItem = menu.findItem(R.id.nav_purchase_vouchers);
+        LanguageUtil.setItemViewTextByLanguage(getContext(),menuItem, "menu_purchase_vouchers");
+        menuItem = menu.findItem(R.id.nav_unsold_vouchers);
+        LanguageUtil.setItemViewTextByLanguage(getContext(),menuItem, "menu_unsold_vouchers");
+        menuItem = menu.findItem(R.id.nav_sold_vouchers);
+        LanguageUtil.setItemViewTextByLanguage(getContext(),menuItem, "menu_sold_vouchers");
+        menuItem = menu.findItem(R.id.nav_vouchers_stock);
+        LanguageUtil.setItemViewTextByLanguage(getContext(),menuItem, "menu_voucher_stock");
+        menuItem = menu.findItem(R.id.nav_transaction_history);
+        LanguageUtil.setItemViewTextByLanguage(getContext(),menuItem, "menu_transaction_history");
+        menuItem = menu.findItem(R.id.nav_my_statements);
+        LanguageUtil.setItemViewTextByLanguage(getContext(),menuItem, "menu_my_statements");
+        menuItem = menu.findItem(R.id.nav_my_banks);
+        LanguageUtil.setItemViewTextByLanguage(getContext(),menuItem, "menu_my_banks");
+        menuItem = menu.findItem(R.id.nav_my_vouchers);
+        LanguageUtil.setItemViewTextByLanguage(getContext(),menuItem, "menu_my_vouchers");
+        menuItem = menu.findItem(R.id.nav_print);
+        LanguageUtil.setItemViewTextByLanguage(getContext(),menuItem, "menu_print_serial");
+        menuItem = menu.findItem(R.id.nav_my_users);
+        LanguageUtil.setItemViewTextByLanguage(getContext(),menuItem, "menu_my_users");
+        menuItem = menu.findItem(R.id.nav_bluetooth_test);
+        LanguageUtil.setItemViewTextByLanguage(getContext(),menuItem, "menu_bluetooth_test");
+        menuItem = menu.findItem(R.id.nav_logout);
+        LanguageUtil.setItemViewTextByLanguage(getContext(),menuItem, "menu_logout");
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.atlaaya.evdrecharge.utils;
 
 import android.content.Context;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +21,16 @@ public class LanguageUtil {
                 view.setText(languageData.getString(key));
             }
         } catch (JSONException e) {
+        }
+    }
+
+    public static void setItemViewTextByLanguage(Context context, MenuItem view, String key) {
+        try {
+            JSONObject languageData = new JSONObject(SessionManager.getLanguageData(context));
+            if (languageData.has(key)) {
+                view.setTitle(languageData.getString(key));
+            }
+        } catch (Exception e) {
         }
     }
 
