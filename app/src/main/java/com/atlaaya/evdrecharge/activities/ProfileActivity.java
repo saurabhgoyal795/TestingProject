@@ -21,6 +21,7 @@ import com.atlaaya.evdrecharge.model.ResponseLogin;
 import com.atlaaya.evdrecharge.storage.SessionManager;
 import com.atlaaya.evdrecharge.utils.CheckInternetConnection;
 import com.atlaaya.evdrecharge.utils.DialogClasses;
+import com.atlaaya.evdrecharge.utils.LanguageUtil;
 import com.atlaaya.evdrecharge.utils.MyCustomToast;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
@@ -41,7 +42,7 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_profile);
         setSupportActionBar(binding.toolbar);
-
+        LanguageUtil.setToolBarTextByLanguage(getContext(),binding.toolbar, "title_profile");
         profilePresenter = new ProfilePresenter();
         profilePresenter.setView(this);
 

@@ -10,6 +10,7 @@ import com.atlaaya.evdrecharge.R;
 import com.atlaaya.evdrecharge.listener.PurchaseVoucherListener;
 import com.atlaaya.evdrecharge.model.ResponseTempVoucherPurchase;
 import com.atlaaya.evdrecharge.model.ResponseVoucherPurchase;
+import com.atlaaya.evdrecharge.model.ResponseVoucherSingle;
 
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
@@ -156,4 +157,48 @@ public class PurchaseVoucherPresenter extends BasePresenter<PurchaseVoucherListe
                     }
                 });
     }
+
+
+    public void purchasedVoucherSinglePrintDetail(final Context context, final HashMap<String, RequestBody> requestBody) {
+
+        getView().enableLoadingBar(context, true, context.getString(R.string.txt_please_wait));
+
+        MyApplication.getInstance().getAPIInterface().printSerial(requestBody)
+                .enqueue(new Callback<ResponseVoucherPurchase>() {
+                    @Override
+                    public void onResponse(@NonNull Call<ResponseVoucherPurchase> call, @NonNull Response<ResponseVoucherPurchase> response) {
+                        getView().enableLoadingBar(context, false, "");
+
+                        if (response.code() == 402) {
+                            getView().onSuccessSinglePrintVoucher(null);
+                        } else if (!handleError(response)
+                                && response.isSuccessful() && response.code() == 200) {
+                            getView().onSuccessSinglePrintVoucher(response.body());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(@NonNull Call<ResponseVoucherPurchase> call, @NonNull Throwable t) {
+                        try {
+                            t.printStackTrace();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                        if (t instanceof TimeoutException || t instanceof SocketTimeoutException) {
+                            getView().onErrorToast(context.getString(R.string.msg_unable_connect_server));
+                            getView().enableLoadingBar(context, false, "");
+                        } else {
+                            if (t instanceof NetworkErrorException || t instanceof SocketException) {
+                                getView().onErrorToast(context.getString(R.string.msg_check_internet_connection));
+                            } else {
+                                getView().onErrorToast(context.getString(R.string.msg_something_went_wrong));
+                            }
+                            getView().enableLoadingBar(context, false, "");
+                        }
+                    }
+                });
+    }
+
+
 }

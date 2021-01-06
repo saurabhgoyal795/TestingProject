@@ -43,6 +43,7 @@ import com.atlaaya.evdrecharge.sqlite.DBHelper;
 import com.atlaaya.evdrecharge.storage.SessionManager;
 import com.atlaaya.evdrecharge.utils.CheckInternetConnection;
 import com.atlaaya.evdrecharge.utils.DialogClasses;
+import com.atlaaya.evdrecharge.utils.LanguageUtil;
 import com.atlaaya.evdrecharge.utils.MyCustomToast;
 import com.atlaaya.evdrecharge.utils.PriceFormat;
 import com.google.firebase.database.DatabaseError;
@@ -82,7 +83,9 @@ public class VoucherListActivity extends BaseActivity implements View.OnClickLis
         binding = DataBindingUtil.setContentView(this, R.layout.activity_voucher_list);
         dbHelper = DBHelper.getInstance(this);
         userInfo = SessionManager.getUserDetail(this);
-
+        LanguageUtil.setTextViewTextByLanguage(getContext(),binding.text1, "txt_voucher_amount");
+        LanguageUtil.setTextViewTextByLanguage(getContext(),binding.txtTtlAmount, "txt_grand_ttl");
+        LanguageUtil.setButtonTextByLanguage(getContext(),binding.btnProceed, "btn_proceed");
         voucherPlansPresenter = new VoucherPlansPresenter();
         voucherPlansPresenter.setView(this);
 

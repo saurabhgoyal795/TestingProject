@@ -29,6 +29,7 @@ import com.atlaaya.evdrecharge.model.ResponseOperators;
 import com.atlaaya.evdrecharge.storage.SessionManager;
 import com.atlaaya.evdrecharge.utils.CheckInternetConnection;
 import com.atlaaya.evdrecharge.utils.DialogClasses;
+import com.atlaaya.evdrecharge.utils.LanguageUtil;
 import com.atlaaya.evdrecharge.utils.MyCustomToast;
 
 import java.util.ArrayList;
@@ -67,7 +68,7 @@ public class RechargeOperatorActivity extends BaseActivity implements OperatorsL
         } else {
             binding.toolbar.setTitle(getString(R.string.txt_voucher_recharge));
         }
-
+        LanguageUtil.setTextViewTextByLanguage(getContext(),binding.text1, "txt_select_operator");
         binding.recyclerView2.setLayoutManager(new GridLayoutManager(this, 1));
 
     }

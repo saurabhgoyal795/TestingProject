@@ -5,10 +5,16 @@ import android.os.Bundle;
 import android.text.InputFilter;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import androidx.databinding.DataBindingUtil;
 
+import com.atlaaya.evdrecharge.MyApplication;
 import com.atlaaya.evdrecharge.R;
+import com.atlaaya.evdrecharge.api.APIInterface;
+import com.atlaaya.evdrecharge.api.RestService;
 import com.atlaaya.evdrecharge.apiPresenter.ProfilePresenter;
 import com.atlaaya.evdrecharge.constant.AppConstants;
 import com.atlaaya.evdrecharge.databinding.ActivityEditProfileBinding;
@@ -19,6 +25,7 @@ import com.atlaaya.evdrecharge.storage.SessionManager;
 import com.atlaaya.evdrecharge.utils.CheckInternetConnection;
 import com.atlaaya.evdrecharge.utils.DialogClasses;
 import com.atlaaya.evdrecharge.utils.DisableEmojiInEditText;
+import com.atlaaya.evdrecharge.utils.LanguageUtil;
 import com.atlaaya.evdrecharge.utils.MyCustomToast;
 import com.atlaaya.evdrecharge.utils.Utility;
 
@@ -27,14 +34,14 @@ import java.util.HashMap;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
-public class EditProfileActivity extends BaseActivity implements View.OnClickListener, UpdateProfileListener {
+public class EditProfileActivity extends BaseActivity implements View.OnClickListener, UpdateProfileListener,AdapterView.OnItemSelectedListener {
 
     private ActivityEditProfileBinding binding;
 
     private ModelUserInfo userInfo;
     private ProfilePresenter profilePresenter;
-
-
+    private String selectedLanguage ;
+    String[] languageType = { "en","am" };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,9 +58,46 @@ public class EditProfileActivity extends BaseActivity implements View.OnClickLis
         binding.etFirmName.setFilters(new InputFilter[]{new DisableEmojiInEditText()});
         binding.etAddress.setFilters(new InputFilter[]{new DisableEmojiInEditText()});
 
+        LanguageUtil.setTextViewTextByLanguage(getContext(),binding.tvFirstName, "txt_first_name");
+        LanguageUtil.setEditTextHintTextByLanguage(getContext(),binding.etFirstName, "hint_enter_first_name");
+        LanguageUtil.setTextViewTextByLanguage(getContext(),binding.tvLastName, "txt_last_name");
+        LanguageUtil.setEditTextHintTextByLanguage(getContext(),binding.etLastName, "hint_enter_last_name");
+        LanguageUtil.setTextViewTextByLanguage(getContext(),binding.tvMobile, "txt_mobile");
+        LanguageUtil.setEditTextHintTextByLanguage(getContext(),binding.etMobile, "hint_mobile_number_");
+        LanguageUtil.setTextViewTextByLanguage(getContext(),binding.tvEmail, "txt_email");
+        LanguageUtil.setEditTextHintTextByLanguage(getContext(),binding.etEmail, "etEmail");
+        LanguageUtil.setTextViewTextByLanguage(getContext(),binding.tvFirm, "txt_firm_name");
+        LanguageUtil.setEditTextHintTextByLanguage(getContext(),binding.etFirmName, "hint_enter_firm_name");
+        LanguageUtil.setTextViewTextByLanguage(getContext(),binding.tvAddress, "txt_address");
+        LanguageUtil.setEditTextHintTextByLanguage(getContext(),binding.etAddress, "hint_enter_address");
+        LanguageUtil.setButtonTextByLanguage(getContext(),binding.btnSave, "btn_save");
+        Spinner spin = binding.spinner.findViewById(R.id.spinner);
+        spin.setOnItemSelectedListener(this);
+        ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,languageType);
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin.setAdapter(aa);
         setProfileData();
 
     }
+
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        if(parent.getId()== R.id.spinner) {
+            if (position == 0) {
+                selectedLanguage = "en";
+            } else {
+                selectedLanguage = "am";
+            }
+
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -127,6 +171,10 @@ public class EditProfileActivity extends BaseActivity implements View.OnClickLis
                 map.put("email", RequestBody.create(MediaType.parse("multipart/form-data"), email));
                 map.put("company_name", RequestBody.create(MediaType.parse("multipart/form-data"), firmName));
                 map.put("address", RequestBody.create(MediaType.parse("multipart/form-data"), address));
+                if(selectedLanguage!=""){
+                    map.put("language", RequestBody.create(MediaType.parse("multipart/form-data"), selectedLanguage));
+                }
+
 
                 profilePresenter.updateProfile(this, map);
             }

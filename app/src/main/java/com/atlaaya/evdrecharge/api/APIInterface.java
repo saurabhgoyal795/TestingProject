@@ -19,6 +19,7 @@ import com.atlaaya.evdrecharge.model.ResponseVoucherPlan;
 import com.atlaaya.evdrecharge.model.ResponseVoucherPurchase;
 import com.atlaaya.evdrecharge.model.ResponseVoucherPurchaseBulk;
 import com.atlaaya.evdrecharge.model.ResponseVoucherPurchaseBulkOrder;
+import com.atlaaya.evdrecharge.model.ResponseVoucherSingle;
 
 import java.util.Map;
 
@@ -70,6 +71,12 @@ public interface APIInterface {
     @POST("topuprecharge")
     @Multipart
     Call<ResponseDefault> topupRecharge(@PartMap() Map<String, RequestBody> partMap);
+
+    @POST("androidSingleVoucherPrint")
+    @Multipart
+    Call<ResponseVoucherPurchase> printSerial(@PartMap() Map<String, RequestBody> partMap);
+
+
     @POST("calculatebill")
     @Multipart
     Call<ResponseDefault> calculateElectricity(@PartMap() Map<String, RequestBody> partMap);

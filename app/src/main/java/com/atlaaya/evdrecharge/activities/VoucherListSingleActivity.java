@@ -33,6 +33,7 @@ import com.atlaaya.evdrecharge.sqlite.DBHelper;
 import com.atlaaya.evdrecharge.storage.SessionManager;
 import com.atlaaya.evdrecharge.utils.CheckInternetConnection;
 import com.atlaaya.evdrecharge.utils.DialogClasses;
+import com.atlaaya.evdrecharge.utils.LanguageUtil;
 import com.atlaaya.evdrecharge.utils.MyCustomToast;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.ListenerRegistration;
@@ -66,6 +67,9 @@ public class VoucherListSingleActivity extends BaseActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_voucher_list);
+        LanguageUtil.setTextViewTextByLanguage(getContext(),binding.text1, "txt_voucher_amount");
+        LanguageUtil.setTextViewTextByLanguage(getContext(),binding.txtTtlAmount, "txt_grand_ttl");
+        LanguageUtil.setButtonTextByLanguage(getContext(),binding.btnProceed, "btn_proceed");
         dbHelper = DBHelper.getInstance(this);
         voucherPlansPresenter = new VoucherPlansPresenter();
         voucherPlansPresenter.setView(this);

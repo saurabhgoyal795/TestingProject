@@ -30,6 +30,7 @@ import com.atlaaya.evdrecharge.model.ResponseFundRequests;
 import com.atlaaya.evdrecharge.storage.SessionManager;
 import com.atlaaya.evdrecharge.utils.CheckInternetConnection;
 import com.atlaaya.evdrecharge.utils.DialogClasses;
+import com.atlaaya.evdrecharge.utils.LanguageUtil;
 import com.atlaaya.evdrecharge.utils.MyCustomToast;
 import com.atlaaya.evdrecharge.utils.PriceFormat;
 
@@ -53,7 +54,9 @@ public class WalletActivity extends BaseActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_wallet);
-
+        LanguageUtil.setTextViewTextByLanguage(getContext(),binding.txtAvlBalance, "txt_avl_balance");
+        LanguageUtil.setTextViewTextByLanguage(getContext(),binding.txtMyLoadRequest, "title_load_fund_requests");
+        LanguageUtil.setButtonTextByLanguage(getContext(),binding.btnAddNewRequest, "btn_make_load_request");
         filterConfig = SessionManager.getFilterConfig(this);
 
         presenter = new FundRequestsPresenter();

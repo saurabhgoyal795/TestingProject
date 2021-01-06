@@ -1,8 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!DOCTYPE resources [
-    <!ENTITY appName "Highlight EVD">
-    <!ENTITY currencyEthiopiaSymbol "ብር">
-    <!ENTITY currencyEthiopiaSymbol1 "Br">
-    <!ENTITY currencyEthiopiaUnit "Birr">]>
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE resources [<!ENTITY appName "Highlight EVD"><!ENTITY currencyEthiopiaSymbol "ብር"><!ENTITY currencyEthiopiaSymbol1 "Br"><!ENTITY currencyEthiopiaUnit "Birr">]>
 <resources>
     <string name="app_name">Alami Telecom</string>
 
@@ -34,6 +30,7 @@
     <string name="txt_mobile_recharge">Mobile Recharge</string>
     <string name="txt_retail_users">My Retail Users</string>
     <string name="txt_voucher_recharge">Voucher</string>
+    <string name="txt_print_screen">Print</string>
     <string name="txt_purchase_offline">Print Offline Pin</string>
     <string name="txt_airtime_recharge">Top up</string>
     <string name="txt_select_operator">Select Operator</string>
@@ -67,6 +64,7 @@
     <string name="txt_last_name">Last Name</string>
     <string name="txt_firm_name">Firm Name</string>
     <string name="txt_mobile">Mobile Number</string>
+    <string name="txt_serial">Serial Number</string>
     <string name="txt_email">Email</string>
     <string name="txt_address">Address</string>
     <string name="txt_lockfund_">Lockfund</string>
@@ -170,6 +168,7 @@
     <string name="hint_user_id">User ID / Mobile number</string>
     <string name="hint_password">Password</string>
     <string name="hint_mobile_number">Enter Mobile No.</string>
+    <string name="hint_serial_number">Enter Serial No.</string>
     <string name="hint_enter_amount">Enter Amount</string>
     <string name="hint_enter_email">Enter Email ID</string>
     <string name="hint_enter_email_">Enter your email id</string>
@@ -350,6 +349,7 @@
     <string name="menu_my_statements">My Statements</string>
     <string name="menu_my_banks">My Banks</string>
     <string name="menu_my_vouchers">My Vouchers History</string>
+    <string name="menu_print_serial">Print By Serial</string>
     <string name="menu_my_users">My Users</string>
     <string name="menu_bluetooth_test">Bluetooth Test</string>
     <string name="menu_logout">Logout</string>
@@ -444,7 +444,15 @@
     <string name="enter_password_to_continue">Enter password to continue</string>
 
     <string name="menu_purchased_voucher_history">Purchased Vouchers History</string>
+    <string name="title_activity_single_print">SinglePrint</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
 
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
 
 </resources>

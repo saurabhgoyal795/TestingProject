@@ -38,6 +38,7 @@ import com.atlaaya.evdrecharge.model.ResponseVoucherOrderHistory;
 import com.atlaaya.evdrecharge.model.ResponseVoucherPurchase;
 import com.atlaaya.evdrecharge.model.ResponseVoucherPurchaseBulk;
 import com.atlaaya.evdrecharge.model.ResponseVoucherPurchaseBulkOrder;
+import com.atlaaya.evdrecharge.model.ResponseVoucherSingle;
 import com.atlaaya.evdrecharge.storage.SessionManager;
 import com.atlaaya.evdrecharge.utils.CheckInternetConnection;
 import com.atlaaya.evdrecharge.utils.DialogClasses;
@@ -222,6 +223,13 @@ public class VoucherPurchaseConfirmationActivity extends BaseActivity implements
     public void onSuccessVoucher(ResponseVoucherPurchase body) {
 
     }
+
+    @Override
+    public void onSuccessSinglePrintVoucher(ResponseVoucherPurchase body) {
+
+    }
+
+
 
     @Override
     public Context getContext() {

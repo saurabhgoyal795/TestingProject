@@ -74,6 +74,13 @@
             android:title="@string/menu_my_vouchers" />
     </group>
     <group android:checkableBehavior="none"
+        android:id="@+id/ten">
+        <item
+            android:id="@+id/nav_print"
+            android:icon="@drawable/ic_voucher"
+            android:title="@string/menu_print_serial" />
+    </group>
+    <group android:checkableBehavior="none"
         android:id="@+id/eight">
         <item
             android:id="@+id/nav_my_users"

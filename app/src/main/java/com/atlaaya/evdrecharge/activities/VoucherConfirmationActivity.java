@@ -36,6 +36,7 @@ import com.atlaaya.evdrecharge.model.ResponseVoucherOrderHistory;
 import com.atlaaya.evdrecharge.model.ResponseVoucherPurchase;
 import com.atlaaya.evdrecharge.model.ResponseVoucherPurchaseBulk;
 import com.atlaaya.evdrecharge.model.ResponseVoucherPurchaseBulkOrder;
+import com.atlaaya.evdrecharge.model.ResponseVoucherSingle;
 import com.atlaaya.evdrecharge.storage.SessionManager;
 import com.atlaaya.evdrecharge.utils.ChangeDateFormat;
 import com.atlaaya.evdrecharge.utils.CheckInternetConnection;
@@ -553,6 +554,12 @@ public class VoucherConfirmationActivity extends BaseActivity implements View.On
             MyCustomToast.showErrorAlert(this, body.getRESPONSE_MSG());
         }
     }
+
+    @Override
+    public void onSuccessSinglePrintVoucher(ResponseVoucherPurchase body) {
+
+    }
+
 
     @Override
     public Context getContext() {

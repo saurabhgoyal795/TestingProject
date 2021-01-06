@@ -38,6 +38,7 @@ import com.atlaaya.evdrecharge.model.ModelVoucherPurchased;
 import com.atlaaya.evdrecharge.model.ResponseTempVoucherPurchase;
 import com.atlaaya.evdrecharge.model.ResponseVoucherPlan;
 import com.atlaaya.evdrecharge.model.ResponseVoucherPurchase;
+import com.atlaaya.evdrecharge.model.ResponseVoucherSingle;
 import com.atlaaya.evdrecharge.storage.SessionManager;
 import com.atlaaya.evdrecharge.utils.CheckInternetConnection;
 import com.atlaaya.evdrecharge.utils.DialogClasses;
@@ -149,6 +150,12 @@ public class FragmentSingleVoucherOrder extends BaseFragment implements VoucherP
             MyCustomToast.showToast(mActivity, body.getRESPONSE_MSG());
         }
     }
+
+    @Override
+    public void onSuccessSinglePrintVoucher(ResponseVoucherPurchase body) {
+
+    }
+
 
     @Override
     public Context getContext() {

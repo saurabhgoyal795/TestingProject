@@ -42,6 +42,7 @@ import com.atlaaya.evdrecharge.model.ResponseServices;
 import com.atlaaya.evdrecharge.storage.SessionManager;
 import com.atlaaya.evdrecharge.utils.CheckInternetConnection;
 import com.atlaaya.evdrecharge.utils.DialogClasses;
+import com.atlaaya.evdrecharge.utils.LanguageUtil;
 import com.atlaaya.evdrecharge.utils.MyCustomToast;
 import com.atlaaya.evdrecharge.utils.PriceFormat;
 import com.atlaaya.evdrecharge.utils.Utility;
@@ -180,6 +181,11 @@ public class HomeActivity extends BaseActivity implements LifecycleObserver,
                 startActivity(new Intent(getApplicationContext(), MyVouchersActivity.class));
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
+            case R.id.nav_print:
+                startActivity(new Intent(getApplicationContext(), SinglePrint.class));
+                binding.drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+
             case R.id.nav_my_users:
                 startActivity(new Intent(getApplicationContext(), MyUsersActivity.class));
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
@@ -296,9 +302,12 @@ public class HomeActivity extends BaseActivity implements LifecycleObserver,
 
         ModelUserInfo userInfo = SessionManager.getUserDetail(this);
         if (userInfo != null) {
-            binding.contentHome.txtUsername.setText(getString(R.string.txt_welcome_user, userInfo.getCompany_name()));
-            binding.contentHome.txtAvlBalanceAmount.setText(getString(R.string.balance, PriceFormat.decimalTwoDigit1(userInfo.getWallet_amount())));
-
+            LanguageUtil.setTextViewTextByLanguageAppend(getContext(),binding.contentHome.txtUsername, "txt_welcome_user",userInfo.getCompany_name());
+           // binding.contentHome.txtUsername.setText(getString(R.string.txt_welcome_user, userInfo.getCompany_name()));
+           // binding.contentHome.txtAvlBalanceAmount.setText(getString(R.string.balance, PriceFormat.decimalTwoDigit1(userInfo.getWallet_amount())));
+            LanguageUtil.setTextViewTextByLanguageAppend(getContext(),binding.contentHome.txtAvlBalanceAmount, "balance",PriceFormat.decimalTwoDigit1(userInfo.getWallet_amount()));
+            LanguageUtil.setTextViewTextByLanguage(getContext(),binding.contentHome.txtName2, "txt_purchase_offline");
+            LanguageUtil.setTextViewTextByLanguage(getContext(),binding.contentHome.txtAvlBalance, "txt_avl_balance");
             headerBinding.txtName.setText(userInfo.getFullName());
             headerBinding.txtEmail.setText(userInfo.getEmail());
             headerBinding.faceWidget.setInitials(userInfo.getInitials());

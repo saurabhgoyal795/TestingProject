@@ -22,6 +22,7 @@ public class SessionManager {
     public static String KEY_URL  = "url";
     public static String KEY_LANGUAGE_DATA = "{}";
     public static String KEY_PRINTER  = "printer";
+    public static String KEY_LANGUAGE  = "langauge";
 
     public SessionManager(Context context) {
         this.mContext = context;
@@ -63,10 +64,29 @@ public class SessionManager {
                 .apply();
     }
 
+
+
     public static String getPrinter(Context context) {
         String json = getSharedPref(context).getString(KEY_PRINTER, null);
         return json;
     }
+
+
+    public static void saveLanguage(Context context, String url) {
+        getSharedPref(context).edit()
+                .putString(KEY_LANGUAGE, url)
+                .apply();
+    }
+
+
+
+    public static String getLangauge(Context context) {
+        String json = getSharedPref(context).getString(KEY_LANGUAGE, null);
+        return json;
+    }
+
+
+
 
 
     public static String getUrl(Context context) {

@@ -19,6 +19,7 @@ import com.atlaaya.evdrecharge.storage.SessionManager;
 import com.atlaaya.evdrecharge.utils.CheckInternetConnection;
 import com.atlaaya.evdrecharge.utils.DialogClasses;
 import com.atlaaya.evdrecharge.utils.DisableEmojiInEditText;
+import com.atlaaya.evdrecharge.utils.LanguageUtil;
 import com.atlaaya.evdrecharge.utils.MyCustomToast;
 
 import java.util.HashMap;
@@ -37,14 +38,17 @@ public class ChangePasswordActivity extends BaseActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_change_password);
         setSupportActionBar(binding.toolbar);
-
+        LanguageUtil.setToolBarTextByLanguage(getContext(),binding.toolbar, "title_change_password");
+        LanguageUtil.setTextViewTextByLanguage(getContext(),binding.btnUpdate, "btn_update_password");
         presenter = new ChangePasswordPresenter();
         presenter.setView(this);
 
         binding.etOldPass.setFilters(new InputFilter[]{new DisableEmojiInEditText()});
         binding.etNewPass.setFilters(new InputFilter[]{new DisableEmojiInEditText()});
         binding.etConfPass.setFilters(new InputFilter[]{new DisableEmojiInEditText()});
-
+        LanguageUtil.setTextViewTextByLanguage(getContext(),binding.tvOldPass, "txt_current_password");
+        LanguageUtil.setTextViewTextByLanguage(getContext(),binding.tvNewPass, "txt_new_password");
+        LanguageUtil.setTextViewTextByLanguage(getContext(),binding.tvConfPass, "txt_confirm_new_password");
     }
 
     @Override

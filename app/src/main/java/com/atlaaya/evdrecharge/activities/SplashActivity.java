@@ -41,8 +41,9 @@ import okhttp3.RequestBody;
 public class SplashActivity extends BaseActivity implements AdapterView.OnItemSelectedListener, LanguageListener {
     String[] vpntype = { "M2M sim", "Internet"};
     String[] printerType = { "Pos Machine","Mobile" };
+    String[] languageType = { "English","Amharic" };
     private LanguagePresenter presenter;
-
+    String selectedLanguage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 //        requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -52,7 +53,7 @@ public class SplashActivity extends BaseActivity implements AdapterView.OnItemSe
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
-
+        selectedLanguage = "en";
         presenter = new LanguagePresenter();
         presenter.setView(this);
         new Handler().postDelayed(new Runnable() {
@@ -76,6 +77,7 @@ public class SplashActivity extends BaseActivity implements AdapterView.OnItemSe
         if (CheckInternetConnection.isInternetConnection(this)) {
             HashMap<String, RequestBody> map = new HashMap<>();
             map.put("token", RequestBody.create(MediaType.parse("multipart/form-data"), AppConstants.App_TOKEN));
+            map.put("language", RequestBody.create(MediaType.parse("multipart/form-data"), selectedLanguage));
             presenter.servicesList(this, map);
         } else {
             DialogClasses.showDialogInternetAlert(this);
@@ -91,15 +93,20 @@ public class SplashActivity extends BaseActivity implements AdapterView.OnItemSe
         spin.setOnItemSelectedListener(this);
         Spinner spin1 = popupView.findViewById(R.id.spinnerprinter);
         spin1.setOnItemSelectedListener(this);
+        Spinner spin2 = popupView.findViewById(R.id.spinnerlanguage);
+        spin2.setOnItemSelectedListener(this);
 
         //Creating the ArrayAdapter instance having the country list
         ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,vpntype);
         ArrayAdapter aa1 = new ArrayAdapter(this,android.R.layout.simple_spinner_item,printerType);
+        ArrayAdapter aa2 = new ArrayAdapter(this,android.R.layout.simple_spinner_item,languageType);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         aa1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        aa2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Setting the ArrayAdapter data on the Spinner
         spin.setAdapter(aa);
         spin1.setAdapter(aa1);
+        spin2.setAdapter(aa2);
 
         // create the popup window
         int width = LinearLayout.LayoutParams.MATCH_PARENT;
@@ -133,6 +140,7 @@ public class SplashActivity extends BaseActivity implements AdapterView.OnItemSe
             public void onClick(View v) {
                 Intent intent;
                 popupWindow.dismiss();
+                callServiceAPI();
                 if (SessionManager.getUserDetail(SplashActivity.this) == null) {
                     intent = new Intent(getApplicationContext(), LoginActivity.class);
                 } else {
@@ -158,11 +166,19 @@ public class SplashActivity extends BaseActivity implements AdapterView.OnItemSe
                 MyApplication.getInstance().setAPIInterface(service);
             }
             SessionManager.saveUrl(getApplicationContext(), MyApplication.BASE_URL);
-        }else{
+        }else if(parent.getId()== R.id.spinnerprinter){
             if(position==0){
                 SessionManager.savePrinter(getApplicationContext(), "pos");
             }else{
                 SessionManager.savePrinter(getApplicationContext(), "mobile");
+            }
+        }else if(parent.getId()== R.id.spinnerlanguage){
+            if(position==0){
+                SessionManager.saveLanguage(getApplicationContext(), "en");
+                selectedLanguage = "en";
+            }else{
+                SessionManager.saveLanguage(getApplicationContext(), "am");
+                selectedLanguage = "am";
             }
         }
     }
@@ -175,7 +191,7 @@ public class SplashActivity extends BaseActivity implements AdapterView.OnItemSe
     @Override
     protected void onStart() {
         super.onStart();
-        callServiceAPI();
+
     }
 
     @Override

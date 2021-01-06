@@ -38,6 +38,8 @@ public class ModelUserInfo implements Parcelable {
     private String username;
     @SerializedName("email")
     private String email;
+    @SerializedName("langugae")
+    private String language;
     @SerializedName("mobile")
     private String mobile;
     @SerializedName("image")
@@ -96,6 +98,7 @@ public class ModelUserInfo implements Parcelable {
         last_name = in.readString();
         username = in.readString();
         email = in.readString();
+        language = in.readString();
         mobile = in.readString();
         image = in.readString();
         address = in.readString();
@@ -141,6 +144,9 @@ public class ModelUserInfo implements Parcelable {
 
     public String getEmail() {
         return email == null ? "" : email;
+    }
+    public String getLanguage() {
+        return language == null ? "" : language;
     }
 
     public String getMobile() {
@@ -333,6 +339,7 @@ public class ModelUserInfo implements Parcelable {
         dest.writeString(last_name);
         dest.writeString(username);
         dest.writeString(email);
+        dest.writeString(language);
         dest.writeString(mobile);
         dest.writeString(image);
         dest.writeString(address);

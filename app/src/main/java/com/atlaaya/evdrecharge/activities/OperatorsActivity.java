@@ -30,6 +30,7 @@ import com.atlaaya.evdrecharge.model.ResponseOperators;
 import com.atlaaya.evdrecharge.sqlite.DBHelper;
 import com.atlaaya.evdrecharge.storage.SessionManager;
 import com.atlaaya.evdrecharge.utils.CheckInternetConnection;
+import com.atlaaya.evdrecharge.utils.LanguageUtil;
 import com.atlaaya.evdrecharge.utils.MyCustomToast;
 
 import java.util.ArrayList;
@@ -64,17 +65,19 @@ public class OperatorsActivity extends BaseActivity implements OperatorsListener
             selectedService = getIntent().getParcelableExtra("service");
         }
         setSupportActionBar(binding.toolbar);
-
+        LanguageUtil.setTextViewTextByLanguage(getContext(),binding.text1, "txt_select_operator");
         if (selectedService != null) {
             if (getIntent().hasExtra("forPurchaseVoucher")) {
-                binding.toolbar.setTitle(getString(R.string.title_purchase_voucher));
+              //  binding.toolbar.setTitle(getString(R.string.title_purchase_voucher));
+                LanguageUtil.setToolBarTextByLanguage(getContext(),binding.toolbar, "txt_voucher_recharge");
             }else  if (getIntent().hasExtra("viewStockOnly")) {
                 binding.toolbar.setTitle(getString(R.string.menu_voucher_stock));
             }else {
                 binding.toolbar.setTitle(selectedService.getService_name());
             }
         } else {
-            binding.toolbar.setTitle(getString(R.string.txt_voucher_recharge));
+            LanguageUtil.setToolBarTextByLanguage(getContext(),binding.toolbar, "txt_voucher_recharge");
+         //   binding.toolbar.setTitle(getString(R.string.txt_voucher_recharge));
         }
 
         binding.recyclerView2.setLayoutManager(new GridLayoutManager(this, 1));

@@ -144,6 +144,11 @@ public class TopUpOptionActivity extends BaseActivity implements View.OnClickLis
     }
 
     @Override
+    public void onSuccessVoucherPrint(ResponseDefault body) {
+
+    }
+
+    @Override
     public Context getContext() {
         return null;
     }

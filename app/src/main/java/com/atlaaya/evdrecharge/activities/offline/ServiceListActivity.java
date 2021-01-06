@@ -30,6 +30,7 @@ import com.atlaaya.evdrecharge.model.ModelService;
 import com.atlaaya.evdrecharge.model.ResponseServices;
 import com.atlaaya.evdrecharge.sqlite.DBHelper;
 import com.atlaaya.evdrecharge.utils.CheckInternetConnection;
+import com.atlaaya.evdrecharge.utils.LanguageUtil;
 import com.atlaaya.evdrecharge.utils.MyCustomToast;
 
 import java.util.ArrayList;
@@ -61,7 +62,8 @@ public class ServiceListActivity extends BaseActivity implements ServiceListener
         if (getIntent().hasExtra("viewStockOnly")) {
             binding.toolbar.setTitle(getString(R.string.menu_voucher_stock));
         }
-
+        LanguageUtil.setToolBarTextByLanguage(getContext(),binding.toolbar, "title_purchase_voucher");
+        LanguageUtil.setTextViewTextByLanguage(getContext(),binding.text1, "txt_select_service");
         binding.recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
         callServiceAPI();

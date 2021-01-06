@@ -12,6 +12,7 @@ import androidx.databinding.DataBindingUtil;
 import com.atlaaya.evdrecharge.R;
 import com.atlaaya.evdrecharge.apiPresenter.LoginPresenter;
 import com.atlaaya.evdrecharge.constant.AppConstants;
+
 import com.atlaaya.evdrecharge.databinding.ActivityLoginBinding;
 import com.atlaaya.evdrecharge.listener.LoginListener;
 import com.atlaaya.evdrecharge.model.ResponseLogin;

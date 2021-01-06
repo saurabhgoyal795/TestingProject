@@ -11,9 +11,9 @@ public class ResponseVoucherPurchase  {
     @SerializedName("RESPONSE_MSG")
     private String RESPONSE_MSG;
 
+
     @SerializedName("RESPONSE_DATA")
     private ModelVoucherPurchased RESPONSE_DATA;
-
     public ResponseVoucherPurchase() {
     }
 
